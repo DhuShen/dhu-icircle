@@ -1,0 +1,10 @@
+body{
+    background: #3a8ee6;
+}
+
+#app{
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+}
