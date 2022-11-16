@@ -1,10 +1,35 @@
-body{
-    background: #3a8ee6;
+body {
+    background-image: url("../res/login_bk.png");
+    background-size: cover;
+    background-attachment: fixed;
 }
 
-#app{
+#register-btn {
+    float: right;
+    padding: 3px 0
+}
+
+#login-card {
+    height: 380px;
+}
+
+#card-title {
+    font-weight: bolder;
+    font-size: 20px;
+}
+
+#form-area #btn-area {
+    margin-top: 12%;
     display: flex;
     flex-direction: column;
-    align-content: center;
-    justify-content: center;
+    align-items: center;
+}
+
+#form-area {
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+.login-type{
+    color: white;
 }

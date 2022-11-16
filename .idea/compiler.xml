@@ -9,5 +9,8 @@
         <module name="dhu-icircle" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="dhu-icircle" target="17" />
+    </bytecodeTargetLevel>
   </component>
 </project>
