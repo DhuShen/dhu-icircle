@@ -8,5 +8,10 @@ new Vue({
             },
             isAdmin:false
         }
+    },
+    methods:{
+        onSubmit(){
+            location.href="recommend"
+        }
     }
 })
