@@ -1,4 +1,4 @@
-package com.dhu.pojo;
+package com.dhu.domain;
 
 import java.util.Date;
 

@@ -1,4 +1,4 @@
-package com.dhu.pojo;
+package com.dhu.domain;
 
 
 public class Message {
