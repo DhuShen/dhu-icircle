@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DHU ICircle</title>
+    <script src="lib/axios.js"></script>
+    <script src="lib/vue.js"></script>
+    <script src="lib/element-ui/lib/index.js"></script>
+    <link rel="stylesheet" href="lib/element-ui/lib/theme-chalk/index.css">
+    <link rel="stylesheet" href="css/public.css">
+    <link rel="stylesheet" href="css/recommend.css">
+</head>
+<body>
+<div id="app">
+    <header>
+        <el-menu default-active="1" class="el-menu-demo" mode="horizontal" @select="handleSelect">
+            <el-menu-item index="1"><i class="el-icon-s-home"></i>推荐</el-menu-item>
+            <el-menu-item index="2"><i class="el-icon-s-help"></i>圈子</el-menu-item>
+            <el-menu-item index="3"><i class="el-icon-message-solid"></i>消息</el-menu-item>
+            <el-menu-item>
+                <el-form :inline="true" :model="searchForm" class="demo-form-inline search-area">
+                    <el-form-item>
+                        <el-select class="type-input" v-model="searchForm.type" value="post" size="small">
+                            <el-option label="帖子" value="post"></el-option>
+                            <el-option label="圈子" value="circle"></el-option>
+                        </el-select>
+                    </el-form-item>
+                    <el-form-item>
+                        <el-input class="content-input" v-model="searchForm.content" size="small"
+                                  :placeholder="searchForm.type==='post'?'搜帖子':'搜圈子'"></el-input>
+                    </el-form-item>
+                    <el-form-item>
+                        <el-button type="primary" @click="onSearch" size="small" round>搜索</el-button>
+                    </el-form-item>
+                </el-form>
+            </el-menu-item>
+            <el-submenu index="4">
+                <template slot="title">
+                    <el-avatar src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"></el-avatar>
+                    User
+                </template>
+                <el-menu-item index="4-1"><i class="el-icon-user"></i> 个人信息</el-menu-item>
+                <el-menu-item index="4-2"><i class="el-icon-key"></i> 注销</el-menu-item>
+            </el-submenu>
+        </el-menu>
+    </header>
+    <main>
+        <div class="stream">
+            <el-tabs v-model="activeName" @tab-click="handleClick">
+                <el-tab-pane label="热门帖子" name="first">
+                    <div v-for="index of 10" :key="index">
+                        <el-skeleton :rows="3" animated></el-skeleton>
+                        <el-divider></el-divider>
+                    </div>
+                </el-tab-pane>
+                <el-tab-pane label="热门圈子" name="second"></el-tab-pane>
+            </el-tabs>
+        </div>
+    </main>
+</div>
+</body>
+<script src="js/recommend.js"></script>
+</html>

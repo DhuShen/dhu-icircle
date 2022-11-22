@@ -1,3 +1,3 @@
 <script>
-    location.href="LoginPage"
+    location.href="login"
 </script>
