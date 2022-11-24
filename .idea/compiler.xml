@@ -9,13 +9,10 @@
         <module name="dhu-icircle" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="dhu-icircle" target="17" />
-    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="dhu-icircle" options="--add-modules java.sql" />
+      <module name="dhu-icircle" options="" />
     </option>
   </component>
 </project>

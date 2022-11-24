@@ -2,9 +2,9 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.edu.dhu.pojo">
-    <select id="SelectAllAdmin" resultType="admin">
+<mapper namespace="com.dhu.dao.AdminDao">
+    <select id="adminSelectById" resultType="com.dhu.domain.Admin">
         select *
-        from admin
+        from admin where AdminId=#{id}
     </select>
 </mapper>

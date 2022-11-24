@@ -1,5 +1,9 @@
 package com.dhu.domain;
 
+
+import org.springframework.stereotype.Component;
+
+@Component//转换为bean
 public class Admin {
 
   private String adminId;

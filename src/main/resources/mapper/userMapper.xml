@@ -2,20 +2,19 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.edu.dhu.pojo">
+<mapper namespace="com.dhu.domain.User">
     <!--    注册-->
-    <insert id="insertUser" parameterType="User">
+    <insert id="insertUser" parameterType="com.dhu.domain.User">
         insert into user
         values (#{UserId}, #{UserPassword}, #{UserImg}, #{UserName}, #{UserSex}, #{UserLife}, #{UserTime}, #{UserMajor},
                 #{UserIntroduction})
     </insert>
     <!--    登录-->
-    <select id="selectByIdAndPassword" parameterType="User" resultType="User">
+    <select id="selectByIdAndPassword" parameterType="com.dhu.domain.User" resultType="com.dhu.domain.User">
         select *
         from user
         where UserId = #{UserId}
           and UserPassword = #{UserPassword}
     </select>
     <!--    搜索圈子、帖子-->
-    <select id=""
 </mapper>

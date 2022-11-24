@@ -1,3 +1,5 @@
-<script>
-    location.href="login"
-</script>
+<html>
+<body>
+<h2>Hello World!</h2>
+</body>
+</html>
