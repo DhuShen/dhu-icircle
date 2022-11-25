@@ -1,5 +1,7 @@
 package com.dhu.domain;
 
+import java.util.Date;
+
 public class Request {
 
   private long requestId;
@@ -8,7 +10,7 @@ public class Request {
   private String requestCircleContent;
   private long requestType;
   private String requestUserId;
-  private java.sql.Timestamp requestTime;
+  private Date requestTime;
   private String Request_UserId;
 
 
@@ -66,11 +68,11 @@ public class Request {
   }
 
 
-  public java.sql.Timestamp getRequestTime() {
+  public Date getRequestTime() {
     return requestTime;
   }
 
-  public void setRequestTime(java.sql.Timestamp requestTime) {
+  public void setRequestTime(Date requestTime) {
     this.requestTime = requestTime;
   }
 

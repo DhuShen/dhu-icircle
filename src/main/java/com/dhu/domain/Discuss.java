@@ -1,12 +1,14 @@
 package com.dhu.domain;
 
+import java.util.Date;
+
 public class Discuss {
 
   private long discussId;
   private String discussContent;
   private String discussReplayed;
   private long discussGood;
-  private java.sql.Timestamp discussTime;
+  private Date discussTime;
   private String discuss_UserId;
   private long discuss_PostId;
 
@@ -47,11 +49,11 @@ public class Discuss {
   }
 
 
-  public java.sql.Timestamp getDiscussTime() {
+  public Date getDiscussTime() {
     return discussTime;
   }
 
-  public void setDiscussTime(java.sql.Timestamp discussTime) {
+  public void setDiscussTime(Date discussTime) {
     this.discussTime = discussTime;
   }
 

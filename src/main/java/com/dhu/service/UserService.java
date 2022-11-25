@@ -1,10 +1,48 @@
 package com.dhu.service;
 
 import com.dhu.domain.User;
+import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
-
+@Transactional
 public interface UserService {
+//	用户功能
+//	用户登录注册界面
+//    a)	注册
+//    b)	登录
+boolean userRegister(String id, String pwd);
+User userLogin(String id, String pwd);
+//    c)	查找圈子、贴子（在Circle,Post中）
+//    d)	浏览圈子、帖子、评论（在Circle,Post,Discuss中）
+//    e)	举报用户（帖子下、评论下）（在Report中）
 
-    //登录，注意返回不应该有密码
+
+//    f)	在帖子下发布评论
+//    g)	点赞帖子、评论
+//    h)	查看消息（消息）
+//    i)	进入用户个人中心（我的）
+//    j)	加入圈子
+//    k)	建立圈子（需要向管理员申请）
+//            	圈子内
+//    l)	退出圈子
+//    m)	在圈子中发布帖子
+//    n)	在圈子中查看圈内成员信息
+//	圈主在用户功能上增加以下功能
+//    o)	解散圈子
+//    p)	任命新圈主
+//    q)	修改圈子相关信息（需要向管理员申请）
+//    r)	添加圈子的精华帖
+//    s)	取消圈子的精华帖
+//    t)	撤销圈内成员的帖子/评论
+//    u)	踢掉圈内成员
+//	管理员功能：
+//            	管理员登录界面
+//    a)	管理员登录
+//	管理员主页
+//    b)	进入用户主页，进行用户操作
+//    c)	查看消息（举报，请求（建立圈子，修改圈子信息，任命新圈主））
+//    d)	对用户进行封号操作
+//    e)	处理信息发送消息
+
+
+
 }

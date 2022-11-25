@@ -1,6 +1,8 @@
 package com.dhu.domain;
 
 
+import java.util.Date;
+
 public class Report {
 
   private long reportId;
@@ -9,9 +11,8 @@ public class Report {
   private String reportUserIdGet;
   private long reportPostId;
   private long reportDiscussId;
-  private java.sql.Timestamp reportTime;
+  private Date reportTime;
   private String reportUserIdSet;
-
 
   public long getReportId() {
     return reportId;
@@ -67,11 +68,11 @@ public class Report {
   }
 
 
-  public java.sql.Timestamp getReportTime() {
+  public Date getReportTime() {
     return reportTime;
   }
 
-  public void setReportTime(java.sql.Timestamp reportTime) {
+  public void setReportTime(Date reportTime) {
     this.reportTime = reportTime;
   }
 

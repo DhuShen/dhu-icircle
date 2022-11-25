@@ -1,5 +1,7 @@
 package com.dhu.domain;
 
+import com.dhu.service.StaticService.MyTime;
+
 import java.util.Date;
 
 public class User {
@@ -13,8 +15,19 @@ public class User {
   private Date userTime;
   private String userMajor;
   private String userIntroduction;
-
-
+  //生成新用户
+  public User(String userId,String userPassword)
+  {
+    this.userId=userId;
+    this.userPassword=userPassword;
+    this.userName="用户"+userId;
+    this.userSex=null;
+    this.userImg=null;
+    this.userLife=0;//初始化为未封号0
+    this.userTime= MyTime.getNowTime();
+    this.userMajor=null;
+    this.userIntroduction=null;
+  }
   public String getUserId() {
     return userId;
   }
