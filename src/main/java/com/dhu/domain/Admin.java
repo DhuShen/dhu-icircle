@@ -1,5 +1,8 @@
 package com.dhu.domain;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class Admin {
 
   private String adminId;

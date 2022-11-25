@@ -1,7 +1,8 @@
 package com.dhu.domain;
 
-import java.security.Timestamp;
+import org.springframework.stereotype.Component;
 
+@Component
 public class Circle {
 
     private long circleId;

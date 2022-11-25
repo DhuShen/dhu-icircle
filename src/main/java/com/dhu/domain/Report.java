@@ -1,6 +1,9 @@
 package com.dhu.domain;
 
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class Report {
 
   private long reportId;
@@ -11,7 +14,6 @@ public class Report {
   private long reportDiscussId;
   private java.sql.Timestamp reportTime;
   private String reportUserIdSet;
-
 
   public long getReportId() {
     return reportId;
