@@ -12,4 +12,6 @@ public interface UserDao {
     boolean userInsert(User user);
 
     int closeUser(@Param("userId") String userId);
+
+    int updateUserInfo(User user);
 }

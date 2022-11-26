@@ -9,4 +9,6 @@ import java.util.List;
 @Repository
 public interface MessageDao {
     List<Message> selectByGetId(@Param("getId") String getId);
+
+    int insertMessage(Message message);
 }

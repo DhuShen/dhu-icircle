@@ -1,49 +1,58 @@
 package com.dhu.domain;
 
-import org.springframework.stereotype.Component;
 
-@Component
+import java.util.Date;
+
 public class Message {
 
-  private long messageId;
-  private String messageContent;
-  private String messageUserIdSet;
-  private String messageUserIdGet;
+    private long messageId;
+    private String messageContent;
+    private String messageUserIdSet;
+    private String messageUserIdGet;
+    private Date messageSetTime;
+
+    public Date getMessageSetTime() {
+        return messageSetTime;
+    }
+    public void setMessageSetTime(Date messageSetTime) {
+        this.messageSetTime = messageSetTime;
+    }
 
 
-  public long getMessageId() {
-    return messageId;
-  }
 
-  public void setMessageId(long messageId) {
-    this.messageId = messageId;
-  }
+    public long getMessageId() {
+        return messageId;
+    }
 
-
-  public String getMessageContent() {
-    return messageContent;
-  }
-
-  public void setMessageContent(String messageContent) {
-    this.messageContent = messageContent;
-  }
+    public void setMessageId(long messageId) {
+        this.messageId = messageId;
+    }
 
 
-  public String getMessageUserIdSet() {
-    return messageUserIdSet;
-  }
+    public String getMessageContent() {
+        return messageContent;
+    }
 
-  public void setMessageUserIdSet(String messageUserIdSet) {
-    this.messageUserIdSet = messageUserIdSet;
-  }
+    public void setMessageContent(String messageContent) {
+        this.messageContent = messageContent;
+    }
 
 
-  public String getMessageUserIdGet() {
-    return messageUserIdGet;
-  }
+    public String getMessageUserIdSet() {
+        return messageUserIdSet;
+    }
 
-  public void setMessageUserIdGet(String messageUserIdGet) {
-    this.messageUserIdGet = messageUserIdGet;
-  }
+    public void setMessageUserIdSet(String messageUserIdSet) {
+        this.messageUserIdSet = messageUserIdSet;
+    }
+
+
+    public String getMessageUserIdGet() {
+        return messageUserIdGet;
+    }
+
+    public void setMessageUserIdGet(String messageUserIdGet) {
+        this.messageUserIdGet = messageUserIdGet;
+    }
 
 }

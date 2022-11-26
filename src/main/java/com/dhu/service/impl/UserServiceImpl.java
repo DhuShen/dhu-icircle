@@ -45,7 +45,21 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public boolean updateUserInfo(String userId, String password, String userImg, String userName,
+                                  String userSex, String userMajor, String userIntroduction) {
+        User user = new User();
+        user.setUserId(userId);
+        user.setUserPassword(password);
+        user.setUserImg(userImg);
+        user.setUserName(userName);
+        user.setUserSex(userSex);
+        user.setUserMajor(userMajor);
+        user.setUserIntroduction(userIntroduction);
+        return userDao.updateUserInfo(user) > 0;
+    }
+
+    @Override
     public boolean closeUser(String userId) {
-        return userDao.closeUser(userId)>1;
+        return userDao.closeUser(userId) > 1;
     }
 }

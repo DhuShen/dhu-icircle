@@ -10,15 +10,14 @@ import org.springframework.stereotype.Service;
 public class AdminServiceImpl implements AdminService {
     @Autowired
     AdminDao adminDao;
+
     @Override
     public Admin login(String adminId, String adminPwd) {
-        Admin admin=adminDao.adminSelectById(adminId);
-        if(admin!=null)
-        {
+        Admin admin = adminDao.adminSelectById(adminId);
+        if (admin != null) {
             admin.setAdminPassword("");
             return admin;
-        }
-        else
+        } else
             return null;
     }
 }

@@ -16,6 +16,7 @@ public interface PostService {
 
     List<Post> getCirclePosts(long circleId);//查找帖子（圈子id）
 
+    //            (i5)查看自己的帖子【在post中】
     List<Post> getMyPosts(String userId);//查找我的帖子（用户id）
 
     //    g)	点赞帖子、评论【在post，discuss中】
