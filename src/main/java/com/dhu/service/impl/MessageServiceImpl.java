@@ -12,9 +12,8 @@ import java.util.List;
 public class MessageServiceImpl implements MessageService {
     @Autowired
     MessageDao messageDao;
-//    h)	用户查看消息（消息）(在message中）
-    public List<Message> getMessage(String getId)
-    {
+
+    public List<Message> getMessage(String getId) {
         return messageDao.selectByGetId(getId);
     }
 }

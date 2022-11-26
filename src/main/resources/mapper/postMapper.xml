@@ -3,6 +3,12 @@
         PUBLIC "-//mybatis.org//DTD mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.dhu.dao.PostDao">
+    
+    <insert id="insertPost">
+        insert into post(postName, postContent, postKey, postGood, postTime, post_UserId, post_CircleId)
+        values (#{postName}, #{postContent}, #{postKey}, #{postGood}, #{postTime}, #{post_UserId}, #{post_CircleId})
+    </insert>
+
     <select id="selectByName" parameterType="String" resultType="Post">
         <bind name="pattern" value="'%' + postName + '%'"/>
         select * from post where postName like #{pattern}
