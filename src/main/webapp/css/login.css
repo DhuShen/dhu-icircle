@@ -1,0 +1,45 @@
+body {
+    background-color: #eeeeee;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+header {
+    overflow: hidden;
+}
+
+main {
+    overflow: hidden;
+}
+
+#register-btn {
+    float: right;
+    padding: 3px 0
+}
+
+#login-card {
+    margin: 180px auto;
+    height: 380px;
+    width: 360px;
+}
+
+#card-title {
+    font-weight: bolder;
+    font-size: 20px;
+}
+
+#btn-area {
+    margin-top: 15%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#form-area {
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+#login-type {
+    float: right;
+}
