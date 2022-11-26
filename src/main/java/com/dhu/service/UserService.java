@@ -16,10 +16,10 @@ import org.springframework.transaction.annotation.Transactional;
       i)	进入用户个人中心（我的或别人的）！
             (i1)查看其他用户中心或自己的【在user中】
             (i2)修改个人信息【在user中】
-            (i3)查看自己管理的圈子
-            (i4)查看自己加入的圈子
-            (i5)查看自己的帖子
-            (i6)查看消息
+            (i3)查看自己管理的圈子【在circle中】
+            (i4)查看自己加入的圈子【在circle中】
+            (i5)查看自己的帖子【在post中】
+            (i6)查看消息【在message中】同h
 */
 //    j)	加入圈子【在circle中】
 //    k)	建立圈子（需要向管理员申请）【在request、circle中】
@@ -48,8 +48,10 @@ public interface UserService {
 
     //            (i1)查看其他用户中心或自己的【在user中】
     User userCheck(String userId);
+
     //            (i2)修改个人信息【在user中】
-    boolean updateUserInfo(String userId,String password,String userImg);
+    boolean updateUserInfo(String userId, String password, String userImg, String userName,
+                           String userSex, String userMajor, String userIntroduction);
 
     //    d)	对用户进行封号操作【在user中】
     boolean closeUser(String userId);

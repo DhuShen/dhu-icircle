@@ -21,7 +21,11 @@ public interface CircleService {
     //    d)	浏览圈子、帖子、评论【在Circle,Post,Discuss中】
     List<CircleView> getHotCircle();//获取热门圈子排序
 
-    List<Circle> getMyCircle(String userId);//获取我的圈子
+    //            (i3)查看自己管理的圈子【在circle中】
+    List<Circle> getMyCircle(String userId);//获取我管理的圈子
+
+    //            (i4)查看自己加入的圈子【在circle中】
+    List<Circle> getInCircle(String userId);//获取我加入的圈子
 
     //    j)	加入圈子【在circle中】
     boolean enterCircle(String userId, long circleId);

@@ -48,6 +48,11 @@ public class CircleServiceImpl implements CircleService {
         return circleDao.selectById(userId);
     }
 
+    @Override
+    public List<Circle> getInCircle(String userId) {
+        return circleDao.selectConnectionById(userId);
+    }
+
     //不在圈子内（加入圈子）
     @Override
     public boolean enterCircle(String userId, long circleId) {

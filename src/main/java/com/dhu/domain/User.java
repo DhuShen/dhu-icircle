@@ -16,6 +16,8 @@ public class User {
   private String userMajor;
   private String userIntroduction;
   //生成新用户
+  public User() {
+  }
   public User(String userId,String userPassword)
   {
     this.userId=userId;
@@ -28,6 +30,9 @@ public class User {
     this.userMajor=null;
     this.userIntroduction=null;
   }
+
+
+
   public String getUserId() {
     return userId;
   }

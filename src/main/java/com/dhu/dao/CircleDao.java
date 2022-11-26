@@ -33,4 +33,6 @@ public interface CircleDao {
     String selectConnection(@Param("userId") String userId, @Param("circleId") long circleId);
 
     List<User> selectUserInCircle(@Param("circleId") long circleId);
+
+    List<Circle> selectConnectionById(@Param("userId")String userId);
 }

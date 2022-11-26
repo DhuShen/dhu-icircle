@@ -22,4 +22,14 @@
         set userLife=1
         where userId = #{userId}
     </update>
+    <update id="updateUserInfo">
+        update user
+        set userPassword=#{userPassword},
+            userImg=#{userImg},
+            userName=#{userName},
+            userSex=#{userSex},
+            userMajor=#{userMajor},
+            userIntroduction=#{userIntroduction}
+        where userId=#{userId}
+    </update>
 </mapper>
