@@ -8,11 +8,13 @@ import java.util.List;
 
 @Repository//转换为bean（数据库访问层）
 public interface PostDao {
-    List<Post> selectByName(@Param("name") String name);
+    List<Post> selectByName(@Param("postName") String postName);
 
     List<Post> selectTen();
 
-    List<Post> selectByCircle(@Param("id") String id);
+    List<Post> selectByCircle(@Param("circleId") long circleId);
 
-    List<Post> selectByUser(@Param("id") String id);
+    List<Post> selectByUser(@Param("userId") String userId);
+
+    int likePost(@Param("postId")long postId);
 }

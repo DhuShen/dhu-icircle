@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface UserDao {
 
-    User userSelectById(@Param("id")String id);
+    User userSelectById(@Param("userId")String userId);
 
-    boolean userInsert(@Param("user")User user);
+    boolean userInsert(User user);
 }

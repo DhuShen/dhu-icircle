@@ -15,9 +15,9 @@ public class UserServiceImpl implements UserService {
     UserDao userDao;
 
     @Override
-    public boolean userRegister(String id, String pwd) {
-        if (userDao.userSelectById(id) == null) {//注册用户不存在（未注册）
-            User user = new User(id, pwd);
+    public boolean userRegister(String userId, String userPwd) {
+        if (userDao.userSelectById(userId) == null) {//注册用户不存在（未注册）
+            User user = new User(userId, userPwd);
             userDao.userInsert(user);
             return true;
         } else
@@ -25,11 +25,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User userLogin(String id, String pwd) {
-        User user = userDao.userSelectById(id);
+    public User userLogin(String userId, String userPwd) {
+        User user = userDao.userSelectById(userId);
         if ((user != null) &&//登录用户存在（已注册）
                 (user.getUserLife() != 1) &&//登录用户未封号
-                (Objects.equals(user.getUserPassword(), pwd)))//登录用户密码正确
+                (Objects.equals(user.getUserPassword(), userPwd)))//登录用户密码正确
         {
             user.setUserPassword("");//不返回密码
             return user;

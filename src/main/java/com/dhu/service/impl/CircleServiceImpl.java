@@ -15,8 +15,8 @@ public class CircleServiceImpl implements CircleService {
     CircleDao circleDao;
 
     @Override
-    public List<Circle> searchCircle(String name) {
-        return circleDao.selectByName(name);
+    public List<Circle> searchCircle(String circleName) {
+        return circleDao.selectByName(circleName);
     }
 
     @Override
@@ -25,8 +25,8 @@ public class CircleServiceImpl implements CircleService {
     }
 
     @Override
-    public List<Circle> getMyCircle(String id) {
-        return circleDao.selectById(id);
+    public List<Circle> getMyCircle(String userId) {
+        return circleDao.selectById(userId);
     }
 
 

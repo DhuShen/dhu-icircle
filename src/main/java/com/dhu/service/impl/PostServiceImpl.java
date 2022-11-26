@@ -14,8 +14,8 @@ public class PostServiceImpl implements PostService {
     PostDao postDao;
 
     @Override
-    public List<Post> searchPosts(String name) {
-        return postDao.selectByName(name);
+    public List<Post> searchPosts(String postName) {
+        return postDao.selectByName(postName);
     }
 
     @Override
@@ -24,12 +24,17 @@ public class PostServiceImpl implements PostService {
     }
 
     @Override
-    public List<Post> getCirclePosts(String id) {
-        return postDao.selectByCircle(id);
+    public List<Post> getCirclePosts(long circleId) {
+        return postDao.selectByCircle(circleId);
     }
 
     @Override
-    public List<Post> getMyPosts(String id) {
-        return postDao.selectByUser(id);
+    public List<Post> getMyPosts(String userId) {
+        return postDao.selectByUser(userId);
+    }
+
+    @Override
+    public boolean likePost(long postId) {
+        return postDao.likePost(postId)>1;
     }
 }
