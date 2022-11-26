@@ -8,17 +8,19 @@ public interface UserService {
 //	用户功能
 //	用户登录注册界面
 //    a)	注册
-//    b)	登录
-boolean userRegister(String id, String pwd);
-User userLogin(String id, String pwd);
+boolean userRegister(String userId, String userPwd);
+ //    b)	登录
+User userLogin(String userId, String userPwd);
 //    c)	查找圈子、贴子（在Circle,Post中）
 //    d)	浏览圈子、帖子、评论（在Circle,Post,Discuss中）
 //    e)	举报用户（帖子下、评论下）（在Report中）
+//    f)	在帖子下发布评论(在Discuss)
+//    g)	点赞帖子、评论(在post，discuss)
 
 
-//    f)	在帖子下发布评论
-//    g)	点赞帖子、评论
 //    h)	查看消息（消息）
+
+
 //    i)	进入用户个人中心（我的）
 //    j)	加入圈子
 //    k)	建立圈子（需要向管理员申请）

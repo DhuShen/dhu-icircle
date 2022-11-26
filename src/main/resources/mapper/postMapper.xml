@@ -3,17 +3,24 @@
         PUBLIC "-//mybatis.org//DTD mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.dhu.dao.PostDao">
-    <select id="selectByName" parameterType="String" resultType="com.dhu.domain.Post">
-        <bind name="pattern" value="'%' + name + '%'" />
+    <select id="selectByName" parameterType="String" resultType="Post">
+        <bind name="pattern" value="'%' + postName + '%'" />
         select * from post where postName like #{pattern}
     </select>
-    <select id="selectTen" resultType="com.dhu.domain.Post">
+
+    <select id="selectTen" resultType="Post">
         select * from post ORDER BY postGood
     </select>
-    <select id="selectByCircle" resultType="com.dhu.domain.Post">
-        select * from post where post_CircleId=#{id}
+
+    <select id="selectByCircle" parameterType="int" resultType="Post">
+        select * from post where post_CircleId=#{circleId}
     </select>
-    <select id="selectByUser" resultType="com.dhu.domain.Post">
-        select * from post where post_UserId=#{id}
+
+    <select id="selectByUser" parameterType="String" resultType="Post">
+        select * from post where post_UserId=#{userId}
     </select>
+
+    <update id="likePost" parameterType="int">
+        update post set postGood=postGood+1 where postId=#{postId}
+    </update>
 </mapper>

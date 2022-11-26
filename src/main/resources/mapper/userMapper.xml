@@ -4,15 +4,15 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.dhu.dao.UserDao">
     <!--    注册-->
-    <insert id="userInsert" parameterType="com.dhu.domain.User">
+    <insert id="userInsert" parameterType="User">
         insert into user
         values (#{UserId}, #{UserPassword}, #{UserImg}, #{UserName}, #{UserSex}, #{UserLife}, #{UserTime}, #{UserMajor},
                 #{UserIntroduction})
     </insert>
     <!--    登录-->
-    <select id="userSelectById" parameterType="String" resultType="com.dhu.domain.User">
+    <select id="userSelectById" parameterType="String" resultType="User">
         select *
         from user
-        where userId = #{UserId}
+        where userId = #{userId}
     </select>
 </mapper>

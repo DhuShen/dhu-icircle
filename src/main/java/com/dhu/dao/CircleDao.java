@@ -8,10 +8,10 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 @Repository
 public interface CircleDao {
-    List<Circle> selectByName(@Param("name") String name);
+    List<Circle> selectByName(@Param("circleName") String circleName);
 
     List<CircleView> selectTen();
 
-    List<Circle> selectById(@Param("id") String id);
+    List<Circle> selectById(@Param("userId") String userId);
 
 }
