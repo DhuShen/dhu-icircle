@@ -4,15 +4,43 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.dhu.dao.CircleDao">
     <select id="selectByName" parameterType="String" resultType="Circle">
-            <bind name="pattern" value="'%' + circleName + '%'" /> # 模糊查询
-            select * from circle where circleName like #{pattern}
+        <bind name="pattern" value="'%' + circleName + '%'"/>
+        # 模糊查询
+        select * from circle where circleName like #{pattern}
     </select>
 
     <select id="selectTen" resultType="CircleView">
-             select * from hotcircle
+        select *
+        from hotcircle
     </select>
 
     <select id="selectById" resultType="Circle">
-            select * from circle where circle_UserId=#{userId}
+        select *
+        from circle
+        where circle_UserId = #{userId}
     </select>
+
+    <insert id="insertCircle" parameterType="Circle">
+        insert into circle(circleName, circleImg, circleContent, circleLife, circleTime, circle_UserId)
+        values (#{circleName}, #{circleImg}, #{circleContent}, #{circleLife}, #{circleTime}, #{circle_UserId})
+    </insert>
+
+    <select id="selectByCircleId" parameterType="int" resultType="Circle">
+        select *
+        from circle
+        where circleId = #{circleId}
+    </select>
+
+    <delete id="deleteCircle" parameterType="int">
+        delete
+        from circle
+        where circleId = #{circleId}
+    </delete>
+
+    <update id="updateCircle" parameterType="Circle">
+        update circle
+        set circle_UserId=#{circle_UserId}
+        where circleId = #{circleId}
+    </update>
+
 </mapper>

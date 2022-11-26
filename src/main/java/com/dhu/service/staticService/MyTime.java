@@ -1,6 +1,5 @@
-package com.dhu.service.StaticService;
+package com.dhu.service.staticService;
 
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 

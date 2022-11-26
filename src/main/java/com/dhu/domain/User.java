@@ -1,6 +1,6 @@
 package com.dhu.domain;
 
-import com.dhu.service.StaticService.MyTime;
+import com.dhu.service.staticService.MyTime;
 
 import java.util.Date;
 

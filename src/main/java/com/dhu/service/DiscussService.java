@@ -1,5 +1,8 @@
 package com.dhu.service;
 
+import org.springframework.transaction.annotation.Transactional;
+
+@Transactional
 public interface DiscussService {
 //    f)	在帖子下发布评论(在Discuss)
     public boolean discussInPost(String setId, long postId, String discussContent,

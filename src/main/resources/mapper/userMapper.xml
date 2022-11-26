@@ -6,8 +6,8 @@
     <!--    注册-->
     <insert id="userInsert" parameterType="User">
         insert into user
-        values (#{UserId}, #{UserPassword}, #{UserImg}, #{UserName}, #{UserSex}, #{UserLife}, #{UserTime}, #{UserMajor},
-                #{UserIntroduction})
+        values (#{userId}, #{userPassword}, #{userImg}, #{userName}, #{userSex}, #{userLife}, #{userTime}, #{userMajor},
+                #{userIntroduction})
     </insert>
     <!--    登录-->
     <select id="userSelectById" parameterType="String" resultType="User">
