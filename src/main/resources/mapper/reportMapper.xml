@@ -9,5 +9,7 @@
         values (#{reportcontent}, #{reporttype}, #{reportuseridget}, #{reportpostid}, #{reportdiscussid}, #{reporttime},
                 #{reportuseridset})
     </insert>
-
+    <select id="selectAllOrder" resultType="Report">
+        select *from report ORDER BY reportUserIdGet;
+    </select>
 </mapper>

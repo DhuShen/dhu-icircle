@@ -9,4 +9,10 @@
         values (#{requestCircleId}, #{requestCircleName}, #{requestCircleContent}, #{requestType}, #{requestUserId},
                 #{requestTime}, #{request_UserId})
     </insert>
+
+    <select id="selectAllOrder" resultType="Request">
+        select *
+        from request
+        order by request_UserId;
+    </select>
 </mapper>

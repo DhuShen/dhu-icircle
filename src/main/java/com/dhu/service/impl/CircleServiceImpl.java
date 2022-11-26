@@ -18,7 +18,7 @@ public class CircleServiceImpl implements CircleService {
 
     @Override
     public boolean isCircleMaster(String userId, long circleId) {
-        Circle circle=circleDao.selectByCircleId(circleId);
+        Circle circle = circleDao.selectByCircleId(circleId);
         return Objects.equals(userId, circle.getCircle_UserId());
     }
 
@@ -59,12 +59,23 @@ public class CircleServiceImpl implements CircleService {
             return false;
     }
 
-    //管理员用
+    //管理员用(（任命新圈主）
     @Override
     public boolean setNewCircleUser(long circleId, String userId) {
-        Circle circle=new Circle();
+        Circle circle = new Circle();
         circle.setCircleId(circleId);
         circle.setCircle_UserId(userId);
-        return circleDao.updateCircle(circle)>0;
+        return circleDao.updateCircleMaster(circle) > 0;
+    }
+
+    //管理员用（修改圈子简介）
+    @Override
+    public boolean updateCircleContent(long circleId, String circleName, String circleImg, String circleContent) {
+        Circle circle = new Circle();
+        circle.setCircleId(circleId);
+        circle.setCircleName(circleName);
+        circle.setCircleImg(circleImg);
+        circle.setCircleContent(circleContent);
+        return circleDao.updateCircleContent(circle) > 0;
     }
 }

@@ -2,6 +2,7 @@ package com.dhu.service.impl;
 
 import com.dhu.dao.PostDao;
 import com.dhu.domain.Post;
+import com.dhu.exception.MyException;
 import com.dhu.service.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -35,6 +36,29 @@ public class PostServiceImpl implements PostService {
 
     @Override
     public boolean likePost(long postId) {
-        return postDao.likePost(postId)>1;
+        return postDao.likePost(postId) > 1;
+    }
+
+    @Override
+    public boolean setPostKey(long postId) {
+        Post post = postDao.selectById(postId);
+        if (post.getPostKey() != 0) {
+            throw new MyException("已是精华帖!");
+        } else
+            return postDao.setPostKey(postId) > 0;
+    }
+
+    @Override
+    public boolean cancelPostKey(long postId) {
+        Post post = postDao.selectById(postId);
+        if (post.getPostKey() == 0) {
+            throw new MyException("不是精华帖!");
+        } else
+            return postDao.cancelPostKey(postId) > 0;
+    }
+
+    @Override
+    public boolean CancelPost(long postId) {
+        return postDao.cancelPost(postId) > 0;
     }
 }

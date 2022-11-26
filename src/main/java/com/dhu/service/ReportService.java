@@ -2,7 +2,7 @@ package com.dhu.service;
 
 import com.dhu.domain.Report;
 import org.apache.ibatis.annotations.Param;
-import org.springframework.transaction.annotation.Transactional;;
+import org.springframework.transaction.annotation.Transactional;;import java.util.List;
 
 @Transactional
 public interface ReportService {
@@ -12,4 +12,6 @@ public interface ReportService {
     boolean reportByPostId(String setId, long postId, String reportContent);//举报帖子
 
     boolean reportByDiscussId(String setId, long discussId, String reportContent);//举报评论
+    //    c)	查看消息（举报，请求（建立圈子，修改圈子信息，任命新圈主））（在report，request中）
+    List<Report> getReport();
 }

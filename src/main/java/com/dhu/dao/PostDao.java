@@ -17,4 +17,12 @@ public interface PostDao {
     List<Post> selectByUser(@Param("userId") String userId);
 
     int likePost(@Param("postId")long postId);
+
+    Post selectById(@Param("postId")long postId);
+
+    int setPostKey(@Param("postId")long postId);
+
+    int cancelPostKey(@Param("postId")long postId);
+
+    int cancelPost(@Param("postId")long postId);
 }

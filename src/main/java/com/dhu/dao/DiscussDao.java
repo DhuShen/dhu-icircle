@@ -8,4 +8,5 @@ import org.springframework.stereotype.Repository;
 public interface DiscussDao {
     int insertDiscuss(Discuss discuss);
     int likeDiscuss(@Param("discussId") long discussId);
+    int deleteDiscuss(@Param("discussId") long discussId);
 }

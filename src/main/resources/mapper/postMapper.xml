@@ -4,23 +4,55 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.dhu.dao.PostDao">
     <select id="selectByName" parameterType="String" resultType="Post">
-        <bind name="pattern" value="'%' + postName + '%'" />
+        <bind name="pattern" value="'%' + postName + '%'"/>
         select * from post where postName like #{pattern}
     </select>
 
     <select id="selectTen" resultType="Post">
-        select * from post ORDER BY postGood
+        select *
+        from post
+        ORDER BY postGood
     </select>
 
     <select id="selectByCircle" parameterType="int" resultType="Post">
-        select * from post where post_CircleId=#{circleId}
+        select *
+        from post
+        where post_CircleId = #{circleId}
     </select>
 
     <select id="selectByUser" parameterType="String" resultType="Post">
-        select * from post where post_UserId=#{userId}
+        select *
+        from post
+        where post_UserId = #{userId}
     </select>
 
     <update id="likePost" parameterType="int">
-        update post set postGood=postGood+1 where postId=#{postId}
+        update post
+        set postGood=postGood + 1
+        where postId = #{postId}
     </update>
+
+    <select id="selectById" parameterType="int" resultType="Post">
+        select *
+        from post
+        where postId = #{postId}
+    </select>
+
+    <update id="setPostKey" parameterType="int">
+        update post
+        set postKey=1
+        where postId = #{postId}
+    </update>
+
+    <delete id="cancelPostKey" parameterType="int">
+        update post
+        set postKey=0
+        where postId = #{postId}
+    </delete>
+
+    <delete id="cancelPost" parameterType="int">
+        delete
+        from post
+        where postId = #{postId}
+    </delete>
 </mapper>
