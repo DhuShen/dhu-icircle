@@ -10,4 +10,6 @@ public interface UserDao {
     User userSelectById(@Param("userId")String userId);
 
     boolean userInsert(User user);
+
+    int closeUser(@Param("userId")String userId);
 }

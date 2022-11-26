@@ -39,8 +39,13 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User userCheck(String userId) {
-        User user=userDao.userSelectById(userId);
+        User user = userDao.userSelectById(userId);
         user.setUserPassword("");
         return user;
+    }
+
+    @Override
+    public boolean closeUser(String userId) {
+        return userDao.closeUser(userId)>1;
     }
 }

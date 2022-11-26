@@ -7,6 +7,8 @@ import com.dhu.service.staticService.MyTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 
 @Service
 public class ReportServiceImpl implements ReportService {
@@ -44,5 +46,10 @@ public class ReportServiceImpl implements ReportService {
         report.setReportUserIdSet(setId);//举报人
         report.setReportTime(MyTime.getNowTime());
         return reportDao.InsertReport(report) != 0;
+    }
+
+    @Override
+    public List<Report> getReport() {
+        return reportDao.selectAllOrder();
     }
 }

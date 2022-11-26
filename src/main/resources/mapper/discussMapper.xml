@@ -5,9 +5,19 @@
 <mapper namespace="com.dhu.dao.DiscussDao">
     <insert id="insertDiscuss" parameterType="Discuss">
         insert into discuss(discussContent, discussReplayed, discussGood, discussTime, discuss_UserId, discuss_PostId)
-            values (#{discussContent}, #{discussReplayed}, #{discussGood}, #{discussTime}, #{discuss_UserId}, #{discuss_PostId})
+        values (#{discussContent}, #{discussReplayed}, #{discussGood}, #{discussTime}, #{discuss_UserId},
+                #{discuss_PostId})
     </insert>
+
     <update id="likeDiscuss" parameterType="int">
-        update discuss set discussGood=discussGood+1 where discussId=#{discussId}
+        update discuss
+        set discussGood=discussGood + 1
+        where discussId = #{discussId}
     </update>
+
+    <delete id="deleteDiscuss" parameterType="int">
+        delete
+        from discuss
+        where discussId = #{discussId}
+    </delete>
 </mapper>

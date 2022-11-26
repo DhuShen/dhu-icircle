@@ -21,5 +21,7 @@ public interface CircleDao {
 
     int deleteCircle(@Param("circleId")long circleId);
 
-    int updateCircle(Circle circle);
+    int updateCircleMaster(Circle circle);
+
+    int updateCircleContent(Circle circle);
 }

@@ -37,9 +37,16 @@
         where circleId = #{circleId}
     </delete>
 
-    <update id="updateCircle" parameterType="Circle">
+    <update id="updateCircleMaster" parameterType="Circle">
         update circle
         set circle_UserId=#{circle_UserId}
+        where circleId = #{circleId}
+    </update>
+    <update id="updateCircleContent">
+        update circle
+        set circleName=#{circleName},
+            circleImg=#{circleImg},
+            circleContent=#{circleContent}
         where circleId = #{circleId}
     </update>
 

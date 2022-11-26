@@ -27,4 +27,9 @@ public class DiscussServiceImpl implements DiscussService {
     public boolean likeDiscuss(long discussId) {
         return discussDao.likeDiscuss(discussId)>0;
     }
+
+    @Override
+    public boolean CancelDiscuss(long discussId) {
+        return discussDao.deleteDiscuss(discussId)>0;
+    }
 }
