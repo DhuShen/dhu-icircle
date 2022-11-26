@@ -2,12 +2,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>DHU ICircle</title>
+    <title>消息</title>
     <script src="lib/axios.js"></script>
     <script src="lib/vue.js"></script>
     <script src="lib/element-ui/lib/index.js"></script>
     <link rel="stylesheet" href="lib/element-ui/lib/theme-chalk/index.css">
     <link rel="stylesheet" href="css/public.css">
+    <link rel="stylesheet" href="css/mail.css">
 </head>
 <body>
 <div id="app">
@@ -45,15 +46,18 @@
     </header>
     <main>
         <div class="stream">
-            <el-tabs v-model="activeName" @tab-click="handleClick">
-                <el-tab-pane label="热门帖子" name="first">
-                    <div v-for="index of 10" :key="index">
-                        <el-skeleton :rows="3" animated></el-skeleton>
-                        <el-divider></el-divider>
-                    </div>
-                </el-tab-pane>
-                <el-tab-pane label="热门圈子" name="second"></el-tab-pane>
-            </el-tabs>
+            <h2>我的消息</h2>
+            <div v-if="mails.length===0" class="mail-area">
+                <el-empty description="还没有消息"></el-empty>
+            </div>
+            <div v-else class="mail-area">
+                <div v-for="mail in mails">
+                    <p>
+                        {{content}}
+                    </p>
+                    <span>发送人：{{set}}</span>
+                </div>
+            </div>
         </div>
     </main>
 </div>

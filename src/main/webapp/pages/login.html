@@ -24,13 +24,13 @@
                     <span v-if="isAdmin">管理员登录</span>
                     <span v-else>用户登录</span>
                 </span>
-                <el-button v-if="!isAdmin" id="register-btn" type="text">没有账号？立即注册</el-button>
+                <el-button v-if="!isAdmin" id="register-btn" type="text" @click="toRegister">没有账号？立即注册</el-button>
             </div>
-            <el-form ref="form" :model="loginForm" id="form-area">
-                <el-form-item :label="isAdmin?'Admin ID':'ICircle ID'">
-                    <el-input v-model="loginForm.userId"></el-input>
+            <el-form ref="form" :rules="rules" :model="loginForm" id="form-area" hide-required-asterisk>
+                <el-form-item :label="isAdmin?'Admin ID':'ICircle ID'" prop="id">
+                    <el-input v-model="loginForm.id"></el-input>
                 </el-form-item>
-                <el-form-item label="密码">
+                <el-form-item label="密码" prop="password">
                     <el-input v-model="loginForm.password" show-password></el-input>
                 </el-form-item>
                 <el-form-item id="btn-area">

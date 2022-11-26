@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>DHU ICircle</title>
+    <title>推荐</title>
     <script src="lib/axios.js"></script>
     <script src="lib/vue.js"></script>
     <script src="lib/element-ui/lib/index.js"></script>
@@ -48,12 +48,56 @@
         <div class="stream">
             <el-tabs v-model="activeName" @tab-click="handleClick">
                 <el-tab-pane label="热门帖子" name="first">
-                    <div v-for="index of 10" :key="index">
-                        <el-skeleton :rows="3" animated></el-skeleton>
-                        <el-divider></el-divider>
-                    </div>
+                    <el-skeleton :loading="loading" animated :count="10">
+                        <template slot="template">
+                           <div class="post-result">
+                               <el-skeleton-item variant="h3" style="width: 150px"></el-skeleton-item>
+                               <br>
+                               <el-skeleton-item variant="text" style="width: 400px"></el-skeleton-item>
+                               <el-skeleton-item variant="text" style="width: 800px"></el-skeleton-item>
+                           </div>
+                        </template>
+                        <template>
+                            <div v-for="post in posts" class="post-result">
+                                <h3>{{post.name}}</h3>
+                                <br>
+                                <span>发布时间：{{post.time}}</span>&nbsp;&nbsp;
+                                <span>用户：{{post.user}}</span>&nbsp;&nbsp;
+                                <span>圈子：{{post.circle}}</span>&nbsp;&nbsp;
+                                <el-badge :value="post.good" class="item">
+                                    <i class="el-icon-thumb"></i>
+                                </el-badge>
+                                <el-divider></el-divider>
+                            </div>
+                        </template>
+                    </el-skeleton>
                 </el-tab-pane>
-                <el-tab-pane label="热门圈子" name="second"></el-tab-pane>
+                <el-tab-pane label="热门圈子" name="second">
+                    <el-skeleton :loading="loading" animated :count="10">
+                        <template slot="template">
+                            <div class="circle-result">
+                                <el-skeleton-item variant="image" class="circle-img"></el-skeleton-item>
+                                <el-skeleton-item variant="h3" style="width: 150px"></el-skeleton-item>
+                                <br>
+                                <el-skeleton-item variant="text" style="width: 300px"></el-skeleton-item>
+                            </div>
+                        </template>
+                        <template>
+                            <div v-for="circle in circles" class="circle-result">
+                                <el-image class="circle-img" :src="circle.img"></el-image>
+                                <h3>{{circle.name}}</h3>
+                                <br>
+                                <p>{{circle.content}}</p>
+                                <span>创建时间：{{circle.time}}</span>&nbsp;&nbsp;
+                                <span>圈主：{{circle.master}}</span>&nbsp;&nbsp;
+                                <el-badge :value="circle.hot" class="item">
+                                    <i class="el-icon-thumb"></i>
+                                </el-badge>
+                                <el-divider></el-divider>
+                            </div>
+                        </template>
+                    </el-skeleton>
+                </el-tab-pane>
             </el-tabs>
         </div>
     </main>

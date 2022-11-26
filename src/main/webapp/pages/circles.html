@@ -45,15 +45,49 @@
         </el-menu>
     </header>
     <main>
+        <el-button v-if="create" type="primary" id="create-btn" icon="el-icon-plus" circle></el-button>
         <div class="stream">
             <el-tabs v-model="activeName" @tab-click="handleClick">
-                <el-tab-pane label="热门帖子" name="first">
-                    <div v-for="index of 10" :key="index">
-                        <el-skeleton :rows="3" animated></el-skeleton>
-                        <el-divider></el-divider>
+                <el-tab-pane label="我的关注" name="first">
+                    <div v-if="circles.length===0" class="mail-area">
+                        <el-empty description="还没有圈子"></el-empty>
+                    </div>
+                    <div v-else class="circle-area">
+                        <div v-for="circle in circles" class="circle-result">
+                            <el-image class="circle-img" :src="circle.img"></el-image>
+                            <el-button type="danger" class="cirlce-btn" round>取消关注</el-button>
+                            <h3>{{circle.name}}</h3>
+                            <br>
+                            <p>{{circle.content}}</p>
+                            <span>创建时间：{{circle.time}}</span>&nbsp;&nbsp;
+                            <span>圈主：{{circle.master}}</span>&nbsp;&nbsp;
+                            <el-badge :value="circle.hot" class="item">
+                                <i class="el-icon-thumb"></i>
+                            </el-badge>
+                            <el-divider></el-divider>
+                        </div>
                     </div>
                 </el-tab-pane>
-                <el-tab-pane label="热门圈子" name="second"></el-tab-pane>
+                <el-tab-pane label="我的管理" name="second">
+                    <div v-if="circles.length===0" class="mail-area">
+                        <el-empty description="还没有圈子"></el-empty>
+                    </div>
+                    <div v-else class="circle-area">
+                        <div v-for="circle in circles" class="circle-result">
+                            <el-image class="circle-img" :src="circle.img"></el-image>
+                            <el-button type="primary" class="cirlce-btn" round>修改圈子</el-button>
+                            <h3>{{circle.name}}</h3>
+                            <br>
+                            <p>{{circle.content}}</p>
+                            <span>创建时间：{{circle.time}}</span>&nbsp;&nbsp;
+                            <span>圈主：{{circle.master}}</span>&nbsp;&nbsp;
+                            <el-badge :value="circle.hot" class="item">
+                                <i class="el-icon-thumb"></i>
+                            </el-badge>
+                            <el-divider></el-divider>
+                        </div>
+                    </div>
+                </el-tab-pane>
             </el-tabs>
         </div>
     </main>

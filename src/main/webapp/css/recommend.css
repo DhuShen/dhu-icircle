@@ -1,0 +1,15 @@
+.circle-img{
+    width: 150px;
+    height: 150px;
+    float: left;
+    margin-right: 50px;
+}
+
+.circle-result{
+    height: 200px;
+    overflow: hidden;
+}
+
+.post-result{
+    height: 150px;
+}

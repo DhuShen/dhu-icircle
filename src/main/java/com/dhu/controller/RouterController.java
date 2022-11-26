@@ -10,6 +10,11 @@ public class RouterController {
         return "login";
     }
 
+    @RequestMapping("/register")
+    public String register() {
+        return "register";
+    }
+
     @RequestMapping("/recommend")
     public String recommend(){
         return "recommend";
@@ -23,5 +28,10 @@ public class RouterController {
     @RequestMapping("/mail")
     public String mail(){
         return "mail";
+    }
+
+    @RequestMapping("/info")
+    public String info(){
+        return "info";
     }
 }

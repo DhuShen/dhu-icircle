@@ -1,0 +1,29 @@
+.circle-img{
+    width: 150px;
+    height: 150px;
+    float: left;
+    margin-right: 50px;
+}
+
+.circle-result{
+    height: 200px;
+    overflow: hidden;
+}
+
+.circle-area{
+    min-height: 750px;
+}
+
+.cirlce-btn{
+    float: right;
+    margin-top: 70px;
+}
+
+#create-btn{
+    z-index:999;
+    position: fixed;
+    bottom: 100px;
+    right: 400px;
+    width: 50px;
+    height: 50px;
+}

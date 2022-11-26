@@ -2,9 +2,70 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>个人信息</title>
+    <script src="lib/axios.js"></script>
+    <script src="lib/vue.js"></script>
+    <script src="lib/element-ui/lib/index.js"></script>
+    <link rel="stylesheet" href="lib/element-ui/lib/theme-chalk/index.css">
+    <link rel="stylesheet" href="css/info.css">
 </head>
 <body>
-
+<div id="app">
+    <header>
+        <el-page-header class="info-head" @back="goBack" content="个人主页"></el-page-header>
+    </header>
+    <main>
+        <div class="stream">
+            <el-descriptions class="margin-top" title="个人信息" :column="3" :size="size" border>
+                <template slot="extra">
+                    <el-button type="primary" size="small" round>修改</el-button>
+                </template>
+                <el-descriptions-item>
+                    <template slot="label">
+                        <i class="el-icon-user"></i>
+                        用户名
+                    </template>
+                    {{user.name}}
+                </el-descriptions-item>
+                <el-descriptions-item>
+                    <template slot="label">
+                        <i class="el-icon-mobile-phone"></i>
+                        ICircle ID
+                    </template>
+                    {{user.id}}
+                </el-descriptions-item>
+                <el-descriptions-item>
+                    <template slot="label">
+                        <i class="el-icon-paperclip"></i>
+                        注册时间
+                    </template>
+                    {{user.time}}
+                </el-descriptions-item>
+                <el-descriptions-item>
+                    <template slot="label">
+                        <i class="el-icon-location-outline"></i>
+                       性别
+                    </template>
+                    {{user.sex}}
+                </el-descriptions-item>
+                <el-descriptions-item>
+                    <template slot="label">
+                        <i class="el-icon-office-building"></i>
+                        专业
+                    </template>
+                    {{user.major}}
+                </el-descriptions-item>
+                <el-descriptions-item>
+                    <template slot="label">
+                        <i class="el-icon-tickets"></i>
+                        简介
+                    </template>
+                    <el-tag size="small">{{user.introduction}}</el-tag>
+                </el-descriptions-item>
+            </el-descriptions>
+        </div>
+    </main>
+</div>
+<script src="js/info.js"></script>
 </body>
 </html>
