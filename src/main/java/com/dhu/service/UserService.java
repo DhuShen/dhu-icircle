@@ -49,7 +49,7 @@ public interface UserService {
     //            (i1)查看其他用户中心或自己的【在user中】
     User userCheck(String userId);
     //            (i2)修改个人信息【在user中】
-    boolean updateUserInfo(String userId,String password,String userImg)
+    boolean updateUserInfo(String userId,String password,String userImg);
 
     //    d)	对用户进行封号操作【在user中】
     boolean closeUser(String userId);
