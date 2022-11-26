@@ -25,4 +25,6 @@ public interface PostDao {
     int cancelPostKey(@Param("postId")long postId);
 
     int cancelPost(@Param("postId")long postId);
+
+    int insertPost(Post post);
 }

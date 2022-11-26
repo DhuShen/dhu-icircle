@@ -20,4 +20,9 @@
         from discuss
         where discussId = #{discussId}
     </delete>
+    <select id="selectPostDiscuss" resultType="Discuss">
+        select *
+        from discuss
+        where discuss_PostId = #{postId}
+    </select>
 </mapper>

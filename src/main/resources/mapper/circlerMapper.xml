@@ -25,16 +25,41 @@
         values (#{circleName}, #{circleImg}, #{circleContent}, #{circleLife}, #{circleTime}, #{circle_UserId})
     </insert>
 
+    <insert id="insertConnection">
+        insert into connectuserandcircle(userId, circleId)
+        values (#{userId}, #{circleId})
+    </insert>
+
     <select id="selectByCircleId" parameterType="int" resultType="Circle">
         select *
         from circle
         where circleId = #{circleId}
     </select>
 
+    <select id="selectConnection" resultType="java.lang.String">
+        select userId
+        from connectuserandcircle
+        where userId = #{userId}
+          and circleId = #{circle}
+    </select>
+    <select id="selectUserInCircle" resultType="User">
+        select u.*
+        from connectuserandcircle c,
+             user u
+        where c.circleId = #{circleId}
+          and c.userId = u.userId
+    </select>
+
     <delete id="deleteCircle" parameterType="int">
         delete
         from circle
         where circleId = #{circleId}
+    </delete>
+    <delete id="deleteConnection">
+        delete
+        from connectuserandcircle
+        where circleId = #{circleId}
+          and userId = #{userId}
     </delete>
 
     <update id="updateCircleMaster" parameterType="Circle">

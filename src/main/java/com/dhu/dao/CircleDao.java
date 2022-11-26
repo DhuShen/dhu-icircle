@@ -1,6 +1,7 @@
 package com.dhu.dao;
 
 import com.dhu.domain.Circle;
+import com.dhu.domain.User;
 import com.dhu.domain.view.CircleView;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
@@ -19,9 +20,17 @@ public interface CircleDao {
 
     Circle selectByCircleId(@Param("circleId") long circleId);
 
-    int deleteCircle(@Param("circleId")long circleId);
+    int deleteCircle(@Param("circleId") long circleId);
 
     int updateCircleMaster(Circle circle);
 
     int updateCircleContent(Circle circle);
+
+    int insertConnection(@Param("userId") String userId, @Param("circleId") long circleId);
+
+    int deleteConnection(@Param("userId") String userId, @Param("circleId") long circleId);
+
+    String selectConnection(@Param("userId") String userId, @Param("circleId") long circleId);
+
+    List<User> selectUserInCircle(@Param("circleId") long circleId);
 }
