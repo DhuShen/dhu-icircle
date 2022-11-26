@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dhu.dao.UserDao">
+    <!--    注册-->
+    <insert id="userInsert" parameterType="com.dhu.domain.User">
+        insert into user
+        values (#{UserId}, #{UserPassword}, #{UserImg}, #{UserName}, #{UserSex}, #{UserLife}, #{UserTime}, #{UserMajor},
+                #{UserIntroduction})
+    </insert>
+    <!--    登录-->
+    <select id="userSelectById" parameterType="String" resultType="com.dhu.domain.User">
+        select *
+        from user
+        where userId = #{UserId}
+    </select>
+</mapper>

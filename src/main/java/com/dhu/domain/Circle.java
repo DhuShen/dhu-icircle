@@ -1,8 +1,8 @@
 package com.dhu.domain;
 
-import org.springframework.stereotype.Component;
+import java.security.Timestamp;
+import java.util.Date;
 
-@Component
 public class Circle {
 
     private long circleId;
@@ -10,7 +10,7 @@ public class Circle {
     private String circleImg;
     private String circleContent;
     private long circleLife;
-    private java.sql.Timestamp circleTime;
+    private Date circleTime;
     private String circle_UserId;
 
 
@@ -59,11 +59,11 @@ public class Circle {
     }
 
 
-    public java.sql.Timestamp getCircleTime() {
+    public Date getCircleTime() {
         return circleTime;
     }
 
-    public void setCircleTime(java.sql.Timestamp circleTime) {
+    public void setCircleTime(Date circleTime) {
         this.circleTime = circleTime;
     }
 

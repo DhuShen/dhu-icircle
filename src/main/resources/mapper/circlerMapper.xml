@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dhu.dao.CircleDao">
+    <select id="selectByName" parameterType="String" resultType="com.dhu.domain.Circle">
+            <bind name="pattern" value="'%' + name + '%'" /> # 模糊查询
+            select * from circle where circleName like #{pattern}
+    </select>
+    <select id="selectTen" resultType="com.dhu.domain.view.CircleView">
+             select * from hotcircle
+    </select>
+    <select id="selectById" resultType="com.dhu.domain.Circle">
+            select * from circle where circle_UserId=#{id}
+    </select>
+</mapper>

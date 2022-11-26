@@ -1,8 +1,8 @@
 package com.dhu.domain;
 
-import org.springframework.stereotype.Component;
 
-@Component
+import java.util.Date;
+
 public class Post {
 
   private long postId;
@@ -10,7 +10,7 @@ public class Post {
   private String postContent;
   private long postKey;
   private long postGood;
-  private java.sql.Timestamp postTime;
+  private Date postTime;
   private String post_UserId;
   private long post_CircleId;
 
@@ -60,11 +60,11 @@ public class Post {
   }
 
 
-  public java.sql.Timestamp getPostTime() {
+  public Date getPostTime() {
     return postTime;
   }
 
-  public void setPostTime(java.sql.Timestamp postTime) {
+  public void setPostTime(Date postTime) {
     this.postTime = postTime;
   }
 

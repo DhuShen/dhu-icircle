@@ -1,15 +1,7 @@
 body {
-    background-color: #eeeeee;
+    background-image: url("../res/login_bk.png");
     background-size: cover;
     background-attachment: fixed;
-}
-
-header {
-    overflow: hidden;
-}
-
-main {
-    overflow: hidden;
 }
 
 #register-btn {
@@ -18,9 +10,7 @@ main {
 }
 
 #login-card {
-    margin: 180px auto;
     height: 380px;
-    width: 360px;
 }
 
 #card-title {
@@ -28,8 +18,8 @@ main {
     font-size: 20px;
 }
 
-#btn-area {
-    margin-top: 15%;
+#form-area #btn-area {
+    margin-top: 12%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -40,6 +30,6 @@ main {
     padding-right: 5%;
 }
 
-#login-type {
-    float: right;
+.login-type{
+    color: white;
 }
