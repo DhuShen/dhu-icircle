@@ -3,7 +3,7 @@ package com.dhu.service.impl;
 import com.dhu.dao.ReportDao;
 import com.dhu.domain.Report;
 import com.dhu.service.ReportService;
-import com.dhu.service.StaticService.MyTime;
+import com.dhu.service.staticService.MyTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

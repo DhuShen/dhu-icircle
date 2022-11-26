@@ -1,9 +1,9 @@
 package com.dhu.service;
 
-import com.dhu.dao.AdminDao;
 import com.dhu.domain.Admin;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 
+@Transactional
 public interface AdminService {
 
 //	管理员功能：
