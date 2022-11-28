@@ -5,7 +5,7 @@ import com.dhu.domain.Circle;
 import com.dhu.domain.User;
 import com.dhu.domain.view.CircleView;
 import com.dhu.service.CircleService;
-import com.dhu.service.staticService.MyTime;
+import com.dhu.tools.MyTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

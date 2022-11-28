@@ -3,7 +3,7 @@ package com.dhu.service.impl;
 import com.dhu.dao.DiscussDao;
 import com.dhu.domain.Discuss;
 import com.dhu.service.DiscussService;
-import com.dhu.service.staticService.MyTime;
+import com.dhu.tools.MyTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
