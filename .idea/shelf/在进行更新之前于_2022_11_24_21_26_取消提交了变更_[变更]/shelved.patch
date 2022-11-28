@@ -1,0 +1,596 @@
+Index: src/main/java/com/dhu/service/AdminService.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/dhu/service/AdminService.java b/src/main/java/com/dhu/service/AdminService.java
+new file mode 100644
+--- /dev/null	(date 1669215418233)
++++ b/src/main/java/com/dhu/service/AdminService.java	(date 1669215418233)
+@@ -0,0 +1,12 @@
++package com.dhu.service;
++
++import com.dhu.domain.Admin;
++import org.springframework.stereotype.Service;
++import org.springframework.transaction.annotation.Transactional;
++
++
++@Transactional//事务管理层
++public interface AdminService {
++    //登录，注意返回不应该有密码,登陆失败返回null
++    Admin login(String adminId,String password);
++}
+\ No newline at end of file
+Index: src/main/java/com/dhu/service/UserService.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/dhu/service/UserService.java b/src/main/java/com/dhu/service/UserService.java
+new file mode 100644
+--- /dev/null	(date 1669188184172)
++++ b/src/main/java/com/dhu/service/UserService.java	(date 1669188184172)
+@@ -0,0 +1,58 @@
++package com.dhu.service;
++
++import com.dhu.domain.User;
++import org.springframework.stereotype.Service;
++import org.springframework.transaction.annotation.Transactional;
++
++import java.util.List;
++
++@Service
++@Transactional
++public interface UserService {
++    //登录，注意返回不应该有密码
++    User login(String userId,String password);
++
++    //注册
++    boolean register(User user);
++
++    //更新用户信息
++    boolean updateInfo(User user);
++
++    //根据用户id查找用户
++    User getInfoById(String userId);
++
++    //获取圈子中包含的用户
++    List<User> getCircleUsers(String circleId);
++//	用户功能
++// 	用户登录注册界面
++//    a)	注册
++//    b)	登录
++//	用户主页
++//    c)	查找圈子、贴子
++//    d)	浏览圈子、帖子、评论
++//    e)	举报用户（帖子下、评论下）
++//    f)	在帖子下发布评论
++//    g)	点赞帖子、评论
++//    h)	查看消息（消息）
++//    i)	进入用户个人中心（我的）
++//    j)	加入圈子
++//    k)	建立圈子（需要向管理员申请）
++//            	圈子内
++//    l)	退出圈子
++//    m)	在圈子中发布帖子
++//	圈主在用户功能上增加以下功能
++//    n)	解散圈子
++//    a)	任命新圈主
++//    b)	修改圈子相关信息（需要向管理员申请）
++//    c)	添加圈子的精华帖
++//    d)	取消圈子的精华帖
++//    e)	撤销圈内成员的帖子/评论
++//    f)	踢掉圈内成员
++
++
++
++
++
++
++
++}
+Index: src/main/java/com/dhu/service/CircleService.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/dhu/service/CircleService.java b/src/main/java/com/dhu/service/CircleService.java
+new file mode 100644
+--- /dev/null	(date 1669186258762)
++++ b/src/main/java/com/dhu/service/CircleService.java	(date 1669186258762)
+@@ -0,0 +1,23 @@
++package com.dhu.service;
++
++import com.dhu.domain.Circle;
++import org.springframework.stereotype.Service;
++import org.springframework.transaction.annotation.Transactional;
++
++import java.util.List;
++
++@Service
++@Transactional
++public interface CircleService {
++    //根据用户id查找关注的圈子
++    List<Circle> getCirclesByIds(String userId);
++
++    //查找热门圈子,10个即可
++    List<Circle> getHotCircles();
++
++    //查找自己管理的圈子
++    List<Circle> getManagedCircles(String userId);
++
++    //根据id查找圈子
++    Circle getInfoById(String circleId);
++}
+Index: src/main/java/com/dhu/dao/UserDao.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/dhu/dao/UserDao.java b/src/main/java/com/dhu/dao/UserDao.java
+new file mode 100644
+--- /dev/null	(date 1669213618688)
++++ b/src/main/java/com/dhu/dao/UserDao.java	(date 1669213618688)
+@@ -0,0 +1,4 @@
++package com.dhu.dao;
++
++public interface UserDao {
++}
+Index: src/main/java/com/dhu/controller/AdminController.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/dhu/controller/AdminController.java b/src/main/java/com/dhu/controller/AdminController.java
+new file mode 100644
+--- /dev/null	(date 1669296234477)
++++ b/src/main/java/com/dhu/controller/AdminController.java	(date 1669296234477)
+@@ -0,0 +1,5 @@
++package com.dhu.controller;
++
++public class AdminController {
++
++}
+Index: src/main/resources/mapper/adminMapper.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\" ?>\r\n<!DOCTYPE mapper\r\n        PUBLIC \"-//mybatis.org//DTD mapper 3.0//EN\"\r\n        \"http://mybatis.org/dtd/mybatis-3-mapper.dtd\">\r\n<mapper namespace=\"com.edu.dhu.pojo\">\r\n    <select id=\"SelectAllAdmin\" resultType=\"admin\">\r\n        select *\r\n        from admin\r\n    </select>\r\n</mapper>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/resources/mapper/adminMapper.xml b/src/main/resources/mapper/adminMapper.xml
+--- a/src/main/resources/mapper/adminMapper.xml	(revision 3c3c8efb3b1532d61340cbf7f052a4ca058d06e9)
++++ b/src/main/resources/mapper/adminMapper.xml	(date 1669213492488)
+@@ -2,9 +2,9 @@
+ <!DOCTYPE mapper
+         PUBLIC "-//mybatis.org//DTD mapper 3.0//EN"
+         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+-<mapper namespace="com.edu.dhu.pojo">
+-    <select id="SelectAllAdmin" resultType="admin">
++<mapper namespace="com.dhu.dao.AdminDao">
++    <select id="adminSelectById" resultType="com.dhu.domain.Admin">
+         select *
+-        from admin
++        from admin where AdminId=#{id}
+     </select>
+ </mapper>
+\ No newline at end of file
+Index: src/main/resources/mapper/userMapper.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\" ?>\r\n<!DOCTYPE mapper\r\n        PUBLIC \"-//mybatis.org//DTD mapper 3.0//EN\"\r\n        \"http://mybatis.org/dtd/mybatis-3-mapper.dtd\">\r\n<mapper namespace=\"com.edu.dhu.pojo\">\r\n    <!--    注册-->\r\n    <insert id=\"insertUser\" parameterType=\"User\">\r\n        insert into user\r\n        values (#{UserId}, #{UserPassword}, #{UserImg}, #{UserName}, #{UserSex}, #{UserLife}, #{UserTime}, #{UserMajor},\r\n                #{UserIntroduction})\r\n    </insert>\r\n    <!--    登录-->\r\n    <select id=\"selectByIdAndPassword\" parameterType=\"User\" resultType=\"User\">\r\n        select *\r\n        from user\r\n        where UserId = #{UserId}\r\n          and UserPassword = #{UserPassword}\r\n    </select>\r\n    <!--    搜索圈子、帖子-->\r\n    <select id=\"\"\r\n</mapper>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/resources/mapper/userMapper.xml b/src/main/resources/mapper/userMapper.xml
+--- a/src/main/resources/mapper/userMapper.xml	(revision 3c3c8efb3b1532d61340cbf7f052a4ca058d06e9)
++++ b/src/main/resources/mapper/userMapper.xml	(date 1669214016344)
+@@ -2,9 +2,9 @@
+ <!DOCTYPE mapper
+         PUBLIC "-//mybatis.org//DTD mapper 3.0//EN"
+         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+-<mapper namespace="com.edu.dhu.pojo">
++<mapper namespace="com.dhu.dao.UserDao">
+     <!--    注册-->
+-    <insert id="insertUser" parameterType="User">
++    <insert id="insertUser" parameterType="com.dhu.domain.User">
+         insert into user
+         values (#{UserId}, #{UserPassword}, #{UserImg}, #{UserName}, #{UserSex}, #{UserLife}, #{UserTime}, #{UserMajor},
+                 #{UserIntroduction})
+Index: .idea/uiDesigner.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/uiDesigner.xml b/.idea/uiDesigner.xml
+new file mode 100644
+--- /dev/null	(date 1669119676880)
++++ b/.idea/uiDesigner.xml	(date 1669119676880)
+@@ -0,0 +1,124 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="Palette2">
++    <group name="Swing">
++      <item class="com.intellij.uiDesigner.HSpacer" tooltip-text="Horizontal Spacer" icon="/com/intellij/uiDesigner/icons/hspacer.svg" removable="false" auto-create-binding="false" can-attach-label="false">
++        <default-constraints vsize-policy="1" hsize-policy="6" anchor="0" fill="1" />
++      </item>
++      <item class="com.intellij.uiDesigner.VSpacer" tooltip-text="Vertical Spacer" icon="/com/intellij/uiDesigner/icons/vspacer.svg" removable="false" auto-create-binding="false" can-attach-label="false">
++        <default-constraints vsize-policy="6" hsize-policy="1" anchor="0" fill="2" />
++      </item>
++      <item class="javax.swing.JPanel" icon="/com/intellij/uiDesigner/icons/panel.svg" removable="false" auto-create-binding="false" can-attach-label="false">
++        <default-constraints vsize-policy="3" hsize-policy="3" anchor="0" fill="3" />
++      </item>
++      <item class="javax.swing.JScrollPane" icon="/com/intellij/uiDesigner/icons/scrollPane.svg" removable="false" auto-create-binding="false" can-attach-label="true">
++        <default-constraints vsize-policy="7" hsize-policy="7" anchor="0" fill="3" />
++      </item>
++      <item class="javax.swing.JButton" icon="/com/intellij/uiDesigner/icons/button.svg" removable="false" auto-create-binding="true" can-attach-label="false">
++        <default-constraints vsize-policy="0" hsize-policy="3" anchor="0" fill="1" />
++        <initial-values>
++          <property name="text" value="Button" />
++        </initial-values>
++      </item>
++      <item class="javax.swing.JRadioButton" icon="/com/intellij/uiDesigner/icons/radioButton.svg" removable="false" auto-create-binding="true" can-attach-label="false">
++        <default-constraints vsize-policy="0" hsize-policy="3" anchor="8" fill="0" />
++        <initial-values>
++          <property name="text" value="RadioButton" />
++        </initial-values>
++      </item>
++      <item class="javax.swing.JCheckBox" icon="/com/intellij/uiDesigner/icons/checkBox.svg" removable="false" auto-create-binding="true" can-attach-label="false">
++        <default-constraints vsize-policy="0" hsize-policy="3" anchor="8" fill="0" />
++        <initial-values>
++          <property name="text" value="CheckBox" />
++        </initial-values>
++      </item>
++      <item class="javax.swing.JLabel" icon="/com/intellij/uiDesigner/icons/label.svg" removable="false" auto-create-binding="false" can-attach-label="false">
++        <default-constraints vsize-policy="0" hsize-policy="0" anchor="8" fill="0" />
++        <initial-values>
++          <property name="text" value="Label" />
++        </initial-values>
++      </item>
++      <item class="javax.swing.JTextField" icon="/com/intellij/uiDesigner/icons/textField.svg" removable="false" auto-create-binding="true" can-attach-label="true">
++        <default-constraints vsize-policy="0" hsize-policy="6" anchor="8" fill="1">
++          <preferred-size width="150" height="-1" />
++        </default-constraints>
++      </item>
++      <item class="javax.swing.JPasswordField" icon="/com/intellij/uiDesigner/icons/passwordField.svg" removable="false" auto-create-binding="true" can-attach-label="true">
++        <default-constraints vsize-policy="0" hsize-policy="6" anchor="8" fill="1">
++          <preferred-size width="150" height="-1" />
++        </default-constraints>
++      </item>
++      <item class="javax.swing.JFormattedTextField" icon="/com/intellij/uiDesigner/icons/formattedTextField.svg" removable="false" auto-create-binding="true" can-attach-label="true">
++        <default-constraints vsize-policy="0" hsize-policy="6" anchor="8" fill="1">
++          <preferred-size width="150" height="-1" />
++        </default-constraints>
++      </item>
++      <item class="javax.swing.JTextArea" icon="/com/intellij/uiDesigner/icons/textArea.svg" removable="false" auto-create-binding="true" can-attach-label="true">
++        <default-constraints vsize-policy="6" hsize-policy="6" anchor="0" fill="3">
++          <preferred-size width="150" height="50" />
++        </default-constraints>
++      </item>
++      <item class="javax.swing.JTextPane" icon="/com/intellij/uiDesigner/icons/textPane.svg" removable="false" auto-create-binding="true" can-attach-label="true">
++        <default-constraints vsize-policy="6" hsize-policy="6" anchor="0" fill="3">
++          <preferred-size width="150" height="50" />
++        </default-constraints>
++      </item>
++      <item class="javax.swing.JEditorPane" icon="/com/intellij/uiDesigner/icons/editorPane.svg" removable="false" auto-create-binding="true" can-attach-label="true">
++        <default-constraints vsize-policy="6" hsize-policy="6" anchor="0" fill="3">
++          <preferred-size width="150" height="50" />
++        </default-constraints>
++      </item>
++      <item class="javax.swing.JComboBox" icon="/com/intellij/uiDesigner/icons/comboBox.svg" removable="false" auto-create-binding="true" can-attach-label="true">
++        <default-constraints vsize-policy="0" hsize-policy="2" anchor="8" fill="1" />
++      </item>
++      <item class="javax.swing.JTable" icon="/com/intellij/uiDesigner/icons/table.svg" removable="false" auto-create-binding="true" can-attach-label="false">
++        <default-constraints vsize-policy="6" hsize-policy="6" anchor="0" fill="3">
++          <preferred-size width="150" height="50" />
++        </default-constraints>
++      </item>
++      <item class="javax.swing.JList" icon="/com/intellij/uiDesigner/icons/list.svg" removable="false" auto-create-binding="true" can-attach-label="false">
++        <default-constraints vsize-policy="6" hsize-policy="2" anchor="0" fill="3">
++          <preferred-size width="150" height="50" />
++        </default-constraints>
++      </item>
++      <item class="javax.swing.JTree" icon="/com/intellij/uiDesigner/icons/tree.svg" removable="false" auto-create-binding="true" can-attach-label="false">
++        <default-constraints vsize-policy="6" hsize-policy="6" anchor="0" fill="3">
++          <preferred-size width="150" height="50" />
++        </default-constraints>
++      </item>
++      <item class="javax.swing.JTabbedPane" icon="/com/intellij/uiDesigner/icons/tabbedPane.svg" removable="false" auto-create-binding="true" can-attach-label="false">
++        <default-constraints vsize-policy="3" hsize-policy="3" anchor="0" fill="3">
++          <preferred-size width="200" height="200" />
++        </default-constraints>
++      </item>
++      <item class="javax.swing.JSplitPane" icon="/com/intellij/uiDesigner/icons/splitPane.svg" removable="false" auto-create-binding="false" can-attach-label="false">
++        <default-constraints vsize-policy="3" hsize-policy="3" anchor="0" fill="3">
++          <preferred-size width="200" height="200" />
++        </default-constraints>
++      </item>
++      <item class="javax.swing.JSpinner" icon="/com/intellij/uiDesigner/icons/spinner.svg" removable="false" auto-create-binding="true" can-attach-label="true">
++        <default-constraints vsize-policy="0" hsize-policy="6" anchor="8" fill="1" />
++      </item>
++      <item class="javax.swing.JSlider" icon="/com/intellij/uiDesigner/icons/slider.svg" removable="false" auto-create-binding="true" can-attach-label="false">
++        <default-constraints vsize-policy="0" hsize-policy="6" anchor="8" fill="1" />
++      </item>
++      <item class="javax.swing.JSeparator" icon="/com/intellij/uiDesigner/icons/separator.svg" removable="false" auto-create-binding="false" can-attach-label="false">
++        <default-constraints vsize-policy="6" hsize-policy="6" anchor="0" fill="3" />
++      </item>
++      <item class="javax.swing.JProgressBar" icon="/com/intellij/uiDesigner/icons/progressbar.svg" removable="false" auto-create-binding="true" can-attach-label="false">
++        <default-constraints vsize-policy="0" hsize-policy="6" anchor="0" fill="1" />
++      </item>
++      <item class="javax.swing.JToolBar" icon="/com/intellij/uiDesigner/icons/toolbar.svg" removable="false" auto-create-binding="false" can-attach-label="false">
++        <default-constraints vsize-policy="0" hsize-policy="6" anchor="0" fill="1">
++          <preferred-size width="-1" height="20" />
++        </default-constraints>
++      </item>
++      <item class="javax.swing.JToolBar$Separator" icon="/com/intellij/uiDesigner/icons/toolbarSeparator.svg" removable="false" auto-create-binding="false" can-attach-label="false">
++        <default-constraints vsize-policy="0" hsize-policy="0" anchor="0" fill="1" />
++      </item>
++      <item class="javax.swing.JScrollBar" icon="/com/intellij/uiDesigner/icons/scrollbar.svg" removable="false" auto-create-binding="true" can-attach-label="false">
++        <default-constraints vsize-policy="6" hsize-policy="0" anchor="0" fill="2" />
++      </item>
++    </group>
++  </component>
++</project>
+\ No newline at end of file
+Index: src/test/java/testSql.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import com.dhu.domain.Admin;\r\nimport org.junit.Test;\r\n\r\nimport java.util.List;\r\n\r\npublic class testSql {\r\n    @Test\r\n    public void testFindAdmin() {\r\n        List<Admin> adminList=\r\n    }\r\n}\r\n\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/test/java/testSql.java b/src/test/java/TestSql.java
+rename from src/test/java/testSql.java
+rename to src/test/java/TestSql.java
+--- a/src/test/java/testSql.java	(revision 3c3c8efb3b1532d61340cbf7f052a4ca058d06e9)
++++ b/src/test/java/TestSql.java	(date 1669184888873)
+@@ -1,12 +1,18 @@
+-import com.dhu.domain.Admin;
++
+ import org.junit.Test;
++import org.mybatis.spring.SqlSessionFactoryBean;
++import org.springframework.beans.factory.annotation.Autowired;
++import org.springframework.context.ApplicationContext;
++import org.springframework.context.support.ClassPathXmlApplicationContext;
+ 
+ import java.util.List;
+ 
+-public class testSql {
++public class TestSql {
+     @Test
+     public void testFindAdmin() {
+-        List<Admin> adminList=
++
++
++
+     }
+ }
+ 
+Index: src/main/java/com/dhu/dao/CircleDao.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/dhu/dao/CircleDao.java b/src/main/java/com/dhu/dao/CircleDao.java
+new file mode 100644
+--- /dev/null	(date 1669295918987)
++++ b/src/main/java/com/dhu/dao/CircleDao.java	(date 1669295918987)
+@@ -0,0 +1,5 @@
++package com.dhu.dao;
++
++public interface CircleDao {
++
++}
+Index: src/main/java/com/dhu/controller/UserController.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/dhu/controller/UserController.java b/src/main/java/com/dhu/controller/UserController.java
+new file mode 100644
+--- /dev/null	(date 1669185931490)
++++ b/src/main/java/com/dhu/controller/UserController.java	(date 1669185931490)
+@@ -0,0 +1,18 @@
++package com.dhu.controller;
++
++import com.dhu.domain.Admin;
++import com.dhu.service.AdminService;
++import com.dhu.service.impl.AdminServiceImpl;
++import org.springframework.stereotype.Controller;
++import org.springframework.web.bind.annotation.RequestMapping;
++
++@Controller
++public class UserController {
++    @RequestMapping("adminLogin")
++    public void adminLogin() {
++        System.out.println("in");
++        AdminService adminService = new AdminServiceImpl();
++        Admin admin=adminService.login("200800118","hhn");
++        System.out.println(admin.getAdminName());
++    }
++}
+Index: src/main/java/com/dhu/service/impl/CircleServiceImpl.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/dhu/service/impl/CircleServiceImpl.java b/src/main/java/com/dhu/service/impl/CircleServiceImpl.java
+new file mode 100644
+--- /dev/null	(date 1669186220251)
++++ b/src/main/java/com/dhu/service/impl/CircleServiceImpl.java	(date 1669186220251)
+@@ -0,0 +1,29 @@
++package com.dhu.service.impl;
++
++import com.dhu.domain.Circle;
++import com.dhu.service.CircleService;
++
++import java.util.List;
++
++public class CircleServiceImpl implements CircleService {
++
++    @Override
++    public List<Circle> getCirclesByIds(String userId) {
++        return null;
++    }
++
++    @Override
++    public List<Circle> getHotCircles() {
++        return null;
++    }
++
++    @Override
++    public List<Circle> getManagedCircles(String userId) {
++        return null;
++    }
++
++    @Override
++    public Circle getInfoById(String circleId) {
++        return null;
++    }
++}
+Index: src/main/java/com/dhu/dao/AdminDao.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/dhu/dao/AdminDao.java b/src/main/java/com/dhu/dao/AdminDao.java
+new file mode 100644
+--- /dev/null	(date 1669215276622)
++++ b/src/main/java/com/dhu/dao/AdminDao.java	(date 1669215276622)
+@@ -0,0 +1,10 @@
++package com.dhu.dao;
++
++import com.dhu.domain.Admin;
++import org.apache.ibatis.annotations.Param;
++import org.springframework.stereotype.Repository;
++
++@Repository//转换为bean（数据库访问层）
++public interface AdminDao {
++    Admin adminSelectById(@Param("id")String id);
++}
+Index: src/main/java/com/dhu/domain/Admin.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.dhu.domain;\r\n\r\npublic class Admin {\r\n\r\n  private String adminId;\r\n  private String adminPassword;\r\n  private String adminName;\r\n\r\n\r\n  public String getAdminId() {\r\n    return adminId;\r\n  }\r\n\r\n  public void setAdminId(String adminId) {\r\n    this.adminId = adminId;\r\n  }\r\n\r\n\r\n  public String getAdminPassword() {\r\n    return adminPassword;\r\n  }\r\n\r\n  public void setAdminPassword(String adminPassword) {\r\n    this.adminPassword = adminPassword;\r\n  }\r\n\r\n\r\n  public String getAdminName() {\r\n    return adminName;\r\n  }\r\n\r\n  public void setAdminName(String adminName) {\r\n    this.adminName = adminName;\r\n  }\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/dhu/domain/Admin.java b/src/main/java/com/dhu/domain/Admin.java
+--- a/src/main/java/com/dhu/domain/Admin.java	(revision 3c3c8efb3b1532d61340cbf7f052a4ca058d06e9)
++++ b/src/main/java/com/dhu/domain/Admin.java	(date 1669215178307)
+@@ -1,5 +1,9 @@
+ package com.dhu.domain;
+ 
++
++import org.springframework.stereotype.Component;
++
++@Component//转换为bean
+ public class Admin {
+ 
+   private String adminId;
+Index: src/main/java/com/dhu/service/impl/UserServiceImpl.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/dhu/service/impl/UserServiceImpl.java b/src/main/java/com/dhu/service/impl/UserServiceImpl.java
+new file mode 100644
+--- /dev/null	(date 1669186818647)
++++ b/src/main/java/com/dhu/service/impl/UserServiceImpl.java	(date 1669186818647)
+@@ -0,0 +1,37 @@
++package com.dhu.service.impl;
++
++import com.dhu.domain.User;
++import com.dhu.service.UserService;
++import org.springframework.beans.factory.annotation.Autowired;
++import org.springframework.web.bind.annotation.Mapping;
++
++import java.util.List;
++
++public class UserServiceImpl implements UserService {
++    @Autowired
++    //登录，注意返回不应该有密码
++    @Override
++    public User login(String userId, String password) {
++
++    }
++
++    @Override
++    public boolean register(User user) {
++        return false;
++    }
++
++    @Override
++    public boolean updateInfo(User user) {
++        return false;
++    }
++
++    @Override
++    public User getInfoById(String userId) {
++        return null;
++    }
++
++    @Override
++    public List<User> getCircleUsers(String circleId) {
++        return null;
++    }
++}
+Index: src/main/java/com/dhu/service/impl/AdminServiceImpl.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/dhu/service/impl/AdminServiceImpl.java b/src/main/java/com/dhu/service/impl/AdminServiceImpl.java
+new file mode 100644
+--- /dev/null	(date 1669215490073)
++++ b/src/main/java/com/dhu/service/impl/AdminServiceImpl.java	(date 1669215490073)
+@@ -0,0 +1,24 @@
++package com.dhu.service.impl;
++
++import com.dhu.dao.AdminDao;
++import com.dhu.domain.Admin;
++import com.dhu.service.AdminService;
++import org.springframework.beans.factory.annotation.Autowired;
++import org.springframework.stereotype.Service;
++
++import java.util.Objects;
++@Service
++public class AdminServiceImpl implements AdminService {
++    @Autowired
++    private AdminDao adminDao;
++
++    @Override
++    public Admin login(String adminId, String password) {
++        Admin admin = adminDao.adminSelectById(adminId);
++        if ((admin != null) && (Objects.equals(admin.getAdminPassword(), password))) {
++            admin.setAdminPassword("");
++            return admin;
++        } else
++            return null;
++    }
++}
+Index: src/main/java/com/dhu/service/PostService.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/dhu/service/PostService.java b/src/main/java/com/dhu/service/PostService.java
+new file mode 100644
+--- /dev/null	(date 1669173224613)
++++ b/src/main/java/com/dhu/service/PostService.java	(date 1669173224613)
+@@ -0,0 +1,14 @@
++package com.dhu.service;
++
++import com.dhu.domain.Post;
++import org.springframework.stereotype.Service;
++import org.springframework.transaction.annotation.Transactional;
++
++import java.util.List;
++
++@Service
++@Transactional
++public interface PostService {
++    //查找热门帖子，10个即可
++    List<Post> getHotPosts();
++}
+\ No newline at end of file

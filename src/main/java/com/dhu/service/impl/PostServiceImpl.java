@@ -4,7 +4,7 @@ import com.dhu.dao.PostDao;
 import com.dhu.domain.Post;
 import com.dhu.exception.MyException;
 import com.dhu.service.PostService;
-import com.dhu.service.staticService.MyTime;
+import com.dhu.tools.MyTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
