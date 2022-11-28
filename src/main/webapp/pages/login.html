@@ -3,15 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <title>登录</title>
-    <script src="../lib/axios.js"></script>
-    <script src="../lib/vue.js"></script>
-    <script src="../lib/element-ui/lib/index.js"></script>
-    <link rel="stylesheet" href="../lib/element-ui/lib/theme-chalk/index.css">
-    <link rel="stylesheet" href="../css/login.css">
+    <script src="lib/axios.js"></script>
+    <script src="lib/vue.js"></script>
+    <script src="lib/element-ui/lib/index.js"></script>
+    <link rel="stylesheet" href="lib/element-ui/lib/theme-chalk/index.css">
+    <link rel="stylesheet" href="css/login.css">
 </head>
 <body>
-<div id="#app">
-
+<div id="app">
+    <header>
+        <div id="login-type">
+            <el-switch v-model="isAdmin"></el-switch>
+            <span>管理员模式</span>
+        </div>
+    </header>
+    <main>
+        <el-card id="login-card">
+            <div slot="header">
+                <span id="card-title">
+                    <span v-if="isAdmin">管理员登录</span>
+                    <span v-else>用户登录</span>
+                </span>
+                <el-button v-if="!isAdmin" id="register-btn" type="text" @click="toRegister">没有账号？立即注册</el-button>
+            </div>
+            <el-form ref="form" :rules="rules" :model="loginForm" id="form-area" hide-required-asterisk>
+                <el-form-item :label="isAdmin?'Admin ID':'ICircle ID'" prop="id">
+                    <el-input v-model="loginForm.id"></el-input>
+                </el-form-item>
+                <el-form-item label="密码" prop="password">
+                    <el-input v-model="loginForm.password" show-password></el-input>
+                </el-form-item>
+                <el-form-item id="btn-area">
+                    <el-button type="primary" @click="onSubmit" round>登录</el-button>
+                </el-form-item>
+            </el-form>
+        </el-card>
+    </main>
 </div>
+<script src="js/login.js"></script>
 </body>
 </html>

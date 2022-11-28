@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>圈子</title>
+    <script src="lib/axios.js"></script>
+    <script src="lib/vue.js"></script>
+    <script src="lib/element-ui/lib/index.js"></script>
+    <link rel="stylesheet" href="lib/element-ui/lib/theme-chalk/index.css">
+    <link rel="stylesheet" href="css/public.css">
+    <link rel="stylesheet" href="css/circles.css">
+</head>
+<body>
+<div id="app">
+    <header>
+        <el-menu default-active="2" class="el-menu-demo" mode="horizontal" @select="handleSelect">
+            <el-menu-item index="1"><i class="el-icon-s-home"></i>推荐</el-menu-item>
+            <el-menu-item index="2"><i class="el-icon-s-help"></i>圈子</el-menu-item>
+            <el-menu-item index="3"><i class="el-icon-message-solid"></i>消息</el-menu-item>
+            <el-menu-item>
+                <el-form :inline="true" :model="searchForm" class="demo-form-inline search-area">
+                    <el-form-item>
+                        <el-select class="type-input" v-model="searchForm.type" value="post" size="small">
+                            <el-option label="帖子" value="post"></el-option>
+                            <el-option label="圈子" value="circle"></el-option>
+                        </el-select>
+                    </el-form-item>
+                    <el-form-item>
+                        <el-input class="content-input" v-model="searchForm.content" size="small"
+                                  :placeholder="searchForm.type==='post'?'搜帖子':'搜圈子'"></el-input>
+                    </el-form-item>
+                    <el-form-item>
+                        <el-button type="primary" @click="onSearch" size="small" round>搜索</el-button>
+                    </el-form-item>
+                </el-form>
+            </el-menu-item>
+            <el-submenu index="4">
+                <template slot="title">
+                    <el-avatar src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"></el-avatar>
+                    User
+                </template>
+                <el-menu-item index="4-1"><i class="el-icon-user"></i> 个人信息</el-menu-item>
+                <el-menu-item index="4-2"><i class="el-icon-key"></i> 注销</el-menu-item>
+            </el-submenu>
+        </el-menu>
+    </header>
+    <main>
+        <el-button v-if="create" type="primary" id="create-btn" icon="el-icon-plus" circle></el-button>
+        <div class="stream">
+            <el-tabs v-model="activeName" @tab-click="handleClick">
+                <el-tab-pane label="我的关注" name="first">
+                    <div v-if="circles.length===0" class="mail-area">
+                        <el-empty description="还没有圈子"></el-empty>
+                    </div>
+                    <div v-else class="circle-area">
+                        <div v-for="circle in circles" class="circle-result">
+                            <el-image class="circle-img" :src="circle.img"></el-image>
+                            <el-button type="danger" class="cirlce-btn" round>取消关注</el-button>
+                            <h3>{{circle.name}}</h3>
+                            <br>
+                            <p>{{circle.content}}</p>
+                            <span>创建时间：{{circle.time}}</span>&nbsp;&nbsp;
+                            <span>圈主：{{circle.master}}</span>&nbsp;&nbsp;
+                            <el-badge :value="circle.hot" class="item">
+                                <i class="el-icon-thumb"></i>
+                            </el-badge>
+                            <el-divider></el-divider>
+                        </div>
+                    </div>
+                </el-tab-pane>
+                <el-tab-pane label="我的管理" name="second">
+                    <div v-if="circles.length===0" class="mail-area">
+                        <el-empty description="还没有圈子"></el-empty>
+                    </div>
+                    <div v-else class="circle-area">
+                        <div v-for="circle in circles" class="circle-result">
+                            <el-image class="circle-img" :src="circle.img"></el-image>
+                            <el-button type="primary" class="cirlce-btn" round>修改圈子</el-button>
+                            <h3>{{circle.name}}</h3>
+                            <br>
+                            <p>{{circle.content}}</p>
+                            <span>创建时间：{{circle.time}}</span>&nbsp;&nbsp;
+                            <span>圈主：{{circle.master}}</span>&nbsp;&nbsp;
+                            <el-badge :value="circle.hot" class="item">
+                                <i class="el-icon-thumb"></i>
+                            </el-badge>
+                            <el-divider></el-divider>
+                        </div>
+                    </div>
+                </el-tab-pane>
+            </el-tabs>
+        </div>
+    </main>
+</div>
+</body>
+<script src="js/circles.js"></script>
+</html>

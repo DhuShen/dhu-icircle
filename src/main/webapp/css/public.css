@@ -1,0 +1,43 @@
+body{
+    background: #eeeeee;
+}
+
+.stream {
+    padding-top: 2%;
+    padding-left: 4%;
+    padding-right: 4%;
+    background: white;
+    border-radius: 2px;
+    box-shadow: 0 1px 3px hsl(0deg 0% 7% / 10%);
+    width: 720px;
+    margin: 0 auto;
+}
+
+header {
+    z-index:999;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+}
+
+main {
+    margin-top: 90px;
+    margin-bottom: 40px;
+}
+
+.type-input {
+    width: 100px;
+}
+
+.content-input {
+    width: 300px;
+}
+
+.search-area {
+    margin-top: 8px;
+}

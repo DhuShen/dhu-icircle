@@ -2,22 +2,18 @@ body {
     background-color: #eeeeee;
 }
 
-header {
-    overflow: hidden;
-}
-
 main {
     overflow: hidden;
 }
 
-#register-btn {
+#login-btn {
     float: right;
     padding: 3px 0
 }
 
-#login-card {
-    margin: 180px auto;
-    height: 380px;
+#register-card {
+    margin: 200px auto;
+    height: 480px;
     width: 360px;
 }
 

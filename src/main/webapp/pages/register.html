@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>注册</title>
+    <script src="lib/axios.js"></script>
+    <script src="lib/vue.js"></script>
+    <script src="lib/element-ui/lib/index.js"></script>
+    <link rel="stylesheet" href="lib/element-ui/lib/theme-chalk/index.css">
+    <link rel="stylesheet" href="css/register.css">
+</head>
+<body>
+<div id="app">
+    <main>
+        <el-card id="register-card">
+            <div slot="header">
+                <span id="card-title">
+                    用户注册
+                </span>
+                <el-button id="login-btn" type="text" @click="backLogin">返回登录</el-button>
+            </div>
+            <el-form ref="form" :rules="rules" :model="registerForm" id="form-area">
+                <el-form-item label="ICircle ID" prop="id">
+                    <el-input v-model="registerForm.id"></el-input>
+                </el-form-item>
+                <el-form-item label="密码" prop="password">
+                    <el-input v-model="registerForm.password" show-password></el-input>
+                </el-form-item>
+                <el-form-item label="再次输入密码" prop="check">
+                    <el-input v-model="registerForm.check" show-password></el-input>
+                </el-form-item>
+                <el-form-item id="btn-area">
+                    <el-button type="primary" @click="onSubmit" round>注册</el-button>
+                </el-form-item>
+            </el-form>
+        </el-card>
+    </main>
+</div>
+<script src="js/register.js"></script>
+</body>
+</html>
