@@ -17,64 +17,72 @@ public class CircleServiceImpl implements CircleService {
     @Autowired
     CircleDao circleDao;
 
+    //根据circleId查圈子
+    @Override
+    public Circle selectById(int circleId) {
+        return circleDao.selectByCircleId(circleId);
+    }
+
     //判断是不是圈主
     @Override
-    public boolean isCircleMaster(String userId, long circleId) {
+    public boolean isCircleMaster(String userId, int circleId) {
         Circle circle = circleDao.selectByCircleId(circleId);
         return Objects.equals(userId, circle.getCircle_UserId());
     }
 
     //判断是否在圈子中(圈主也属于圈内成员）
     @Override
-    public boolean isInCircle(String userId, long circleId) {
+    public boolean isInCircle(String userId, int circleId) {
         return circleDao.selectConnection(userId, circleId) != null;
     }
 
-    //查找圈子
-    @Override
+    //    c)	查找圈子、贴子【在Circle,Post中】--查询圈子，模糊查询
     public List<Circle> searchCircle(String circleName) {
         return circleDao.selectByName(circleName);
     }
 
-    //获取热度圈子
+    //    d)	浏览圈子、帖子、评论【在Circle,Post,Discuss中】--获取热度圈子
     @Override
     public List<CircleView> getHotCircle() {
         return circleDao.selectTen();
     }
 
-    //获取我管理的圈子
+    //   i3)查看自己管理的圈子【在circle中】
     @Override
     public List<Circle> getMyCircle(String userId) {
         return circleDao.selectById(userId);
     }
 
+    //   i4)查看自己加入的圈子【在circle中】
     @Override
     public List<Circle> getInCircle(String userId) {
         return circleDao.selectConnectionById(userId);
     }
 
-    //不在圈子内（加入圈子）
+    //    j)	加入圈子【在circle中】--事先不在圈子里
     @Override
-    public boolean enterCircle(String userId, long circleId) {
-        return circleDao.insertConnection(userId, circleId) > 1;
+    public boolean enterCircle(String userId, int circleId) {
+        if (!isInCircle(userId, circleId)) {
+            return circleDao.insertConnection(userId, circleId) > 1;
+        } else
+            return false;
     }
 
-    //查询圈内成员信息
+    //    n)	在圈子中查看圈内成员信息【在circle中】
     @Override
-    public List<User> selectUserInCircle(long circleId) {
+    public List<User> selectUserInCircle(int circleId) {
         return circleDao.selectUserInCircle(circleId);
     }
 
-    //在圈子内（退出圈子）
-    // 圈主用（踢人）
+    //    u)	踢掉圈内成员【在circle中】--在圈子内（退出圈子）, 圈主用（踢人）
     @Override
-    public boolean quitCircle(String userId, long circleId) {
+    public boolean quitCircle(String userId, int circleId) {
         return circleDao.deleteConnection(userId, circleId) > 1;
     }
 
-    //圈主用（解散圈子）
+    //    o)	解散圈子【在circle中】--AOP
     @Override
-    public boolean dissolveCircle(String userId, long circleId) {
+    public boolean dissolveCircle(String userId, int circleId) {
         Circle circle = circleDao.selectByCircleId(circleId);
         if (Objects.equals(circle.getCircle_UserId(), userId)) {
             return circleDao.deleteCircle(circleId) > 0;
@@ -82,9 +90,12 @@ public class CircleServiceImpl implements CircleService {
             return false;
     }
 
-    //管理员用（建立圈子）
+    //    k)	建立圈子（需要向管理员申请）【在request、circle中】--管理员用
     @Override
     public boolean setUpCircle(String circleName, String circleImg, String circleContent, String userId) {
+        //先处理内容中的换行和空格
+        circleContent=circleContent.replace("&nbsp"," ");
+        circleContent=circleContent.replace("<br>","\n");
         Circle circle = new Circle();
         circle.setCircleName(circleName);
         circle.setCircleImg(circleImg);
@@ -95,18 +106,21 @@ public class CircleServiceImpl implements CircleService {
         return circleDao.insertCircle(circle) > 0;
     }
 
-    //管理员用(任命新圈主）
+    //    p)	任命新圈主（需要向管理员申请）【在request、circle中】--管理员用
     @Override
-    public boolean setNewCircleUser(long circleId, String userId) {
+    public boolean setNewCircleUser(int circleId, String userId) {
         Circle circle = new Circle();
         circle.setCircleId(circleId);
         circle.setCircle_UserId(userId);
         return circleDao.updateCircleMaster(circle) > 0;
     }
 
-    //管理员用（修改圈子简介）
+    //    q)	修改圈子相关信息（需要向管理员申请）【在request、circle中】--管理员用
     @Override
-    public boolean updateCircleContent(long circleId, String circleName, String circleImg, String circleContent) {
+    public boolean updateCircleContent(int circleId, String circleName, String circleImg, String circleContent) {
+        //先处理内容中的换行和空格
+        circleContent=circleContent.replace("&nbsp"," ");
+        circleContent=circleContent.replace("<br>","\n");
         Circle circle = new Circle();
         circle.setCircleId(circleId);
         circle.setCircleName(circleName);

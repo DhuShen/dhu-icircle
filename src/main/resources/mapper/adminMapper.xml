@@ -3,7 +3,11 @@
         PUBLIC "-//mybatis.org//DTD mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.dhu.dao.AdminDao">
-    <select id="adminSelectById" parameterType="String" resultType="Admin">
+    <insert id="adminInsert">
+        insert into admin(adminId, adminPassword, adminName)
+        VALUES (#{adminId}, #{adminPassword}, #{adminName})
+    </insert>
+    <select id="adminSelectById" resultType="Admin">
         select *
         from admin
         where adminId = #{adminId}

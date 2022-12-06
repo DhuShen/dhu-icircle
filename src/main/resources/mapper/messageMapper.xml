@@ -7,8 +7,8 @@
         insert into message(messageContent, messageUserIdSet, messageUserIdGet, messageSetTime)
         values (#{messageContent}, #{messageUserIdSet}, #{messageUserIdGet}, #{messageSetTime})
     </insert>
-    
-    <select id="selectByGetId" parameterType="String" resultType="Message">
+
+    <select id="selectByGetId" resultType="Message">
         select *
         from message
         where messageUserIdGet = #{getId}

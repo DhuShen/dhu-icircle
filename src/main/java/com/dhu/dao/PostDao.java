@@ -8,23 +8,24 @@ import java.util.List;
 
 @Repository//转换为bean（数据库访问层）
 public interface PostDao {
+    //根据PostId查帖子
     List<Post> selectByName(@Param("postName") String postName);
-
+    //查询热门帖子（按热度排序）
     List<Post> selectTen();
-
-    List<Post> selectByCircle(@Param("circleId") long circleId);
-
+    //根据CircleId查帖子
+    List<Post> selectByCircle(@Param("circleId") int circleId);
+    //根据UserId查帖子
     List<Post> selectByUser(@Param("userId") String userId);
-
-    int likePost(@Param("postId")long postId);
-
-    Post selectById(@Param("postId")long postId);
-
-    int setPostKey(@Param("postId")long postId);
-
-    int cancelPostKey(@Param("postId")long postId);
-
-    int cancelPost(@Param("postId")long postId);
-
+    //点赞帖子
+    int likePost(@Param("postId")int postId);
+    //根据postId查帖子
+    Post selectById(@Param("postId")int postId);
+    //设置为精华帖
+    int setPostKey(@Param("postId")int postId);
+    //取消精华帖
+    int cancelPostKey(@Param("postId")int postId);
+    //撤销帖子
+    int cancelPost(@Param("postId")int postId);
+    //增加帖子
     int insertPost(Post post);
 }

@@ -12,6 +12,9 @@ import org.springframework.transaction.annotation.Transactional;
 //    e)	处理信息发送消息【在message中】
 @Transactional
 public interface AdminService {
-    //    a)	管理员登录
+    //    a)	管理员登录--登录
     Admin login(String adminId, String adminPwd);
+
+    //    a)	管理员登录--注册
+    boolean register(String adminId, String adminPwd);
 }

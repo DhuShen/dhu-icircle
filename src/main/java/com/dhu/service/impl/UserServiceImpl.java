@@ -8,22 +8,23 @@ import org.springframework.stereotype.Service;
 
 import java.util.Objects;
 
-//    	用户功能
 @Service
 public class UserServiceImpl implements UserService {
     @Autowired
     UserDao userDao;
 
+    //    a)	注册【在user中】
     @Override
     public boolean userRegister(String userId, String userPwd) {
         if (userDao.userSelectById(userId) == null) {//注册用户不存在（未注册）
             User user = new User(userId, userPwd);
             userDao.userInsert(user);
-            return true;
+            return true;//用户不存在返回true
         } else
-            return false;
+            return false;//用户已存在返回false
     }
 
+    //    b)	登录【在user中】
     @Override
     public User userLogin(String userId, String userPwd) {
         User user = userDao.userSelectById(userId);
@@ -37,19 +38,20 @@ public class UserServiceImpl implements UserService {
             return null;
     }
 
+    //   i1)查看其他用户中心或自己的【在user中】
     @Override
     public User userCheck(String userId) {
         User user = userDao.userSelectById(userId);
-        user.setUserPassword("");
+        user.setUserPassword("");//不返回密码
         return user;
     }
 
+    //   i2)修改个人信息-基本信息【在user中】
     @Override
-    public boolean updateUserInfo(String userId, String password, String userImg, String userName,
+    public boolean updateUserInfo(String userId, String userImg, String userName,
                                   String userSex, String userMajor, String userIntroduction) {
         User user = new User();
         user.setUserId(userId);
-        user.setUserPassword(password);
         user.setUserImg(userImg);
         user.setUserName(userName);
         user.setUserSex(userSex);
@@ -58,6 +60,16 @@ public class UserServiceImpl implements UserService {
         return userDao.updateUserInfo(user) > 0;
     }
 
+    //   i2)修改个人信息-密码【在user中】
+    @Override
+    public boolean updateUserPwd(String userId, String password) {
+        User user = new User();
+        user.setUserId(userId);
+        user.setUserPassword(password);
+        return userDao.updateUserPwd(user) > 0;
+    }
+
+    //    d)	对用户进行封号操作【在user中】
     @Override
     public boolean closeUser(String userId) {
         return userDao.closeUser(userId) > 1;

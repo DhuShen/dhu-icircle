@@ -3,13 +3,15 @@
         PUBLIC "-//mybatis.org//DTD mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.dhu.dao.ReportDao">
-    <insert id="InsertReport" parameterType="Report">
+    <insert id="InsertReport">
         insert into report(reportContent, reportType, reportUserIdGet, reportPostId, reportDiscussId, reportTime,
                            reportUserIdSet)
         values (#{reportcontent}, #{reporttype}, #{reportuseridget}, #{reportpostid}, #{reportdiscussid}, #{reporttime},
                 #{reportuseridset})
     </insert>
     <select id="selectAllOrder" resultType="Report">
-        select *from report ORDER BY reportUserIdGet;
+        select *
+        from report
+        ORDER BY reportUserIdGet;
     </select>
 </mapper>

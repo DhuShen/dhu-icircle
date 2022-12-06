@@ -3,7 +3,7 @@
         PUBLIC "-//mybatis.org//DTD mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.dhu.dao.PostDao">
-    
+
     <insert id="insertPost">
         insert into post(postName, postContent, postKey, postGood, postTime, post_UserId, post_CircleId)
         values (#{postName}, #{postContent}, #{postKey}, #{postGood}, #{postTime}, #{post_UserId}, #{post_CircleId})
@@ -20,43 +20,43 @@
         ORDER BY postGood
     </select>
 
-    <select id="selectByCircle" parameterType="int" resultType="Post">
+    <select id="selectByCircle" resultType="Post">
         select *
         from post
         where post_CircleId = #{circleId}
     </select>
 
-    <select id="selectByUser" parameterType="String" resultType="Post">
+    <select id="selectByUser" resultType="Post">
         select *
         from post
         where post_UserId = #{userId}
     </select>
 
-    <update id="likePost" parameterType="int">
+    <update id="likePost">
         update post
         set postGood=postGood + 1
         where postId = #{postId}
     </update>
 
-    <select id="selectById" parameterType="int" resultType="Post">
+    <select id="selectById" resultType="Post">
         select *
         from post
         where postId = #{postId}
     </select>
 
-    <update id="setPostKey" parameterType="int">
+    <update id="setPostKey">
         update post
         set postKey=1
         where postId = #{postId}
     </update>
 
-    <delete id="cancelPostKey" parameterType="int">
+    <delete id="cancelPostKey">
         update post
         set postKey=0
         where postId = #{postId}
     </delete>
 
-    <delete id="cancelPost" parameterType="int">
+    <delete id="cancelPost">
         delete
         from post
         where postId = #{postId}

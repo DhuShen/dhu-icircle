@@ -25,4 +25,9 @@
         from discuss
         where discuss_PostId = #{postId}
     </select>
+    <select id="selectById" resultType="com.dhu.domain.Discuss">
+        select *
+        from discuss
+        where discussId = #{discussId}
+    </select>
 </mapper>

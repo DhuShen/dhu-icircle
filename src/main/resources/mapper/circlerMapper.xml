@@ -30,7 +30,7 @@
         values (#{userId}, #{circleId})
     </insert>
 
-    <select id="selectByCircleId" parameterType="int" resultType="Circle">
+    <select id="selectByCircleId" resultType="Circle">
         select *
         from circle
         where circleId = #{circleId}
@@ -42,6 +42,7 @@
         where userId = #{userId}
           and circleId = #{circle}
     </select>
+
     <select id="selectUserInCircle" resultType="User">
         select u.*
         from connectuserandcircle c,
@@ -54,6 +55,12 @@
         select *
         from connectuserandcircle
         where userId = #{userId}
+    </select>
+    <select id="IsCircleMaster" resultType="java.lang.String">
+        select circle_UserId
+        from circle
+        where circleId = #{circleId}
+          and circle_UserId = #{circle_UserId}
     </select>
 
     <delete id="deleteCircle" parameterType="int">

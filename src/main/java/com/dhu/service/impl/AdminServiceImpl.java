@@ -20,4 +20,10 @@ public class AdminServiceImpl implements AdminService {
         } else
             return null;
     }
+
+    @Override
+    public boolean register(String adminId, String adminPwd) {
+        Admin admin = new Admin(adminId, adminPwd);
+        return adminDao.adminInsert(admin) > 0;
+    }
 }

@@ -1,40 +1,44 @@
 package com.dhu.domain;
 
-
 import org.springframework.stereotype.Component;
 
 @Component//转换为bean
 public class Admin {
+    private String adminId;
+    private String adminPassword;
+    private String adminName;
 
-  private String adminId;
-  private String adminPassword;
-  private String adminName;
+    public Admin() {
+    }
 
+    public Admin(String adminId, String adminPassword) {
+        this.adminId = adminId;
+        this.adminPassword = adminPassword;
+        this.adminName = "管理员" + adminId;
+    }
 
-  public String getAdminId() {
-    return adminId;
-  }
+    public String getAdminId() {
+        return adminId;
+    }
 
-  public void setAdminId(String adminId) {
-    this.adminId = adminId;
-  }
+    public void setAdminId(String adminId) {
+        this.adminId = adminId;
+    }
 
+    public String getAdminPassword() {
+        return adminPassword;
+    }
 
-  public String getAdminPassword() {
-    return adminPassword;
-  }
+    public void setAdminPassword(String adminPassword) {
+        this.adminPassword = adminPassword;
+    }
 
-  public void setAdminPassword(String adminPassword) {
-    this.adminPassword = adminPassword;
-  }
+    public String getAdminName() {
+        return adminName;
+    }
 
-
-  public String getAdminName() {
-    return adminName;
-  }
-
-  public void setAdminName(String adminName) {
-    this.adminName = adminName;
-  }
+    public void setAdminName(String adminName) {
+        this.adminName = adminName;
+    }
 
 }

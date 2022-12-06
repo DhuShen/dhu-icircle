@@ -15,6 +15,7 @@ public class ReportServiceImpl implements ReportService {
     @Autowired
     ReportDao reportDao;
 
+    //    e)	举报用户（帖子下、评论下）【在Report中】
     @Override
     public boolean reportByUserId(String setId, String getId, String reportContent) {//使用UserId,举报信息举报用户
         Report report = new Report();
@@ -26,8 +27,9 @@ public class ReportServiceImpl implements ReportService {
         return reportDao.InsertReport(report) != 0;
     }
 
+    //    e)	举报用户（帖子下、评论下）【在Report中】
     @Override
-    public boolean reportByPostId(String setId, long postId, String reportContent) {//使用PostId,举报信息为举报用户的帖子
+    public boolean reportByPostId(String setId, int postId, String reportContent) {//使用PostId,举报信息为举报用户的帖子
         Report report = new Report();
         report.setReportType(1);//0举报用户，1举报帖子，2举报评论
         report.setReportContent(reportContent);//举报内容
@@ -37,8 +39,9 @@ public class ReportServiceImpl implements ReportService {
         return reportDao.InsertReport(report) != 0;
     }
 
+    //    e)	举报用户（帖子下、评论下）【在Report中】
     @Override
-    public boolean reportByDiscussId(String setId, long discussId, String reportContent) {//使用DiscussId,举报信息为举报用户的评论
+    public boolean reportByDiscussId(String setId, int discussId, String reportContent) {//使用DiscussId,举报信息为举报用户的评论
         Report report = new Report();
         report.setReportType(2);//0举报用户，1举报帖子，2举报评论
         report.setReportContent(reportContent);//举报内容
@@ -48,6 +51,7 @@ public class ReportServiceImpl implements ReportService {
         return reportDao.InsertReport(report) != 0;
     }
 
+    //    c)	查看消息（举报，请求（建立圈子，修改圈子信息，任命新圈主））【在report，request中】
     @Override
     public List<Report> getReport() {
         return reportDao.selectAllOrder();

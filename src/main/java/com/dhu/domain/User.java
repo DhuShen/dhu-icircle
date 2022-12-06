@@ -11,13 +11,14 @@ public class User {
   private String userImg;
   private String userName;
   private String userSex;
-  private long userLife;
+  private int userLife;
   private Date userTime;
   private String userMajor;
   private String userIntroduction;
-  //生成新用户
+
   public User() {
   }
+  //注册新用户专用
   public User(String userId,String userPassword)
   {
     this.userId=userId;
@@ -30,8 +31,18 @@ public class User {
     this.userMajor=null;
     this.userIntroduction=null;
   }
-
-
+  @Override
+  public String toString() {
+    return "[userId " +userId
+            +"userId "+userPassword
+            +"userImg "+userImg
+            +"userName "+userName
+            +"userSex "+userSex
+            +"userLife "+userLife
+            +"userTime "+userTime
+            +"userMajor "+userMajor
+            +"userIntroduction "+userIntroduction;
+  }
 
   public String getUserId() {
     return userId;
@@ -40,8 +51,6 @@ public class User {
   public void setUserId(String userId) {
     this.userId = userId;
   }
-
-
   public String getUserPassword() {
     return userPassword;
   }
@@ -78,11 +87,11 @@ public class User {
   }
 
 
-  public long getUserLife() {
+  public int getUserLife() {
     return userLife;
   }
 
-  public void setUserLife(long userLife) {
+  public void setUserLife(int userLife) {
     this.userLife = userLife;
   }
 

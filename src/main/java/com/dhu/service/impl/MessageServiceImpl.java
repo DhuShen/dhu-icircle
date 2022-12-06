@@ -14,17 +14,19 @@ public class MessageServiceImpl implements MessageService {
     @Autowired
     MessageDao messageDao;
 
+    //    h)	用户查看消息（消息）【在message中】
     public List<Message> getMessage(String getId) {
         return messageDao.selectByGetId(getId);
     }
 
+    //    e)	处理信息发送消息【在message中】
     @Override
     public boolean setMessage(String messageContent, String setId, String getId) {
-        Message message=new Message();
+        Message message = new Message();
         message.setMessageContent(messageContent);
         message.setMessageUserIdSet(setId);
         message.setMessageUserIdGet(getId);
         message.setMessageSetTime(MyTime.getNowTime());
-        return messageDao.insertMessage(message)>0;
+        return messageDao.insertMessage(message) > 0;
     }
 }

@@ -8,11 +8,14 @@ import java.util.List;
 
 @Repository//转换为bean（数据库访问层）
 public interface DiscussDao {
+    //根据评论id查评论
+    Discuss selectById(@Param("discussId") int discussId);
+    //添加评论
     int insertDiscuss(Discuss discuss);
-
-    int likeDiscuss(@Param("discussId") long discussId);
-
-    int deleteDiscuss(@Param("discussId") long discussId);
-
-    List<Discuss> selectPostDiscuss(@Param("postId") long postId);
+    //点赞评论
+    int likeDiscuss(@Param("discussId") int discussId);
+    //删除评论
+    int deleteDiscuss(@Param("discussId") int discussId);
+    //根据postId查评论
+    List<Discuss> selectPostDiscuss(@Param("postId") int postId);
 }
