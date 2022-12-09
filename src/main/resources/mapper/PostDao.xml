@@ -11,7 +11,10 @@
 
     <select id="selectByName" parameterType="String" resultType="Post">
         <bind name="pattern" value="'%' + postName + '%'"/>
-        select * from post where postName like #{pattern}
+        select *
+        from post
+        where postName like #{pattern}
+        order by postTime DESC
     </select>
 
     <select id="selectTen" resultType="Post">
@@ -25,12 +28,14 @@
         select *
         from post
         where post_CircleId = #{circleId}
+        order by postTime DESC
     </select>
 
     <select id="selectByUser" resultType="Post">
         select *
         from post
         where post_UserId = #{userId}
+        order by postTime DESC
     </select>
 
     <update id="likePost">
@@ -44,16 +49,19 @@
         from post
         where postId = #{postId}
     </select>
+
     <select id="getPostCount" resultType="java.lang.Integer">
         select COUNT(*)
         from post
         where post_CircleId = #{circleId}
     </select>
+
     <select id="selectKeyByCircle" resultType="com.dhu.domain.Post">
         select *
         from post
         where post_CircleId = #{circleId}
           and postKey = 1
+        order by postTime DESC
     </select>
 
     <update id="setPostKey">

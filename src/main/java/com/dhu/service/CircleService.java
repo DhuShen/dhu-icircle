@@ -17,6 +17,9 @@ public interface CircleService {
     //判断是否为圈主
     boolean isCircleMaster(String userId, int circleId);
 
+    //获取圈主信息
+    User GetCircleMaster(String userId, int circleId);
+
     //判断用户是否在圈子中(圈主也属于圈内成员）
     boolean isInCircle(String userId, int circleId);
 

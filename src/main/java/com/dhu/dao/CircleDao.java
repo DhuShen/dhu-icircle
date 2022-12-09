@@ -10,7 +10,7 @@ import java.util.List;
 
 @Repository
 public interface CircleDao {
-    //根据圈子id获取圈主名字
+    //根据圈子id获取圈子名字
     String getCircleNameById(@Param("circleId") int circleId);
 
     //根据圈子名字模糊查询圈子
@@ -31,6 +31,9 @@ public interface CircleDao {
     //根据circleId注销圈子
     int deleteCircle(@Param("circleId") int circleId);
 
+    //删除关系
+    int deleteCircleConnection(@Param("circleId") int circleId);
+
     //修改圈子的圈主
     int updateCircleMaster(Circle circle);
 
@@ -46,8 +49,8 @@ public interface CircleDao {
     //根据userId和circleId查询用户是否在圈子中
     String selectConnection(@Param("userId") String userId, @Param("circleId") int circleId);
 
-    //查询用户是否为圈主
-    String IsCircleMaster(@Param("circle_UserId") String circle_UserId, @Param("circleId") int circleId);
+    //查询用户是否为圈主，返回圈主信息
+    User GetCircleMaster(@Param("circle_UserId") String circle_UserId, @Param("circleId") int circleId);
 
     //根据circleId查询圈子里所有成员
     List<User> selectUserInCircle(@Param("circleId") int circleId);

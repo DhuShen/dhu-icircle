@@ -7,9 +7,11 @@
         insert into admin(adminId, adminPassword, adminName)
         VALUES (#{adminId}, #{adminPassword}, #{adminName})
     </insert>
+
     <select id="adminSelectById" resultType="Admin">
         select *
         from admin
         where adminId = #{adminId}
     </select>
+    
 </mapper>

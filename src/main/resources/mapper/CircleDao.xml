@@ -6,7 +6,10 @@
     <select id="selectByName" parameterType="String" resultType="Circle">
         <bind name="pattern" value="'%' + circleName + '%'"/>
         # 模糊查询
-        select * from circle where circleName like #{pattern}
+        select *
+        from circle
+        where circleName like #{pattern}
+        order by circleTime DESC
     </select>
 
     <select id="selectTen" resultType="CircleView">
@@ -51,6 +54,7 @@
              user u
         where c.circleId = #{circleId}
           and c.userId = u.userId
+        order by u.userTime DESC
     </select>
 
     <select id="selectConnectionById" resultType="circle">
@@ -59,25 +63,36 @@
              circle c
         where con.userId = #{userId}
           and con.circleId = c.circleId
+        order by c.circleTime DESC
     </select>
 
-    <select id="IsCircleMaster" resultType="java.lang.String">
-        select circle_UserId
-        from circle
+    <select id="GetCircleMaster" resultType="User">
+        select user.*
+        from circle,
+             user
         where circleId = #{circleId}
           and circle_UserId = #{circle_UserId}
+          and circle.circle_UserId = user.userId
     </select>
+
     <select id="getCircleNameById" resultType="java.lang.String">
         select circleName
         from circle
         where circleId = #{circleId}
     </select>
 
-    <delete id="deleteCircle" parameterType="int">
+    <delete id="deleteCircle">
         delete
         from circle
         where circleId = #{circleId}
     </delete>
+
+    <delete id="deleteCircleConnection">
+        delete
+        from connectuserandcircle c
+        where c.circleId = #{circleId}
+    </delete>
+
     <delete id="deleteConnection">
         delete
         from connectuserandcircle

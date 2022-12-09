@@ -13,6 +13,6 @@
     <select id="selectAllOrder" resultType="Request">
         select *
         from request
-        order by request_UserId;
+        order by requestTime;
     </select>
 </mapper>

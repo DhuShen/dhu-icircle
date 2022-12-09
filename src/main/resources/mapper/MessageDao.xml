@@ -12,5 +12,6 @@
         select *
         from message
         where messageUserIdGet = #{getId}
+        order by messageSetTime DESC
     </select>
 </mapper>

@@ -21,8 +21,8 @@ public class RequestServiceImpl implements RequestService {
     public boolean setRequest0(String circleName, String circleContent, String setId)//建立圈子请求
     {
         //先处理内容中的换行和空格
-        circleContent=circleContent.replace("&nbsp"," ");
-        circleContent=circleContent.replace("<br>","\n");
+        circleContent = circleContent.replace("&nbsp", " ");
+        circleContent = circleContent.replace("<br>", "\n");
         Request request = new Request();
         request.setRequestCircleName(circleName);
         request.setRequestCircleContent(circleContent);
@@ -35,7 +35,7 @@ public class RequestServiceImpl implements RequestService {
     //    p)	任命新圈主（需要向管理员申请）【在request、circle中】
     @Override//circleUserId新圈主id，发起人setId（原圈主）
     public boolean setRequest1(int circleId, String circleUserId, String setId) {
-        if (circleDao.IsCircleMaster(setId, circleId) != null)//setId是原圈主
+        if (circleDao.GetCircleMaster(setId, circleId) != null)//setId是原圈主
         {
             Request request = new Request();
             request.setRequestCircleId(circleId);
@@ -51,8 +51,8 @@ public class RequestServiceImpl implements RequestService {
     @Override
     public boolean setRequest2(int circleId, String circleName, String circleContent, String setId) {
         //先处理内容中的换行和空格
-        circleContent=circleContent.replace("&nbsp"," ");
-        circleContent=circleContent.replace("<br>","\n");
+        circleContent = circleContent.replace("&nbsp", " ");
+        circleContent = circleContent.replace("<br>", "\n");
         Request request = new Request();
         request.setRequestCircleId(circleId);
         request.setRequestCircleName(circleName);

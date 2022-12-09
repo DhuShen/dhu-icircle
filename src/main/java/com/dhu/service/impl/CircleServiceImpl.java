@@ -35,6 +35,11 @@ public class CircleServiceImpl implements CircleService {
         return Objects.equals(userId, circle.getCircle_UserId());
     }
 
+    @Override
+    public User GetCircleMaster(String userId, int circleId) {
+        return circleDao.GetCircleMaster(userId, circleId);
+    }
+
     //判断是否在圈子中(圈主也属于圈内成员）
     @Override
     public boolean isInCircle(String userId, int circleId) {
@@ -90,7 +95,7 @@ public class CircleServiceImpl implements CircleService {
     public boolean dissolveCircle(String userId, int circleId) {
         Circle circle = circleDao.selectByCircleId(circleId);
         if (Objects.equals(circle.getCircle_UserId(), userId)) {
-            return circleDao.deleteCircle(circleId) > 0;
+            return (circleDao.deleteCircle(circleId) > 0 && circleDao.deleteCircleConnection(circleId) > 0);
         } else
             return false;
     }

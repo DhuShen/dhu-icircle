@@ -10,109 +10,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="12b7af2a-461d-49d5-8f10-0525aac691a2" name="变更" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/dhu/controller/DiscussController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/dhu/controller/MessageController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/dhu/controller/RequestController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/css/post.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/css/single-circle.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/js/post.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/js/single-circle.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/pages/post.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/TestCircle.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dhu/controller/CircleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dhu/controller/CircleController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dhu/controller/PostController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dhu/controller/PostController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dhu/controller/RouterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dhu/controller/RouterController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dhu/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dhu/controller/UserController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/dhu/dao/CircleDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dhu/dao/CircleDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dhu/dao/PostDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dhu/dao/PostDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dhu/dao/UserDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dhu/dao/UserDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dhu/domain/Circle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dhu/domain/Circle.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dhu/domain/Discuss.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dhu/domain/Discuss.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dhu/domain/Message.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dhu/domain/Message.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dhu/domain/Post.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dhu/domain/Post.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dhu/domain/Report.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dhu/domain/Report.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dhu/domain/Request.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dhu/domain/Request.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dhu/domain/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dhu/domain/User.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/dhu/service/CircleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dhu/service/CircleService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dhu/service/PostService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dhu/service/PostService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dhu/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dhu/service/UserService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/dhu/service/impl/CircleServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dhu/service/impl/CircleServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dhu/service/impl/PostServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dhu/service/impl/PostServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dhu/service/impl/ReportServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dhu/service/impl/ReportServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/dhu/service/impl/RequestServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dhu/service/impl/RequestServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dhu/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dhu/service/impl/UserServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/adminMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/AdminDao.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/circlerMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/CircleDao.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/discussMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/DiscussDao.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/messageMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/MessageDao.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/postMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/PostDao.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/reportMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/ReportDao.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/requestMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/RequestDao.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/userMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/UserDao.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/css/circles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/css/circles.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/css/info.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/css/info.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/circles.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/js/circles.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/info.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/js/info.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/login.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/js/login.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/mail.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/js/mail.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/recommend.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/js/recommend.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/register.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/js/register.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/pages/circles.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/pages/circles.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/pages/info.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/pages/info.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/pages/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/pages/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/pages/mail.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/pages/mail.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/pages/recommend.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/pages/recommend.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/pages/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/pages/register.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/pages/single-circle.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/pages/single-circle.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/TestUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/TestUser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/dhu/controller/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dhu/controller/UserController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/dhu/dao/AdminDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dhu/dao/AdminDao.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/dhu/domain/Admin.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dhu/domain/Admin.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/dhu/domain/Circle.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dhu/domain/Circle.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/dhu/domain/Discuss.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dhu/domain/Discuss.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/dhu/domain/Message.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dhu/domain/Message.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/dhu/domain/Post.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dhu/domain/Post.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/dhu/domain/Report.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dhu/domain/Report.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/dhu/domain/Request.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dhu/domain/Request.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/dhu/domain/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dhu/domain/User.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/dhu/service/AdminService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dhu/service/AdminService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/dhu/service/CircleService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dhu/service/CircleService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/dhu/service/PostService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dhu/service/PostService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/dhu/service/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dhu/service/UserService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/dhu/service/impl/AdminServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dhu/service/impl/AdminServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/jdbc.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/jdbc.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/mapper/adminMapper.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/mapper/userMapper.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/spring-config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/spring-config.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/springmvc-config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/springmvc-config.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/dhu-icircle.war" beforeDir="false" afterPath="$PROJECT_DIR$/target/dhu-icircle.war" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/dhu-icircle/WEB-INF/classes/com/dhu/controller/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/dhu-icircle/WEB-INF/classes/com/dhu/controller/UserController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/dhu-icircle/WEB-INF/classes/com/dhu/dao/AdminDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/dhu-icircle/WEB-INF/classes/com/dhu/dao/AdminDao.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/dhu-icircle/WEB-INF/classes/com/dhu/domain/Admin.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/dhu-icircle/WEB-INF/classes/com/dhu/domain/Admin.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/dhu-icircle/WEB-INF/classes/com/dhu/domain/Circle.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/dhu-icircle/WEB-INF/classes/com/dhu/domain/Circle.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/dhu-icircle/WEB-INF/classes/com/dhu/domain/Discuss.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/dhu-icircle/WEB-INF/classes/com/dhu/domain/Discuss.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/dhu-icircle/WEB-INF/classes/com/dhu/domain/Message.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/dhu-icircle/WEB-INF/classes/com/dhu/domain/Message.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/dhu-icircle/WEB-INF/classes/com/dhu/domain/Post.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/dhu-icircle/WEB-INF/classes/com/dhu/domain/Post.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/dhu-icircle/WEB-INF/classes/com/dhu/domain/Report.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/dhu-icircle/WEB-INF/classes/com/dhu/domain/Report.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/dhu-icircle/WEB-INF/classes/com/dhu/domain/Request.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/dhu-icircle/WEB-INF/classes/com/dhu/domain/Request.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/dhu-icircle/WEB-INF/classes/com/dhu/domain/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/dhu-icircle/WEB-INF/classes/com/dhu/domain/User.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/dhu-icircle/WEB-INF/classes/com/dhu/service/AdminService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/dhu-icircle/WEB-INF/classes/com/dhu/service/AdminService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/dhu-icircle/WEB-INF/classes/com/dhu/service/CircleService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/dhu-icircle/WEB-INF/classes/com/dhu/service/CircleService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/dhu-icircle/WEB-INF/classes/com/dhu/service/PostService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/dhu-icircle/WEB-INF/classes/com/dhu/service/PostService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/dhu-icircle/WEB-INF/classes/com/dhu/service/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/dhu-icircle/WEB-INF/classes/com/dhu/service/UserService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/dhu-icircle/WEB-INF/classes/com/dhu/service/impl/AdminServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/dhu-icircle/WEB-INF/classes/com/dhu/service/impl/AdminServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/dhu-icircle/WEB-INF/classes/jdbc.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/dhu-icircle/WEB-INF/classes/jdbc.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/dhu-icircle/WEB-INF/classes/mapper/adminMapper.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/dhu-icircle/WEB-INF/classes/mapper/userMapper.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/dhu-icircle/WEB-INF/classes/spring-config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/dhu-icircle/WEB-INF/classes/spring-config.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/dhu-icircle/WEB-INF/classes/springmvc-config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/dhu-icircle/WEB-INF/classes/springmvc-config.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/dhu-icircle/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/dhu-icircle/WEB-INF/web.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/dhu-icircle/css/login.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/dhu-icircle/css/login.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/dhu-icircle/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/dhu-icircle/index.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/dhu-icircle/js/login.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/dhu-icircle/js/login.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/dhu-icircle/pages/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/dhu-icircle/pages/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/TestSql.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/AdminDao.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/AdminDao.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/CircleDao.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/CircleDao.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/DiscussDao.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/DiscussDao.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/MessageDao.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/MessageDao.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/PostDao.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/PostDao.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/ReportDao.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/ReportDao.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/RequestDao.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/RequestDao.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -359,6 +268,7 @@
       <workItem from="1670378754418" duration="3506000" />
       <workItem from="1670501435972" duration="7000" />
       <workItem from="1670575550105" duration="150000" />
+      <workItem from="1670588887449" duration="4003000" />
     </task>
     <task id="LOCAL-00001" summary="pojo,数据库">
       <created>1669116709980</created>
@@ -458,7 +368,14 @@
       <option name="project" value="LOCAL" />
       <updated>1670328436264</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="hhn">
+      <created>1670589094762</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1670589094762</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

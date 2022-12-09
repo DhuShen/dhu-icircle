@@ -12,6 +12,7 @@
     <select id="selectAllOrder" resultType="Report">
         select *
         from report
-        ORDER BY reportUserIdGet;
+        ORDER BY reportTime
     </select>
+
 </mapper>

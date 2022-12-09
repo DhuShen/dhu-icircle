@@ -8,6 +8,7 @@
         from user
         where userId = #{userId}
     </select>
+
     <select id="getUserNameById" resultType="java.lang.String">
         select userName
         from user
