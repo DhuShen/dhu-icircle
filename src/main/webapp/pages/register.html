@@ -30,7 +30,7 @@
                     <el-input v-model="registerForm.check" show-password></el-input>
                 </el-form-item>
                 <el-form-item id="btn-area">
-                    <el-button type="primary" @click="onSubmit" round>注册</el-button>
+                    <el-button type="primary" @click="onSubmit" :loading="btnStatus" round>注册</el-button>
                 </el-form-item>
             </el-form>
         </el-card>

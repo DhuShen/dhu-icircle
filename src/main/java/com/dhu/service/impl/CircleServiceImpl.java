@@ -17,6 +17,11 @@ public class CircleServiceImpl implements CircleService {
     @Autowired
     CircleDao circleDao;
 
+    @Override
+    public String getCircleNameById(int circleId) {
+        return circleDao.getCircleNameById(circleId);
+    }
+
     //根据circleId查圈子
     @Override
     public Circle selectById(int circleId) {
@@ -63,7 +68,7 @@ public class CircleServiceImpl implements CircleService {
     @Override
     public boolean enterCircle(String userId, int circleId) {
         if (!isInCircle(userId, circleId)) {
-            return circleDao.insertConnection(userId, circleId) > 1;
+            return circleDao.insertConnection(userId, circleId) > 0;
         } else
             return false;
     }
@@ -77,7 +82,7 @@ public class CircleServiceImpl implements CircleService {
     //    u)	踢掉圈内成员【在circle中】--在圈子内（退出圈子）, 圈主用（踢人）
     @Override
     public boolean quitCircle(String userId, int circleId) {
-        return circleDao.deleteConnection(userId, circleId) > 1;
+        return circleDao.deleteConnection(userId, circleId) > 0;
     }
 
     //    o)	解散圈子【在circle中】--AOP
@@ -94,8 +99,8 @@ public class CircleServiceImpl implements CircleService {
     @Override
     public boolean setUpCircle(String circleName, String circleImg, String circleContent, String userId) {
         //先处理内容中的换行和空格
-        circleContent=circleContent.replace("&nbsp"," ");
-        circleContent=circleContent.replace("<br>","\n");
+        circleContent = circleContent.replace("&nbsp", " ");
+        circleContent = circleContent.replace("<br>", "\n");
         Circle circle = new Circle();
         circle.setCircleName(circleName);
         circle.setCircleImg(circleImg);
@@ -119,8 +124,8 @@ public class CircleServiceImpl implements CircleService {
     @Override
     public boolean updateCircleContent(int circleId, String circleName, String circleImg, String circleContent) {
         //先处理内容中的换行和空格
-        circleContent=circleContent.replace("&nbsp"," ");
-        circleContent=circleContent.replace("<br>","\n");
+        circleContent = circleContent.replace("&nbsp", " ");
+        circleContent = circleContent.replace("<br>", "\n");
         Circle circle = new Circle();
         circle.setCircleId(circleId);
         circle.setCircleName(circleName);

@@ -1,6 +1,7 @@
 package com.dhu.domain;
 
 import com.dhu.tools.MyTime;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 import java.util.Date;
 
@@ -12,6 +13,7 @@ public class User {
   private String userName;
   private String userSex;
   private int userLife;
+  @JsonFormat(pattern="yyyy-MM-dd",timezone = "GMT+8")
   private Date userTime;
   private String userMajor;
   private String userIntroduction;

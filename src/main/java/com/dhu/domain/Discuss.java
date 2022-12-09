@@ -1,5 +1,7 @@
 package com.dhu.domain;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.util.Date;
 
 public class Discuss {
@@ -8,6 +10,7 @@ public class Discuss {
   private String discussContent;
   private String discussReplayed;
   private long discussGood;
+  @JsonFormat(pattern="yyyy-MM-dd",timezone = "GMT+8")
   private Date discussTime;
   private String discuss_UserId;
   private long discuss_PostId;

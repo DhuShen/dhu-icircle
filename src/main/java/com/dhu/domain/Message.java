@@ -1,14 +1,17 @@
 package com.dhu.domain;
 
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.util.Date;
 
 public class Message {
 
-    private long messageId;
+    private int messageId;
     private String messageContent;
     private String messageUserIdSet;
     private String messageUserIdGet;
+    @JsonFormat(pattern="yyyy-MM-dd",timezone = "GMT+8")
     private Date messageSetTime;
 
     public Date getMessageSetTime() {
@@ -20,11 +23,11 @@ public class Message {
 
 
 
-    public long getMessageId() {
+    public int getMessageId() {
         return messageId;
     }
 
-    public void setMessageId(long messageId) {
+    public void setMessageId(int messageId) {
         this.messageId = messageId;
     }
 

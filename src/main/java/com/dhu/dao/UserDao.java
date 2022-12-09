@@ -6,6 +6,8 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface UserDao {
+    //id查名字
+    String getUserNameById(@Param("userId") String userId);
     //查询返回对应用户信息
     User userSelectById(@Param("userId") String userId);
 

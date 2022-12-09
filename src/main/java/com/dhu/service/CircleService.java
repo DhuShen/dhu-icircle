@@ -9,6 +9,8 @@ import java.util.List;
 
 @Transactional
 public interface CircleService {
+    //根据CircleId查圈子名字
+    String getCircleNameById(int circleId);
     //根据circleId查圈子
     Circle selectById(int circleId);
 

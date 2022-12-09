@@ -1,25 +1,28 @@
 package com.dhu.domain;
 
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.util.Date;
 
 public class Post {
 
-  private long postId;
+  private int postId;
   private String postName;
   private String postContent;
-  private long postKey;
-  private long postGood;
+  private int postKey;
+  private int postGood;
+  @JsonFormat(pattern="yyyy-MM-dd",timezone = "GMT+8")
   private Date postTime;
   private String post_UserId;
-  private long post_CircleId;
+  private int post_CircleId;
 
 
-  public long getPostId() {
+  public int getPostId() {
     return postId;
   }
 
-  public void setPostId(long postId) {
+  public void setPostId(int postId) {
     this.postId = postId;
   }
 
@@ -42,20 +45,20 @@ public class Post {
   }
 
 
-  public long getPostKey() {
+  public int getPostKey() {
     return postKey;
   }
 
-  public void setPostKey(long postKey) {
+  public void setPostKey(int postKey) {
     this.postKey = postKey;
   }
 
 
-  public long getPostGood() {
+  public int getPostGood() {
     return postGood;
   }
 
-  public void setPostGood(long postGood) {
+  public void setPostGood(int postGood) {
     this.postGood = postGood;
   }
 
@@ -78,11 +81,11 @@ public class Post {
   }
 
 
-  public long getPost_CircleId() {
+  public int getPost_CircleId() {
     return post_CircleId;
   }
 
-  public void setPost_CircleId(long postCircleId) {
+  public void setPost_CircleId(int postCircleId) {
     this.post_CircleId = postCircleId;
   }
 

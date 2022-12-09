@@ -37,7 +37,7 @@
             <el-submenu index="4">
                 <template slot="title">
                     <el-avatar src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"></el-avatar>
-                    User
+                    {{username}}
                 </template>
                 <el-menu-item index="4-1"><i class="el-icon-user"></i> 个人信息</el-menu-item>
                 <el-menu-item index="4-2"><i class="el-icon-key"></i> 注销</el-menu-item>
@@ -59,12 +59,12 @@
                         </template>
                         <template>
                             <div v-for="post in posts" class="post-result">
-                                <h3>{{post.name}}</h3>
+                                <el-link :underline="false" :href="'post?postId='+post.postId"> <h2>{{post.postName}}</h2></el-link>
                                 <br>
-                                <span>发布时间：{{post.time}}</span>&nbsp;&nbsp;
+                                <span>发布时间：{{post.postTime}}</span>&nbsp;&nbsp;
                                 <span>用户：{{post.user}}</span>&nbsp;&nbsp;
                                 <span>圈子：{{post.circle}}</span>&nbsp;&nbsp;
-                                <el-badge :value="post.good" class="item">
+                                <el-badge :value="post.postGood" class="item">
                                     <i class="el-icon-thumb"></i>
                                 </el-badge>
                                 <el-divider></el-divider>
@@ -84,11 +84,11 @@
                         </template>
                         <template>
                             <div v-for="circle in circles" class="circle-result">
-                                <el-image class="circle-img" :src="circle.img"></el-image>
-                                <h3>{{circle.name}}</h3>
+                                <el-image class="circle-img" src="https://img.sj33.cn/uploads/allimg/201003/20100327032625479.jpg"></el-image>
+                                <el-link :underline="false" :href="'singleCircle?circleId='+circle.circleId"> <h1>{{circle.circleName}}</h1></el-link>
                                 <br>
-                                <p>{{circle.content}}</p>
-                                <span>创建时间：{{circle.time}}</span>&nbsp;&nbsp;
+                                <p>{{circle.circleContent}}</p>
+                                <span>创建时间：{{circle.circleTime}}</span>&nbsp;&nbsp;
                                 <span>圈主：{{circle.master}}</span>&nbsp;&nbsp;
                                 <el-badge :value="circle.hot" class="item">
                                     <i class="el-icon-thumb"></i>

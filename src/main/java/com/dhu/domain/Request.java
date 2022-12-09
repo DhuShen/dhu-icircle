@@ -1,33 +1,36 @@
 package com.dhu.domain;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.util.Date;
 
 public class Request {
 
-  private long requestId;
-  private long requestCircleId;
+  private int requestId;
+  private int requestCircleId;
   private String requestCircleName;
   private String requestCircleContent;
-  private long requestType;
+  private int requestType;
   private String requestUserId;
+  @JsonFormat(pattern="yyyy-MM-dd",timezone = "GMT+8")
   private Date requestTime;
   private String Request_UserId;
 
 
-  public long getRequestId() {
+  public int getRequestId() {
     return requestId;
   }
 
-  public void setRequestId(long requestId) {
+  public void setRequestId(int requestId) {
     this.requestId = requestId;
   }
 
 
-  public long getRequestCircleId() {
+  public int getRequestCircleId() {
     return requestCircleId;
   }
 
-  public void setRequestCircleId(long requestCircleId) {
+  public void setRequestCircleId(int requestCircleId) {
     this.requestCircleId = requestCircleId;
   }
 
@@ -50,11 +53,11 @@ public class Request {
   }
 
 
-  public long getRequestType() {
+  public int getRequestType() {
     return requestType;
   }
 
-  public void setRequestType(long requestType) {
+  public void setRequestType(int requestType) {
     this.requestType = requestType;
   }
 

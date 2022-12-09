@@ -37,7 +37,7 @@
             <el-submenu index="4">
                 <template slot="title">
                     <el-avatar src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"></el-avatar>
-                    User
+                    {{username}}
                 </template>
                 <el-menu-item index="4-1"><i class="el-icon-user"></i> 个人信息</el-menu-item>
                 <el-menu-item index="4-2"><i class="el-icon-key"></i> 注销</el-menu-item>
@@ -45,18 +45,18 @@
         </el-menu>
     </header>
     <main>
-        <el-button v-if="create" type="primary" id="create-btn" icon="el-icon-plus" circle></el-button>
+        <el-button v-if="create" type="primary" id="create-btn" icon="el-icon-plus" @click="pushDialog=true" circle></el-button>
         <div class="stream">
             <el-tabs v-model="activeName" @tab-click="handleClick">
                 <el-tab-pane label="我的关注" name="first">
-                    <div v-if="circles.length===0" class="mail-area">
+                    <div v-if="circles.length===0">
                         <el-empty description="还没有圈子"></el-empty>
                     </div>
                     <div v-else class="circle-area">
                         <div v-for="circle in circles" class="circle-result">
                             <el-image class="circle-img" :src="circle.img"></el-image>
                             <el-button type="danger" class="cirlce-btn" round>取消关注</el-button>
-                            <h3>{{circle.name}}</h3>
+                            <el-link :underline="false" href="singleCircle?circleId=1"> <h1>{{circle.name}}</h1></el-link>
                             <br>
                             <p>{{circle.content}}</p>
                             <span>创建时间：{{circle.time}}</span>&nbsp;&nbsp;
@@ -69,14 +69,14 @@
                     </div>
                 </el-tab-pane>
                 <el-tab-pane label="我的管理" name="second">
-                    <div v-if="circles.length===0" class="mail-area">
+                    <div v-if="circles.length===0">
                         <el-empty description="还没有圈子"></el-empty>
                     </div>
                     <div v-else class="circle-area">
                         <div v-for="circle in circles" class="circle-result">
                             <el-image class="circle-img" :src="circle.img"></el-image>
                             <el-button type="primary" class="cirlce-btn" round>修改圈子</el-button>
-                            <h3>{{circle.name}}</h3>
+                            <el-link :underline="false" href="singleCircle?circleId=1"> <h1>{{circle.name}}</h1></el-link>
                             <br>
                             <p>{{circle.content}}</p>
                             <span>创建时间：{{circle.time}}</span>&nbsp;&nbsp;
@@ -91,6 +91,20 @@
             </el-tabs>
         </div>
     </main>
+    <el-dialog width="500px" title="创建圈子" :visible.sync="pushDialog">
+        <el-form ref="createForm" :rules="rules" :model="pushRequest" id="form-area">
+            <el-form-item label="圈子名称" prop="circleName">
+                <el-input v-model="pushRequest.circleName"></el-input>
+            </el-form-item>
+            <el-form-item label="圈子介绍" prop="circleContent">
+                <el-input type="textarea"  maxlength="500" show-word-limit :autosize="{minRows: 8,maxRows: 16}" v-model="pushRequest.circleContent"></el-input>
+            </el-form-item>
+        </el-form>
+        <div slot="footer" class="dialog-footer">
+            <el-button size="small" @click="pushDialog = false" round>取 消</el-button>
+            <el-button size="small" type="primary" @click="createCircle" round>确 定</el-button>
+        </div>
+    </el-dialog>
 </div>
 </body>
 <script src="js/circles.js"></script>

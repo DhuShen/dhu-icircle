@@ -10,6 +10,9 @@ import java.util.List;
 
 @Repository
 public interface CircleDao {
+    //根据圈子id获取圈主名字
+    String getCircleNameById(@Param("circleId") int circleId);
+
     //根据圈子名字模糊查询圈子
     List<Circle> selectByName(@Param("circleName") String circleName);
 
@@ -45,6 +48,7 @@ public interface CircleDao {
 
     //查询用户是否为圈主
     String IsCircleMaster(@Param("circle_UserId") String circle_UserId, @Param("circleId") int circleId);
+
     //根据circleId查询圈子里所有成员
     List<User> selectUserInCircle(@Param("circleId") int circleId);
 

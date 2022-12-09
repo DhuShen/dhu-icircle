@@ -2,13 +2,13 @@ new Vue({
     el: '#app',
     data() {
         return {
+            username: '',
             loading: false,
             posts: [],
             circles: [],
             searchForm: {
                 type: 'circle',
-                content: '',
-
+                content: ''
             },
             activeName: 'first'
         };
@@ -23,7 +23,7 @@ new Vue({
                     location.href = "mail"
                     break
                 case '4-1':
-                    location.href='info'
+                    location.href = 'info'
                     break
                 case '4-2':
                     axios.get('api/user/out').then(resp => {
@@ -37,145 +37,87 @@ new Vue({
 
         },
         handleClick(tab, event) {
-            console.log(tab.index)
             switch (tab.index) {
                 case '0':
+                    this.circles=[]
                     this.loading = true
-                    setTimeout(() => (this.loading = false), 2000)
-                    this.circles = []
-                    this.posts = [
-                        {
-                            name: '世界杯夺冠之日',
-                            good: 200,
-                            time: '2022-12-20',
-                            user: 'shen din',
-                            circle: '杂谈圈子'
-                        },
-                        {
-                            name: '世界杯夺冠之日',
-                            good: 200,
-                            time: '2022-12-20',
-                            user: 'shen din',
-                            circle: '杂谈圈子'
-                        },
-                        {
-                            name: '世界杯夺冠之日',
-                            good: 200,
-                            time: '2022-12-20',
-                            user: 'shen din',
-                            circle: '杂谈圈子'
-                        },
-                        {
-                            name: '世界杯夺冠之日',
-                            good: 200,
-                            time: '2022-12-20',
-                            user: 'shen din',
-                            circle: '杂谈圈子'
-                        },
-                        {
-                            name: '世界杯夺冠之日',
-                            good: 200,
-                            time: '2022-12-20',
-                            user: 'shen din',
-                            circle: '杂谈圈子'
-                        },
-                        {
-                            name: '世界杯夺冠之日',
-                            good: 200,
-                            time: '2022-12-20',
-                            user: 'shen din',
-                            circle: '杂谈圈子'
-                        },
-                    ]
+                    axios.get('api/post/hotposts').then(resp => {
+                        if (resp.data.code === 20041) {
+                            this.posts = resp.data.data
+                            for (let i=0;i<this.posts.length;i++) {
+                                axios.get('api/user/name?userId=' + this.posts[i].post_UserId).then(resp=>{
+                                    this.posts[i].user=resp.data.data
+                                    axios.get('api/circle/name?circleId=' + this.posts[i].post_circleId).then(resp=>{
+                                        this.posts[i].circle=resp.data.data
+                                        setTimeout(()=>{this.loading = false}, 1000)
+                                    })
+                                })
+                            }
+                        } else if (resp.data.code === 20040) {
+                            this.$message.error("获取帖子失败");
+                        } else if (resp.data.code === 10000) {
+                            this.$message.error('后端异常，报错：' + resp.data.message);
+                        }
+                    }).catch(error => {
+                        this.$message.error('api/post/hotposts接口请求错误');
+                    })
                     break
                 case '1':
+                    this.posts=[]
                     this.loading = true
-                    setTimeout(() => (this.loading = false), 2000)
-                    this.posts = []
-                    this.circles = [
-                        {
-                            img:'https://wonderfulengineering.com/wp-content/uploads/2014/10/image-wallpaper-15.jpg',
-                            name: '杂谈圈子',
-                            master: 'shen din',
-                            content: '欢迎来到我的杂谈圈子，请大家畅所欲言，各抒己见',
-                            time: '2022-12-10',
-                            hot: 200
-                        },
-                        {
-                            img:'https://wonderfulengineering.com/wp-content/uploads/2014/10/image-wallpaper-15.jpg',
-                            name: '杂谈圈子',
-                            master: 'shen din',
-                            content: '欢迎来到我的杂谈圈子，请大家畅所欲言，各抒己见',
-                            time: '2022-12-10',
-                            hot: 200
-                        },
-                        {
-                            img:'https://wonderfulengineering.com/wp-content/uploads/2014/10/image-wallpaper-15.jpg',
-                            name: '杂谈圈子',
-                            master: 'shen din',
-                            content: '欢迎来到我的杂谈圈子，请大家畅所欲言，各抒己见',
-                            time: '2022-12-10',
-                            hot: 200
-                        },
-                        {
-                            img:'https://wonderfulengineering.com/wp-content/uploads/2014/10/image-wallpaper-15.jpg',
-                            name: '杂谈圈子',
-                            master: 'shen din',
-                            content: '欢迎来到我的杂谈圈子，请大家畅所欲言，各抒己见',
-                            time: '2022-12-10',
-                            hot: 200
+                    axios.get('api/circle/hotcircles').then(resp => {
+                        if (resp.data.code === 20041) {
+                            this.circles = resp.data.data
+                            for (let i=0;i<this.circles.length;i++) {
+                                axios.get('api/user/name?userId=' + this.circles[i].circle_UserId).then(resp=>{
+                                    this.circles[i].master=resp.data.data
+                                    setTimeout(()=>{this.loading = false}, 1000)
+                                })
+                            }
+                        } else if (resp.data.code === 20040) {
+                            this.$message.error("获取圈子失败");
+                        } else if (resp.data.code === 10000) {
+                            this.$message.error('后端异常，报错：' + resp.data.message);
                         }
-                    ]
+                    }).catch(error => {
+                        this.$message.error('api/circle/hotcircles接口请求错误');
+                    })
                     break
             }
         }
     },
     mounted() {
+        axios.get('api/user/myName').then(resp => {
+            if (resp.data.code === 20041) {
+                this.username = resp.data.data
+            } else if (resp.data.code === 20040) {
+                this.$message.error('session不存在，请重新登录');
+            } else if (resp.data.code === 10000) {
+                this.$message.error('后端异常，报错：' + resp.data.message);
+            }
+        }).catch(error => {
+            this.$message.error('api/user/myName接口请求错误');
+        })
         this.loading = true
-        setTimeout(() => (this.loading = false), 2000)
-        this.posts = [
-            {
-                name: '世界杯夺冠之日',
-                good: 200,
-                time: '2022-12-20',
-                user: 'shen din',
-                circle: '杂谈圈子'
-            },
-            {
-                name: '世界杯夺冠之日',
-                good: 200,
-                time: '2022-12-20',
-                user: 'shen din',
-                circle: '杂谈圈子'
-            },
-            {
-                name: '世界杯夺冠之日',
-                good: 200,
-                time: '2022-12-20',
-                user: 'shen din',
-                circle: '杂谈圈子'
-            },
-            {
-                name: '世界杯夺冠之日',
-                good: 200,
-                time: '2022-12-20',
-                user: 'shen din',
-                circle: '杂谈圈子'
-            },
-            {
-                name: '世界杯夺冠之日',
-                good: 200,
-                time: '2022-12-20',
-                user: 'shen din',
-                circle: '杂谈圈子'
-            },
-            {
-                name: '世界杯夺冠之日',
-                good: 200,
-                time: '2022-12-20',
-                user: 'shen din',
-                circle: '杂谈圈子'
-            },
-        ]
+        axios.get('api/post/hotposts').then(resp => {
+            if (resp.data.code === 20041) {
+                this.posts = resp.data.data
+                for (let i=0;i<this.posts.length;i++) {
+                    axios.get('api/user/name?userId=' + this.posts[i].post_UserId).then(resp=>{
+                        this.posts[i].user=resp.data.data
+                        axios.get('api/circle/name?circleId=' + this.posts[i].post_circleId).then(resp=>{
+                            this.posts[i].circle=resp.data.data
+                            setTimeout(()=>{this.loading = false}, 1000)
+                        })
+                    })
+                }
+            } else if (resp.data.code === 20040) {
+                this.$message.error("获取帖子失败");
+            } else if (resp.data.code === 10000) {
+                this.$message.error('后端异常，报错：' + resp.data.message);
+            }
+        }).catch(error => {
+            this.$message.error('api/post/hotposts接口请求错误');
+        })
     }
 })

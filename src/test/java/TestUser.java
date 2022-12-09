@@ -37,7 +37,5 @@ public class TestUser {
     public void test_closeUser() {
 
     }
-
-
 }
 

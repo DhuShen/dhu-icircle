@@ -1,16 +1,19 @@
 package com.dhu.domain;
 
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.util.Date;
 
 public class Report {
 
-  private long reportId;
+  private int reportId;
   private String reportContent;
-  private long reportType;
+  private int reportType;
   private String reportUserIdGet;
-  private long reportPostId;
-  private long reportDiscussId;
+  private int reportPostId;
+  private int reportDiscussId;
+  @JsonFormat(pattern="yyyy-MM-dd",timezone = "GMT+8")
   private Date reportTime;
   private String reportUserIdSet;
 
@@ -18,7 +21,7 @@ public class Report {
     return reportId;
   }
 
-  public void setReportId(long reportId) {
+  public void setReportId(int reportId) {
     this.reportId = reportId;
   }
 
@@ -32,11 +35,11 @@ public class Report {
   }
 
 
-  public long getReportType() {
+  public int getReportType() {
     return reportType;
   }
 
-  public void setReportType(long reportType) {
+  public void setReportType(int reportType) {
     this.reportType = reportType;
   }
 
@@ -50,20 +53,20 @@ public class Report {
   }
 
 
-  public long getReportPostId() {
+  public int getReportPostId() {
     return reportPostId;
   }
 
-  public void setReportPostId(long reportPostId) {
+  public void setReportPostId(int reportPostId) {
     this.reportPostId = reportPostId;
   }
 
 
-  public long getReportDiscussId() {
+  public int getReportDiscussId() {
     return reportDiscussId;
   }
 
-  public void setReportDiscussId(long reportDiscussId) {
+  public void setReportDiscussId(int reportDiscussId) {
     this.reportDiscussId = reportDiscussId;
   }
 

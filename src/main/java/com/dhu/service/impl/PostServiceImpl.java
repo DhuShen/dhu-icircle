@@ -18,6 +18,11 @@ public class PostServiceImpl implements PostService {
     PostDao postDao;
     CircleDao circleDao;
 
+    @Override
+    public int getPostCount(int circleId) {
+        return postDao.getPostCount(circleId);
+    }
+
     //根据id查询帖子
     @Override
     public Post selectById(int postId) {
@@ -42,18 +47,24 @@ public class PostServiceImpl implements PostService {
         return postDao.selectByCircle(circleId);
     }
 
+    //    d)	浏览圈子、帖子、评论【在Circle,Post,Discuss中】-- 获取圈子中的所有精华帖子
+    @Override
+    public List<Post> getCircleKeyPosts(int circleId) {
+        return postDao.selectKeyByCircle(circleId);
+    }
+
     //    g)	点赞帖子、评论【在post，discuss中】
     @Override
     public boolean likePost(int postId) {
-        return postDao.likePost(postId) > 1;
+        return postDao.likePost(postId) > 0;
     }
 
     //    m)	在圈子中发布帖子【在post中】s
     @Override
     public boolean insertPost(String postName, String postContent, String userId, int circleId) {
         //先处理内容中的换行和空格
-        postContent=postContent.replace("&nbsp"," ");
-        postContent=postContent.replace("<br>","\n");
+        postContent = postContent.replace("&nbsp", " ");
+        postContent = postContent.replace("<br>", "\n");
         Post post = new Post();
         post.setPostName(postName);
         post.setPostContent(postContent);
@@ -62,7 +73,7 @@ public class PostServiceImpl implements PostService {
         post.setPostTime(MyTime.getNowTime());
         post.setPost_UserId(userId);
         post.setPost_CircleId(circleId);
-        return postDao.insertPost(post) > 1;
+        return postDao.insertPost(post) > 0;
     }
 
     //   i5)查看自己的帖子【在post中】

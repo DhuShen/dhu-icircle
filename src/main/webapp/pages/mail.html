@@ -37,7 +37,7 @@
             <el-submenu index="4">
                 <template slot="title">
                     <el-avatar src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"></el-avatar>
-                    User
+                    {{username}}
                 </template>
                 <el-menu-item index="4-1"><i class="el-icon-user"></i> 个人信息</el-menu-item>
                 <el-menu-item index="4-2"><i class="el-icon-key"></i> 注销</el-menu-item>
@@ -53,9 +53,9 @@
             <div v-else class="mail-area">
                 <div v-for="mail in mails">
                     <p>
-                        {{content}}
+                        {{mail.messageContent}}
                     </p>
-                    <span>发送人：{{set}}</span>
+                    <span>发送人：{{mail.messageUserIdGet}}</span>&nbsp;&nbsp;<span>发送时间：{{mail.messageSetTime}}</span>
                 </div>
             </div>
         </div>

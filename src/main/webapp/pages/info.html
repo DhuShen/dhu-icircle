@@ -15,56 +15,84 @@
         <el-page-header class="info-head" @back="goBack" content="个人主页"></el-page-header>
     </header>
     <main>
-        <div class="stream">
-            <el-descriptions class="margin-top" title="个人信息" :column="3" :size="size" border>
-                <template slot="extra">
-                    <el-button type="primary" size="small" round>修改</el-button>
-                </template>
+        <el-card class="stream" v-loading="loading">
+            <div slot="header" class="clearfix">
+                <el-avatar style="float: left" v-if="user.userImg==null" src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"></el-avatar>
+                <span id="card-title">个人信息</span>
+                <el-button id="update-btn" type="primary" size="small" @click="dialogFormVisible = true" round>修改</el-button>
+            </div>
+            <el-descriptions class="margin-top" :column="3" :size="size" border>
                 <el-descriptions-item>
                     <template slot="label">
                         <i class="el-icon-user"></i>
                         用户名
                     </template>
-                    {{user.name}}
+                    {{user.userName}}
                 </el-descriptions-item>
                 <el-descriptions-item>
                     <template slot="label">
                         <i class="el-icon-mobile-phone"></i>
                         ICircle ID
                     </template>
-                    {{user.id}}
+                    {{user.userId}}
                 </el-descriptions-item>
                 <el-descriptions-item>
                     <template slot="label">
                         <i class="el-icon-paperclip"></i>
                         注册时间
                     </template>
-                    {{user.time}}
+                    {{user.userTime}}
                 </el-descriptions-item>
                 <el-descriptions-item>
                     <template slot="label">
                         <i class="el-icon-location-outline"></i>
                        性别
                     </template>
-                    {{user.sex}}
+                    {{user.userSex==null?'未知':user.userSex}}
                 </el-descriptions-item>
                 <el-descriptions-item>
                     <template slot="label">
                         <i class="el-icon-office-building"></i>
                         专业
                     </template>
-                    {{user.major}}
+                    {{user.userMajor==null?'未知':user.userMajor}}
                 </el-descriptions-item>
-                <el-descriptions-item>
+            </el-descriptions>
+            <el-descriptions direction="vertical" :column="1" border>
+                <el-descriptions-item id="intro-area">
                     <template slot="label">
                         <i class="el-icon-tickets"></i>
                         简介
                     </template>
-                    <el-tag size="small">{{user.introduction}}</el-tag>
+                    <el-empty v-if="user.userIntroduction==null" description="还没有简介"></el-empty>
+                    <span v-else>{{user.userIntroduction}}</span>
                 </el-descriptions-item>
             </el-descriptions>
-        </div>
+        </el-card>
     </main>
+    <el-dialog width="500px" title="信息修改" :visible.sync="dialogFormVisible">
+        <el-form :model="form" id="form-area">
+            <el-form-item label="用户名" :rules="rules"  prop="userName">
+                <el-input v-model="form.userName"></el-input>
+            </el-form-item>
+            <el-form-item label="性别"  prop="userSex">
+                <el-radio-group v-model="form.userSex">
+                    <el-radio label="男" ></el-radio>
+                    <el-radio label="女"></el-radio>
+                </el-radio-group>
+            </el-form-item>
+            <el-form-item label="专业" prop="userMajor">
+                <el-input v-model="form.userMajor"></el-input>
+            </el-form-item>
+            <el-form-item label="简介" prop="userIntroduction">
+                <el-input  type="textarea" v-model="form.userIntroduction" maxlength="500" show-word-limit :autosize="{minRows: 2}"></el-input>
+            </el-form-item>
+        </el-form>
+        <div slot="footer" class="dialog-footer">
+            <el-button size="small" @click="dialogFormVisible = false" round>取 消</el-button>
+            <el-button size="small" type="primary" @click="updateInfo" round>确 定</el-button>
+        </div>
+    </el-dialog>
 </div>
 <script src="js/info.js"></script>
 </body>

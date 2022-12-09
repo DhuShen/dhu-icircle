@@ -1,24 +1,28 @@
 package com.dhu.domain;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.security.Timestamp;
 import java.util.Date;
 
 public class Circle {
 
-    private long circleId;
+    private int circleId;
     private String circleName;
     private String circleImg;
     private String circleContent;
-    private long circleLife;
+    private int circleLife;
+
+    @JsonFormat(pattern="yyyy-MM-dd",timezone = "GMT+8")
     private Date circleTime;
     private String circle_UserId;
 
 
-    public long getCircleId() {
+    public int getCircleId() {
         return circleId;
     }
 
-    public void setCircleId(long circleId) {
+    public void setCircleId(int circleId) {
         this.circleId = circleId;
     }
 
@@ -50,11 +54,11 @@ public class Circle {
     }
 
 
-    public long getCircleLife() {
+    public int getCircleLife() {
         return circleLife;
     }
 
-    public void setCircleLife(long circleLife) {
+    public void setCircleLife(int circleLife) {
         this.circleLife = circleLife;
     }
 

@@ -1,0 +1,34 @@
+body{
+    background: #eeeeee;
+}
+
+main{
+    overflow: hidden;
+    margin: 20px auto;
+    width: 920px;
+}
+
+.stream {
+    padding-top: 2%;
+    padding-left: 4%;
+    padding-right: 4%;
+    background: white;
+    border-radius: 2px;
+    box-shadow: 0 1px 3px hsl(0deg 0% 7% / 10%);
+    width: 580px;
+    min-height: 600px;
+}
+
+.circle-card{
+    padding-top: 1%;
+    padding-left: 1%;
+    padding-right: 1%;
+    padding-bottom: 1%;
+    background: white;
+    border-radius: 2px;
+    position: fixed;
+    margin-left: 660px;
+    box-shadow: 0 1px 3px hsl(0deg 0% 7% / 10%);
+    width: 240px;
+    min-height: 100px;
+}

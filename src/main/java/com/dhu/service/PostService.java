@@ -8,6 +8,9 @@ import java.util.List;
 
 @Transactional
 public interface PostService {
+    //查圈子帖子数量
+    int getPostCount(int circleId);
+
     //根据id查询帖子
     Post selectById(int postId);
 
@@ -16,6 +19,8 @@ public interface PostService {
 
     //    d)	浏览圈子、帖子、评论【在Circle,Post,Discuss中】
     List<Post> getHotPosts();//查找热门帖子排序
+
+    List<Post> getCircleKeyPosts(int circleId);//查找精华帖
 
     List<Post> getCirclePosts(int circleId);//查找帖子（圈子id）
 

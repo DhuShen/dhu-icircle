@@ -2,6 +2,7 @@ new Vue({
     el: '#app',
     data() {
         return {
+            btnStatus: false,
             loginForm: {
                 id: '',
                 password: ''
@@ -21,6 +22,7 @@ new Vue({
         onSubmit() {
             this.$refs['form'].validate((valid) => {
                 if (valid) {
+                    this.btnStatus=true
                     let params = new URLSearchParams()
                     let url = this.isAdmin ? 'api/admin/login' : 'api/user/login'
                     params.append('id', this.loginForm.id)
@@ -36,6 +38,8 @@ new Vue({
                         }
                     }).catch(error => {
                         this.$message.error(url + '接口请求错误');
+                    }).finally(()=>{
+                        this.btnStatus=false
                     })
                 } else {
                     return false;

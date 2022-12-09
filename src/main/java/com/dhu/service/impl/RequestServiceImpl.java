@@ -29,7 +29,7 @@ public class RequestServiceImpl implements RequestService {
         request.setRequestType(0);//0标记建立圈子申请
         request.setRequestTime(MyTime.getNowTime());
         request.setRequest_UserId(setId);
-        return requestDao.insertRequest(request) > 1;
+        return requestDao.insertRequest(request) > 0;
     }
 
     //    p)	任命新圈主（需要向管理员申请）【在request、circle中】
@@ -42,7 +42,7 @@ public class RequestServiceImpl implements RequestService {
             request.setRequestType(1);//1标记任命新圈主申请
             request.setRequestTime(MyTime.getNowTime());
             request.setRequest_UserId(setId);
-            return requestDao.insertRequest(request) > 1;
+            return requestDao.insertRequest(request) > 0;
         } else
             return false;//setId不是是原圈主
     }
@@ -60,7 +60,7 @@ public class RequestServiceImpl implements RequestService {
         request.setRequestType(2);//2标记修改圈子相关信息申请
         request.setRequestTime(MyTime.getNowTime());
         request.setRequest_UserId(setId);
-        return requestDao.insertRequest(request) > 1;
+        return requestDao.insertRequest(request) > 0;
     }
 
     //    c)	查看消息（举报，请求（建立圈子，修改圈子信息，任命新圈主））【在report，request中】

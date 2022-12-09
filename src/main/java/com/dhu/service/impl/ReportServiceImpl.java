@@ -24,7 +24,7 @@ public class ReportServiceImpl implements ReportService {
         report.setReportUserIdGet(getId);//被举报人
         report.setReportUserIdSet(setId);//举报人
         report.setReportTime(MyTime.getNowTime());
-        return reportDao.InsertReport(report) != 0;
+        return reportDao.InsertReport(report) > 0;
     }
 
     //    e)	举报用户（帖子下、评论下）【在Report中】
@@ -36,7 +36,7 @@ public class ReportServiceImpl implements ReportService {
         report.setReportPostId(postId);//被举报帖子id
         report.setReportUserIdSet(setId);//举报人
         report.setReportTime(MyTime.getNowTime());
-        return reportDao.InsertReport(report) != 0;
+        return reportDao.InsertReport(report) > 0;
     }
 
     //    e)	举报用户（帖子下、评论下）【在Report中】
@@ -48,7 +48,7 @@ public class ReportServiceImpl implements ReportService {
         report.setReportDiscussId(discussId);//被举报评论id
         report.setReportUserIdSet(setId);//举报人
         report.setReportTime(MyTime.getNowTime());
-        return reportDao.InsertReport(report) != 0;
+        return reportDao.InsertReport(report) > 0;
     }
 
     //    c)	查看消息（举报，请求（建立圈子，修改圈子信息，任命新圈主））【在report，request中】

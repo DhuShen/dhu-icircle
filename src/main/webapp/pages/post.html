@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>帖子</title>
+    <script src="lib/axios.js"></script>
+    <script src="lib/vue.js"></script>
+    <script src="lib/element-ui/lib/index.js"></script>
+    <link rel="stylesheet" href="lib/element-ui/lib/theme-chalk/index.css">
+    <link rel="stylesheet" href="css/post.css">
+</head>
+<body>
+<div id="app">
+    <header>
+        <el-page-header class="info-head" @back="goBack" content="帖子详情"></el-page-header>
+    </header>
+    <main>
+        <div class="circle-card">
+            <h3>评论内容</h3>
+            <div v-if="replay!==''">
+                <el-tag closable @close="replay=''">
+                    {{replay}}
+                </el-tag>
+            </div>
+            <el-form ref="discussForm" :model="discussForm" :rules="rules">
+                <el-form-item>
+                    <el-input :autosize="{minRows: 4,maxRows: 8}"  maxlength="80" show-word-limit type="textarea" placeholder="请输入内容" v-model="discussForm.content" prop="content" clearable></el-input>
+                </el-form-item>
+                <el-form-item>
+                    <el-button type="primary" size="small" round>评论</el-button>
+                </el-form-item>
+            </el-form>
+        </div>
+        <div class="stream">
+            <h1>{{post.postName}}</h1><br>
+            <el-avatar src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"></el-avatar>
+            {{post.post_UserId}}<span style="float: right"> 发布时间：{{post.postTime}}</span>
+            <el-divider></el-divider>
+            <p>
+                {{post.postContent}}
+            </p>
+            <el-divider></el-divider>
+            <h2>评论区</h2>
+            <div v-if="discusses.length===0" class="discuss-area">
+                <el-empty description="还没有评论"></el-empty>
+            </div>
+            <div v-else class="discuss-area">
+                <div v-for="discuss in discusses">
+                    <el-avatar style="float: left"
+                               src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"></el-avatar>
+                    {{discuss.discuss_UserId}}
+                    <span style="float: right"></span>
+                    <br>
+                    <p>
+                        <span v-if="discuss.discussReplayed!==''" style="color: #409EFF">{{discuss.discussReplayed}}</span>
+                        &nbsp;
+                        {{discuss.discussContent}}
+                    </p>
+                    <el-divider></el-divider>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+</body>
+<script src="js/post.js"></script>
+</html>

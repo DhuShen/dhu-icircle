@@ -2,9 +2,78 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>圈子浏览</title>
+    <script src="lib/axios.js"></script>
+    <script src="lib/vue.js"></script>
+    <script src="lib/element-ui/lib/index.js"></script>
+    <link rel="stylesheet" href="lib/element-ui/lib/theme-chalk/index.css">
+    <link rel="stylesheet" href="css/single-circle.css">
 </head>
 <body>
-
+<div id="app">
+    <header>
+        <el-page-header class="info-head" @back="goBack" content="圈子详情"></el-page-header>
+    </header>
+    <main>
+        <div class="circle-card">
+            <el-button size="small" v-if="isAttention" @click="pushDialog = true" type="primary" round>发帖</el-button>
+            <el-button size="small" v-if="!isAttention" type="primary" round>关注</el-button>
+            <el-button size="small" v-if="isAttention&&!isCircleAdmin" type="danger" round>取消关注</el-button>
+            <h3>{{circle.circleName}}</h3>
+            <el-tag>圈主</el-tag>
+            <br>
+            <span class="circle-content">{{circle.circle_UserId}}</span>
+            <br>
+            <br>
+            <el-tag>圈子简介</el-tag>
+            <br>
+            <span class="circle-content">{{circle.circleContent}}</span>
+            <br>
+            <br>
+            <el-tag>圈友数</el-tag>
+            <span class="circle-number">&nbsp;{{1}}</span>
+            <br>
+            <br>
+            <el-tag>点赞数</el-tag>
+            <span class="circle-number">&nbsp;{{1}}</span>
+            <br>
+            <br>
+            <el-tag>帖子数</el-tag>
+            <span class="circle-number">&nbsp;{{2}}</span>
+            <br>
+            <br>
+            <el-tag>精华帖数</el-tag>
+            <span class="circle-number">&nbsp;{{3}}</span>
+        </div>
+        <div class="stream">
+            <el-tabs v-model="activeName" @tab-click="handleClick">
+                <el-tab-pane label="看帖" name="first">
+                </el-tab-pane>
+                <el-tab-pane label="精华帖" name="second">
+                </el-tab-pane>
+                <el-tab-pane label="圈友" name="third">
+                    <el-avatar style="float: left" src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"></el-avatar>
+                    &nbsp&nbsp{{'yonghu'}}
+                    <el-divider></el-divider>
+                </el-tab-pane>
+            </el-tabs>
+        </div>
+    </main>
+    <el-dialog width="500px" title="发帖" :visible.sync="pushDialog">
+        <el-form ref="createForm" :rules="rules" :model="pushRequest" id="form-area">
+            <el-form-item label="帖子名称" prop="circleName">
+                <el-input v-model="pushRequest.circleName"></el-input>
+            </el-form-item>
+            <el-form-item label="帖子内容" prop="circleContent">
+                <el-input type="textarea"  maxlength="500" show-word-limit :autosize="{minRows: 8}" v-model="pushRequest.circleContent"></el-input>
+            </el-form-item>
+        </el-form>
+        <div slot="footer" class="dialog-footer">
+            <el-button size="small" @click="pushDialog = false" round>取 消</el-button>
+            <el-button size="small" type="primary" @click="pushDialog = false" round>确 定</el-button>
+        </div>
+    </el-dialog>
+</div>
+<script src="js/single-circle.js"></script>
 </body>
 </html>
