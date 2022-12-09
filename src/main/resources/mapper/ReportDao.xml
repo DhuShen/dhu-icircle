@@ -6,9 +6,16 @@
     <insert id="InsertReport">
         insert into report(reportContent, reportType, reportUserIdGet, reportPostId, reportDiscussId, reportTime,
                            reportUserIdSet)
-        values (#{reportcontent}, #{reporttype}, #{reportuseridget}, #{reportpostid}, #{reportdiscussid}, #{reporttime},
-                #{reportuseridset})
+        values (#{reportContent}, #{reportType}, #{reportUserIdGet}, #{reportPostId}, #{reportDiscussId}, #{reportTime},
+                #{reportUserIdSet})
     </insert>
+
+    <update id="setReportChecked">
+        update report
+        set reportLife=1
+        where reportId = #{reportId}
+    </update>
+
     <select id="selectAllOrder" resultType="Report">
         select *
         from report

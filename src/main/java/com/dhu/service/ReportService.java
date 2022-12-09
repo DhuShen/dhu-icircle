@@ -16,4 +16,7 @@ public interface ReportService {
 
     //    c)	查看消息（举报，请求（建立圈子，修改圈子信息，任命新圈主））【在report，request中】
     List<Report> getReport();
+
+    //设置已审核举报
+    boolean checkReport(int reportId);
 }

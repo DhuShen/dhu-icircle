@@ -56,4 +56,10 @@ public class ReportServiceImpl implements ReportService {
     public List<Report> getReport() {
         return reportDao.selectAllOrder();
     }
+
+    //设置已审核举报
+    @Override
+    public boolean checkReport(int reportId) {
+        return reportDao.setReportChecked(reportId);
+    }
 }

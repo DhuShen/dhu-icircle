@@ -12,4 +12,6 @@ public interface ReportDao {
     int InsertReport(Report report);
     //以被举报人id排序查询所有举报信息
     List<Report> selectAllOrder();
+    //设置审核举报
+    boolean setReportChecked(@Param("reportId") int reportId);
 }

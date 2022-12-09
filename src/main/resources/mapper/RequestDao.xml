@@ -10,9 +10,21 @@
                 #{requestTime}, #{request_UserId})
     </insert>
 
+    <update id="setRequestChecked">
+        update request
+        set requestLife=1
+        where requestId = #{requestId}
+    </update>
+
     <select id="selectAllOrder" resultType="Request">
         select *
         from request
         order by requestTime;
+    </select>
+
+    <select id="getRequestInfo" resultType="com.dhu.domain.Request">
+        select *
+        from request
+        where requestId = #{requestId}
     </select>
 </mapper>

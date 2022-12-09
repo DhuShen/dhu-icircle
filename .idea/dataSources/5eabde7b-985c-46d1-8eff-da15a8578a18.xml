@@ -1100,7 +1100,7 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
     <column id="315" parent="301" name="circleId">
-      <AutoIncrement>1</AutoIncrement>
+      <AutoIncrement>2</AutoIncrement>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
@@ -1112,7 +1112,7 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
     </column>
     <column id="317" parent="301" name="circleImg">
       <Comment>圈子头像</Comment>
-      <DataType>mediumblob|0s</DataType>
+      <DataType>varchar(20)|0s</DataType>
       <Position>3</Position>
     </column>
     <column id="318" parent="301" name="circleContent">
@@ -1159,7 +1159,7 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
     <column id="326" parent="302" name="connectId">
-      <AutoIncrement>1</AutoIncrement>
+      <AutoIncrement>3</AutoIncrement>
       <Comment>user和circle的连接表编号</Comment>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
@@ -1202,7 +1202,7 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
     <column id="335" parent="303" name="discussId">
-      <AutoIncrement>1</AutoIncrement>
+      <AutoIncrement>3</AutoIncrement>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
@@ -1264,7 +1264,7 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
     <column id="348" parent="304" name="messageId">
-      <AutoIncrement>1</AutoIncrement>
+      <AutoIncrement>2</AutoIncrement>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
@@ -1276,7 +1276,6 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
     <column id="350" parent="304" name="messageUserIdSet">
       <Comment>发件人id</Comment>
       <DataType>varchar(20)|0s</DataType>
-      <NotNull>1</NotNull>
       <Position>3</Position>
     </column>
     <column id="351" parent="304" name="messageUserIdGet">
@@ -1318,7 +1317,7 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
     <column id="359" parent="305" name="postId">
-      <AutoIncrement>1</AutoIncrement>
+      <AutoIncrement>2</AutoIncrement>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
@@ -1390,7 +1389,7 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
     <column id="373" parent="306" name="reportId">
-      <AutoIncrement>1</AutoIncrement>
+      <AutoIncrement>2</AutoIncrement>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
@@ -1432,184 +1431,194 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
       <DataType>varchar(9)|0s</DataType>
       <Position>8</Position>
     </column>
-    <foreign-key id="381" parent="306" name="report_UserId">
+    <column id="381" parent="306" name="reportLife">
+      <Comment>是否被审核</Comment>
+      <DataType>int|0s</DataType>
+      <Position>9</Position>
+    </column>
+    <foreign-key id="382" parent="306" name="report_UserId">
       <ColNames>reportUserIdSet</ColNames>
       <RefColNames>userId</RefColNames>
       <RefTableName>user</RefTableName>
     </foreign-key>
-    <index id="382" parent="306" name="PRIMARY">
+    <index id="383" parent="306" name="PRIMARY">
       <ColNames>reportId</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <index id="383" parent="306" name="report_UserId">
+    <index id="384" parent="306" name="report_UserId">
       <ColNames>reportUserIdSet</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="384" parent="306" name="PRIMARY">
+    <key id="385" parent="306" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <column id="385" parent="307" name="requestId">
-      <AutoIncrement>1</AutoIncrement>
+    <column id="386" parent="307" name="requestId">
+      <AutoIncrement>2</AutoIncrement>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
-    <column id="386" parent="307" name="requestCircleId">
+    <column id="387" parent="307" name="requestCircleId">
       <Comment>建立圈子时为null</Comment>
       <DataType>int|0s</DataType>
       <Position>2</Position>
     </column>
-    <column id="387" parent="307" name="requestCircleName">
+    <column id="388" parent="307" name="requestCircleName">
       <Comment>新圈子名字</Comment>
       <DataType>varchar(20)|0s</DataType>
       <Position>3</Position>
     </column>
-    <column id="388" parent="307" name="requestCircleContent">
+    <column id="389" parent="307" name="requestCircleContent">
       <Comment>新圈子简介</Comment>
       <DataType>varchar(1000)|0s</DataType>
       <Position>4</Position>
     </column>
-    <column id="389" parent="307" name="requestType">
+    <column id="390" parent="307" name="requestType">
       <Comment>0是建立圈子审核，1是修改圈子信息审核，3是任命新圈主</Comment>
       <DataType>int|0s</DataType>
       <Position>5</Position>
     </column>
-    <column id="390" parent="307" name="requestUserId">
+    <column id="391" parent="307" name="requestUserId">
       <Comment>新圈主id</Comment>
       <DataType>varchar(20)|0s</DataType>
       <Position>6</Position>
     </column>
-    <column id="391" parent="307" name="requestTime">
+    <column id="392" parent="307" name="requestTime">
       <DataType>date|0s</DataType>
       <NotNull>1</NotNull>
       <Position>7</Position>
     </column>
-    <column id="392" parent="307" name="request_UserId">
+    <column id="393" parent="307" name="request_UserId">
       <Comment>发起人id</Comment>
       <DataType>varchar(20)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>8</Position>
     </column>
-    <foreign-key id="393" parent="307" name="request_UserId">
+    <column id="394" parent="307" name="requestLife">
+      <Comment>是否被审核</Comment>
+      <DataType>int|0s</DataType>
+      <Position>9</Position>
+    </column>
+    <foreign-key id="395" parent="307" name="request_UserId">
       <ColNames>request_UserId</ColNames>
       <RefColNames>userId</RefColNames>
       <RefTableName>user</RefTableName>
     </foreign-key>
-    <index id="394" parent="307" name="PRIMARY">
+    <index id="396" parent="307" name="PRIMARY">
       <ColNames>requestId</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <index id="395" parent="307" name="request_UserId">
+    <index id="397" parent="307" name="request_UserId">
       <ColNames>request_UserId</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="396" parent="307" name="PRIMARY">
+    <key id="398" parent="307" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <column id="397" parent="308" name="userId">
+    <column id="399" parent="308" name="userId">
       <DataType>varchar(9)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
-    <column id="398" parent="308" name="userPassword">
+    <column id="400" parent="308" name="userPassword">
       <DataType>varchar(20)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
-    <column id="399" parent="308" name="userImg">
+    <column id="401" parent="308" name="userImg">
       <Comment>用户头像，为null使用无头像图像</Comment>
-      <DataType>mediumblob|0s</DataType>
+      <DataType>varchar(20)|0s</DataType>
       <Position>3</Position>
     </column>
-    <column id="400" parent="308" name="userName">
+    <column id="402" parent="308" name="userName">
       <Comment>用户昵称</Comment>
       <DataType>varchar(20)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>4</Position>
     </column>
-    <column id="401" parent="308" name="userSex">
+    <column id="403" parent="308" name="userSex">
       <Comment>用户性别，为null表示未知</Comment>
       <DataType>char(2)|0s</DataType>
       <Position>5</Position>
     </column>
-    <column id="402" parent="308" name="userLife">
+    <column id="404" parent="308" name="userLife">
       <Comment>用户封号为1，未封号为0</Comment>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
       <Position>6</Position>
     </column>
-    <column id="403" parent="308" name="userTime">
+    <column id="405" parent="308" name="userTime">
       <Comment>用户注册时间</Comment>
       <DataType>date|0s</DataType>
       <NotNull>1</NotNull>
       <Position>7</Position>
     </column>
-    <column id="404" parent="308" name="userMajor">
+    <column id="406" parent="308" name="userMajor">
       <Comment>用户专业</Comment>
       <DataType>varchar(20)|0s</DataType>
       <Position>8</Position>
     </column>
-    <column id="405" parent="308" name="userIntroduction">
+    <column id="407" parent="308" name="userIntroduction">
       <Comment>用户简介</Comment>
       <DataType>varchar(1000)|0s</DataType>
       <Position>9</Position>
     </column>
-    <index id="406" parent="308" name="PRIMARY">
+    <index id="408" parent="308" name="PRIMARY">
       <ColNames>userId</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <key id="407" parent="308" name="PRIMARY">
+    <key id="409" parent="308" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <column id="408" parent="309" name="circleId">
+    <column id="410" parent="309" name="circleId">
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
-    <column id="409" parent="309" name="circleName">
+    <column id="411" parent="309" name="circleName">
       <DataType>varchar(20)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
-    <column id="410" parent="309" name="circleImg">
+    <column id="412" parent="309" name="circleImg">
       <Comment>圈子头像</Comment>
-      <DataType>mediumblob|0s</DataType>
+      <DataType>varchar(20)|0s</DataType>
       <Position>3</Position>
     </column>
-    <column id="411" parent="309" name="circleContent">
+    <column id="413" parent="309" name="circleContent">
       <Comment>圈子简介</Comment>
       <DataType>varchar(1000)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>4</Position>
     </column>
-    <column id="412" parent="309" name="circleLife">
+    <column id="414" parent="309" name="circleLife">
       <Comment>圈子是否被封</Comment>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
       <Position>5</Position>
     </column>
-    <column id="413" parent="309" name="circleTime">
+    <column id="415" parent="309" name="circleTime">
       <Comment>圈子建立时间（审核通过开始计算）</Comment>
       <DataType>date|0s</DataType>
       <NotNull>1</NotNull>
       <Position>6</Position>
     </column>
-    <column id="414" parent="309" name="circle_UserId">
+    <column id="416" parent="309" name="circle_UserId">
       <Comment>圈主</Comment>
       <DataType>varchar(9)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>7</Position>
     </column>
-    <column id="415" parent="309" name="hot">
+    <column id="417" parent="309" name="hot">
       <DataType>decimal(32)|0s</DataType>
       <Position>8</Position>
     </column>

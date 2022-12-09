@@ -1,6 +1,7 @@
 package com.dhu.service;
 
 import com.dhu.domain.Request;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
@@ -18,4 +19,7 @@ public interface RequestService {
 
     //    c)	查看消息（举报，请求（建立圈子，修改圈子信息，任命新圈主））【在report，request中】
     List<Request> getRequest();
+
+    //设置已审核请求
+    boolean checkRequest(@Param("requestId") int requestId);
 }

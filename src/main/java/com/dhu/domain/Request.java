@@ -16,6 +16,20 @@ public class Request {
   private Date requestTime;
   private String Request_UserId;
 
+  private int requestLife;
+
+  public Request()
+  {
+    requestLife=0;
+  }
+
+  public int getRequestLife() {
+    return requestLife;
+  }
+
+  public void setRequestLife(int requestLife) {
+    this.requestLife = requestLife;
+  }
 
   public int getRequestId() {
     return requestId;

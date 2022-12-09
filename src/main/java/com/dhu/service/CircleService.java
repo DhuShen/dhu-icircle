@@ -39,7 +39,7 @@ public interface CircleService {
     boolean enterCircle(String userId, int circleId);
 
     //    k)	建立圈子（需要向管理员申请）【在request、circle中】
-    boolean setUpCircle(String circleName, String circleImg, String circleContent, String userId);//建立圈子
+    boolean setUpCircle(String circleName, String circleContent, String userId);//建立圈子
 
     //    n)	在圈子中查看圈内成员信息【在circle中】
     List<User> selectUserInCircle(int circleId);
@@ -55,5 +55,5 @@ public interface CircleService {
     boolean setNewCircleUser(int circleId, String userId);
 
     //    q)	修改圈子相关信息（需要向管理员申请）【在request、circle中】
-    boolean updateCircleContent(int circleId, String circleName, String circleImg, String circleContent);
+    boolean updateCircleContent(int circleId, String circleName, String circleContent);
 }

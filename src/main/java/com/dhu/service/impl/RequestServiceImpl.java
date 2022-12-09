@@ -1,6 +1,7 @@
 package com.dhu.service.impl;
 
 import com.dhu.dao.CircleDao;
+import com.dhu.dao.MessageDao;
 import com.dhu.dao.RequestDao;
 import com.dhu.domain.Request;
 import com.dhu.service.RequestService;
@@ -67,5 +68,10 @@ public class RequestServiceImpl implements RequestService {
     @Override
     public List<Request> getRequest() {
         return requestDao.selectAllOrder();
+    }
+
+    @Override
+    public boolean checkRequest(int requestId) {
+        return requestDao.setRequestChecked(requestId);
     }
 }
