@@ -5,11 +5,6 @@
     margin-right: 50px;
 }
 
-.circle-result{
-    height: 200px;
-    overflow: hidden;
-}
-
 .circle-area{
     min-height: 750px;
 }
@@ -28,7 +23,7 @@
     height: 50px;
 }
 
-#form-area{
+.form-area{
     width: 400px;
     margin: 0 auto;
 }

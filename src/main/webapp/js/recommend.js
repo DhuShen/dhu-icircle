@@ -10,6 +10,11 @@ new Vue({
                 type: 'circle',
                 content: ''
             },
+            searchRules: {
+                content: [
+                    {required: true, message: '请输入搜索内容', trigger: 'change'},
+                ]
+            },
             activeName: 'first'
         };
     },
@@ -34,25 +39,33 @@ new Vue({
             }
         },
         onSearch() {
-
+            this.$refs['search'].validate((valid) => {
+                if (valid) {
+                    location.href = `search?name=${this.searchForm.content}&type=${this.searchForm.type}`
+                } else {
+                    return false;
+                }
+            });
         },
         handleClick(tab, event) {
+            this.loading = true
             switch (tab.index) {
                 case '0':
-                    this.circles=[]
-                    this.loading = true
+                    this.circles = []
                     axios.get('api/post/hotposts').then(resp => {
                         if (resp.data.code === 20041) {
                             this.posts = resp.data.data
-                            for (let i=0;i<this.posts.length;i++) {
-                                axios.get('api/user/name?userId=' + this.posts[i].post_UserId).then(resp=>{
-                                    this.posts[i].user=resp.data.data
-                                    axios.get('api/circle/name?circleId=' + this.posts[i].post_circleId).then(resp=>{
-                                        this.posts[i].circle=resp.data.data
-                                        setTimeout(()=>{this.loading = false}, 1000)
+                            for (let i = 0; i < this.posts.length; i++) {
+                                axios.get('api/user/name?userId=' + this.posts[i].post_UserId).then(resp => {
+                                    this.posts[i].user = resp.data.data
+                                    axios.get('api/circle/name?circleId=' + this.posts[i].post_CircleId).then(resp => {
+                                        this.posts[i].circle = resp.data.data
                                     })
                                 })
                             }
+                            setTimeout(() => {
+                                this.loading = false
+                            }, 1000)
                         } else if (resp.data.code === 20040) {
                             this.$message.error("获取帖子失败");
                         } else if (resp.data.code === 10000) {
@@ -63,17 +76,18 @@ new Vue({
                     })
                     break
                 case '1':
-                    this.posts=[]
-                    this.loading = true
+                    this.posts = []
                     axios.get('api/circle/hotcircles').then(resp => {
                         if (resp.data.code === 20041) {
                             this.circles = resp.data.data
-                            for (let i=0;i<this.circles.length;i++) {
-                                axios.get('api/user/name?userId=' + this.circles[i].circle_UserId).then(resp=>{
-                                    this.circles[i].master=resp.data.data
-                                    setTimeout(()=>{this.loading = false}, 1000)
+                            for (let i = 0; i < this.circles.length; i++) {
+                                axios.get('api/user/name?userId=' + this.circles[i].circle_UserId).then(resp => {
+                                    this.circles[i].master = resp.data.data
                                 })
                             }
+                            setTimeout(() => {
+                                this.loading = false
+                            }, 1000)
                         } else if (resp.data.code === 20040) {
                             this.$message.error("获取圈子失败");
                         } else if (resp.data.code === 10000) {
@@ -102,15 +116,17 @@ new Vue({
         axios.get('api/post/hotposts').then(resp => {
             if (resp.data.code === 20041) {
                 this.posts = resp.data.data
-                for (let i=0;i<this.posts.length;i++) {
-                    axios.get('api/user/name?userId=' + this.posts[i].post_UserId).then(resp=>{
-                        this.posts[i].user=resp.data.data
-                        axios.get('api/circle/name?circleId=' + this.posts[i].post_circleId).then(resp=>{
-                            this.posts[i].circle=resp.data.data
-                            setTimeout(()=>{this.loading = false}, 1000)
+                for (let i = 0; i < this.posts.length; i++) {
+                    axios.get('api/user/name?userId=' + this.posts[i].post_UserId).then(resp => {
+                        this.posts[i].user = resp.data.data
+                        axios.get('api/circle/name?circleId=' + this.posts[i].post_CircleId).then(resp => {
+                            this.posts[i].circle = resp.data.data
                         })
                     })
                 }
+                setTimeout(() => {
+                    this.loading = false
+                }, 1000)
             } else if (resp.data.code === 20040) {
                 this.$message.error("获取帖子失败");
             } else if (resp.data.code === 10000) {

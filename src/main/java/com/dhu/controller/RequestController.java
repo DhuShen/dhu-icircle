@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 @Controller
 @ResponseBody
@@ -19,13 +19,17 @@ public class RequestController {
     private RequestService requestService;
 
     @RequestMapping("/create")
-    public Result<Boolean> requestCreateCircle(@RequestParam String circleName, @RequestParam String circleContent, HttpServletRequest request) {
-        User user = (User) request.getSession().getAttribute("user");
-        if (user == null) {
-            return new Result<>(Result.SAVE_ERR, false, null);
-        } else {
-            boolean flag = requestService.setRequest0(circleName, circleContent, user.getUserId());
-            return new Result<>(flag ? Result.SAVE_OK : Result.SAVE_ERR, flag, null);
-        }
+    public Result<Boolean> requestCreateCircle(@RequestParam String circleName, @RequestParam String circleContent, HttpSession session) {
+        User user = (User) session.getAttribute("user");
+        boolean flag = requestService.setRequest0(circleName, circleContent, user.getUserId());
+        return new Result<>(flag ? Result.SAVE_OK : Result.SAVE_ERR, flag, null);
+    }
+
+    //更改圈子
+    @RequestMapping("/update")
+    public Result<Boolean> requestUpdateCircle(@RequestParam Integer circleId, @RequestParam String circleName, @RequestParam String circleContent, HttpSession session) {
+        User user = (User) session.getAttribute("user");
+        boolean flag = requestService.setRequest2(circleId, circleName, circleContent, user.getUserId());
+        return new Result<>(flag ? Result.SAVE_OK : Result.SAVE_ERR, flag, null);
     }
 }

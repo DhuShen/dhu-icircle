@@ -14,7 +14,7 @@ import java.util.List;
 
 @Controller
 @ResponseBody
-@RequestMapping("api/message")
+@RequestMapping("/api/message")
 public class MessageController {
     @Autowired
     private MessageService messageService;

@@ -17,46 +17,69 @@
     <main>
         <div class="circle-card">
             <h3>评论内容</h3>
-            <div v-if="replay!==''">
-                <el-tag closable @close="replay=''">
-                    {{replay}}
+            <div v-if="replay!==-1">
+                <el-tag style="margin-bottom: 10px" closable @close="replay=-1">
+                    @{{discusses[replay].user}}
                 </el-tag>
             </div>
             <el-form ref="discussForm" :model="discussForm" :rules="rules">
-                <el-form-item>
-                    <el-input :autosize="{minRows: 4,maxRows: 8}"  maxlength="80" show-word-limit type="textarea" placeholder="请输入内容" v-model="discussForm.content" prop="content" clearable></el-input>
+                <el-form-item prop="content">
+                    <el-input :autosize="{minRows: 4,maxRows: 8}" maxlength="80" show-word-limit type="textarea"
+                              placeholder="请输入评论" v-model="discussForm.content"
+                              clearable></el-input>
                 </el-form-item>
                 <el-form-item>
-                    <el-button type="primary" size="small" round>评论</el-button>
+                    <el-button type="primary" @click="addDiscuss" size="small" round>评论</el-button>
+                    <el-badge :value="post.postGood" class="item">
+                        <el-button icon="el-icon-thumb" @click="likePost" circle></el-button>
+                    </el-badge>
                 </el-form-item>
             </el-form>
         </div>
-        <div class="stream">
-            <h1>{{post.postName}}</h1><br>
-            <el-avatar src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"></el-avatar>
-            {{post.post_UserId}}<span style="float: right"> 发布时间：{{post.postTime}}</span>
-            <el-divider></el-divider>
-            <p>
-                {{post.postContent}}
-            </p>
-            <el-divider></el-divider>
-            <h2>评论区</h2>
-            <div v-if="discusses.length===0" class="discuss-area">
-                <el-empty description="还没有评论"></el-empty>
+        <div class="stream" v-loading="loading">
+            <div id="title">
+                <h1>{{post.postName}}&nbsp;<span v-if="post.postKey===1"><el-tag type="warning">精华帖</el-tag></span>
+                </h1>
+                <br>
+                <el-avatar style="float: left"
+                           src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"></el-avatar>
+                &nbsp;&nbsp;
+                <el-link :underline="false" style="margin-top: 12px"
+                         :href="userId===post.post_UserId?'info':('pinfo?userId='+post.post_UserId)">{{post.user}}
+                </el-link>
+                <span style="float: right"> 发布时间：{{post.postTime}}</span>
+                <el-divider></el-divider>
+                <p v-html="post.postContent"></p>
+                <el-divider></el-divider>
             </div>
-            <div v-else class="discuss-area">
-                <div v-for="discuss in discusses">
-                    <el-avatar style="float: left"
-                               src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"></el-avatar>
-                    {{discuss.discuss_UserId}}
-                    <span style="float: right"></span>
-                    <br>
-                    <p>
-                        <span v-if="discuss.discussReplayed!==''" style="color: #409EFF">{{discuss.discussReplayed}}</span>
-                        &nbsp;
-                        {{discuss.discussContent}}
-                    </p>
-                    <el-divider></el-divider>
+            <div>
+                <h2>评论区</h2>
+                <div v-if="discusses.length===0" class="discuss-area">
+                    <el-empty description="还没有评论"></el-empty>
+                </div>
+                <div v-else class="discuss-area">
+                    <div v-for="(discuss,i) in discusses">
+                        <el-avatar style="float: left"
+                                   src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"></el-avatar>&nbsp;&nbsp;
+                        <el-link :underline="false"
+                                 :href="userId===discuss.discuss_UserId?'info':('pinfo?userId='+discuss.discuss_UserId)">
+                            {{discuss.user}}
+                        </el-link>
+                        &nbsp;&nbsp;时间：{{discuss.discussTime}}&nbsp;&nbsp;
+                        <el-button type="text" @click="replay=i">回复</el-button>
+                        <div style="float: right">
+                            <el-badge :value="discuss.discussGood" class="item">
+                                <el-button icon="el-icon-thumb" @click="likeDiscuss(discuss.discussId,i)"
+                                           circle></el-button>
+                            </el-badge>
+                        </div>
+                        <br>
+                        <p>
+                            <span v-if="discuss.discussReplayed!=null" style="color: #409EFF">@{{discuss.replay}}</span>
+                            {{discuss.discussContent}}
+                        </p>
+                        <el-divider></el-divider>
+                    </div>
                 </div>
             </div>
         </div>

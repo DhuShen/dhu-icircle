@@ -16,7 +16,7 @@ main{
     border-radius: 2px;
     box-shadow: 0 1px 3px hsl(0deg 0% 7% / 10%);
     width: 580px;
-    min-height: 600px;
+    min-height: 1000px;
 }
 
 .circle-card{
@@ -40,4 +40,19 @@ main{
 .circle-number{
     font-size: small;
     font-weight: bold;
+}
+
+.post-result{
+    height: 150px;
+}
+
+.post-btn{
+    float: right;
+    margin-top: 20px;
+}
+
+.circle-img{
+    width: 125px;
+    height: 125px;
+    margin-bottom: 10px;
 }

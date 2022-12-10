@@ -21,7 +21,7 @@ main {
     margin-bottom: 20px
 }
 
-#update-btn{
+#up-btn{
     float: right;
     margin-top: 10px;
 }
@@ -41,4 +41,9 @@ main {
 
 .clearfix{
     overflow: hidden;
+}
+
+.form-area{
+    width: 400px;
+    margin: 0 auto;
 }

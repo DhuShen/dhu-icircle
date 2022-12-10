@@ -81,6 +81,12 @@
         where circleId = #{circleId}
     </select>
 
+    <select id="matchCircleName" resultType="java.lang.Integer">
+        select count(*)
+        from circle
+        where circleName = #{circleName}
+    </select>
+
     <delete id="deleteCircle">
         delete
         from circle

@@ -18,14 +18,14 @@
             <el-menu-item index="2"><i class="el-icon-s-help"></i>圈子</el-menu-item>
             <el-menu-item index="3"><i class="el-icon-message-solid"></i>消息</el-menu-item>
             <el-menu-item>
-                <el-form :inline="true" :model="searchForm" class="demo-form-inline search-area">
+                <el-form ref="search" :inline="true" :model="searchForm" :rules="searchRules" class="demo-form-inline search-area">
                     <el-form-item>
                         <el-select class="type-input" v-model="searchForm.type" value="post" size="small">
                             <el-option label="帖子" value="post"></el-option>
                             <el-option label="圈子" value="circle"></el-option>
                         </el-select>
                     </el-form-item>
-                    <el-form-item>
+                    <el-form-item prop="content">
                         <el-input class="content-input" v-model="searchForm.content" size="small"
                                   :placeholder="searchForm.type==='post'?'搜帖子':'搜圈子'"></el-input>
                     </el-form-item>

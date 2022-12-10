@@ -4,6 +4,7 @@ import com.dhu.dao.CircleDao;
 import com.dhu.dao.MessageDao;
 import com.dhu.dao.RequestDao;
 import com.dhu.domain.Request;
+import com.dhu.exception.MyException;
 import com.dhu.service.RequestService;
 import com.dhu.tools.MyTime;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +22,7 @@ public class RequestServiceImpl implements RequestService {
     @Override
     public boolean setRequest0(String circleName, String circleContent, String setId)//建立圈子请求
     {
+        if(circleDao.matchCircleName(circleName)>0) throw new MyException("建立的圈子名字已被用！");
         //先处理内容中的换行和空格
         circleContent = circleContent.replace("&nbsp", " ");
         circleContent = circleContent.replace("<br>", "\n");

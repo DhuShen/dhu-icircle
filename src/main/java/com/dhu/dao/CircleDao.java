@@ -57,4 +57,6 @@ public interface CircleDao {
 
     //根据userId查询该用户加入的圈子
     List<Circle> selectConnectionById(@Param("userId") String userId);
+
+    int matchCircleName(@Param("circleName")String circleName);
 }

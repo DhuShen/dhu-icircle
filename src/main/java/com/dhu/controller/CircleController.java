@@ -1,6 +1,7 @@
 package com.dhu.controller;
 
 import com.dhu.domain.Circle;
+import com.dhu.domain.User;
 import com.dhu.domain.view.CircleView;
 import com.dhu.service.CircleService;
 import com.dhu.tools.Result;
@@ -9,7 +10,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import java.util.Date;
+
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Controller
@@ -22,50 +24,101 @@ public class CircleController {
     //获取当前浏览的圈子信息
     @RequestMapping("/getInfo")
     public Result<Circle> getNowInfo(@RequestParam Integer circleId) {
-        Circle circle = new Circle();
-        circle.setCircleId(circleId);
-        circle.setCircleName("杂谈圈子");
-        circle.setCircleContent("欢迎来到我的杂谈圈子,大家可以畅所欲言，写出自己心里的想法！");
-        circle.setCircleTime(new Date());
-        circle.setCircle_UserId("200910514");
-        return new Result<>(Result.GET_OK, circle, null);
+        Circle circle = circleService.selectById(circleId);
+        if (circle != null)
+            return new Result<>(Result.GET_OK, circle, null);
+        else
+            return new Result<>(Result.GET_OK, null, "圈子获取失败");
     }
 
     //获取圈子名字
     @RequestMapping("/name")
-    public Result<String> getName(@RequestParam String circleId){
-        return new Result<>(Result.GET_OK,"杂谈圈子",null);
-    }
-
-    //获取圈子总人数
-    @RequestMapping("/userCount")
-    public Result<Integer> getUserCount(@RequestParam Integer circleId) {
-        return new Result<>(Result.GET_OK, 20, null);
-    }
-
-    //获取圈子总贴数
-    @RequestMapping("/postCount")
-    public Result<Integer> getPostCount(@RequestParam Integer circleId){
-
-        return new Result<>(Result.GET_OK,18,null);
-    }
-
-    //获取圈子总精华帖数
-    @RequestMapping("/keypostCount")
-    public Result<Integer> getKeyPostCount(@RequestParam Integer circleId){
-        return new Result<>(Result.GET_OK,32,null);
-    }
-
-    //获取圈子总赞数
-    @RequestMapping("/goodCount")
-    public Result<Integer> getGoodCount(@RequestParam int circleId){
-        return new Result<>(Result.GET_OK,100,null);
+    public Result<String> getName(@RequestParam Integer circleId) {
+        String name = circleService.getCircleNameById(circleId);
+        return new Result<>(Result.GET_OK, name, null);
     }
 
     //获取热门圈子
     @RequestMapping("/hotcircles")
-    public Result<List<CircleView>> hotCircles(){
-        List<CircleView> circleViews=circleService.getHotCircle();
-        return new Result<>(Result.GET_OK,circleViews,null);
+    public Result<List<CircleView>> hotCircles() {
+        List<CircleView> circleViews = circleService.getHotCircle();
+        return new Result<>(Result.GET_OK, circleViews, null);
+    }
+
+    //是否在圈内
+    @RequestMapping("/isAttention")
+    public Result<Boolean> isAttention(@RequestParam Integer circleId, HttpSession session) {
+        User user = (User) session.getAttribute("user");
+        boolean flag = circleService.isInCircle(user.getUserId(), circleId);
+        return new Result<>(flag ? Result.GET_OK : Result.GET_ERR, flag, null);
+    }
+
+    //是否是圈主
+    @RequestMapping("/isMaster")
+    public Result<Boolean> isMaster(@RequestParam Integer circleId, HttpSession session) {
+        User user = (User) session.getAttribute("user");
+        boolean flag = circleService.isCircleMaster(user.getUserId(), circleId);
+        return new Result<>(flag ? Result.GET_OK : Result.GET_ERR, flag, null);
+    }
+
+    //关注圈子
+    @RequestMapping("/enterCirlce")
+    public Result<Boolean> enterCirlce(@RequestParam Integer circleId, HttpSession session) {
+        User user = (User) session.getAttribute("user");
+        boolean flag = circleService.enterCircle(user.getUserId(), circleId);
+        return new Result<>(flag ? Result.SAVE_OK : Result.SAVE_ERR, flag, null);
+    }
+
+    //取消关注
+    @RequestMapping("/quitCirlce")
+    public Result<Boolean> outCirlce(@RequestParam Integer circleId, HttpSession session) {
+        User user = (User) session.getAttribute("user");
+        boolean flag = circleService.quitCircle(user.getUserId(), circleId);
+        return new Result<>(flag ? Result.UPDATE_OK : Result.UPDATE_ERR, flag, null);
+    }
+
+    //踢人
+    @RequestMapping("/deletePerson")
+    public Result<Boolean> deletePerson(@RequestParam Integer circleId, @RequestParam String userId) {
+        boolean flag = circleService.quitCircle(userId, circleId);
+        return new Result<>(flag ? Result.UPDATE_OK : Result.UPDATE_ERR, flag, null);
+    }
+
+    //获取圈子里的所有人
+    @RequestMapping("/getPerson")
+    public Result<List<User>> getPerson(@RequestParam Integer circleId){
+        List<User> users=circleService.selectUserInCircle(circleId);
+        return new Result<>(Result.GET_OK, users, null);
+    }
+
+    //查询我关注的圈子
+    @RequestMapping("/getMyCircle")
+    public Result<List<Circle>> getMyCircle(HttpSession session){
+        User user = (User) session.getAttribute("user");
+        List<Circle> circles=circleService.getInCircle(user.getUserId());
+        return new Result<>(Result.GET_OK,circles,null);
+    }
+
+    //查询我管理的圈子
+    @RequestMapping("/getMyMasterCircle")
+    public Result<List<Circle>> getMyMasterCircle(HttpSession session){
+        User user = (User) session.getAttribute("user");
+        List<Circle> circles=circleService.getMyCircle(user.getUserId());
+        return new Result<>(Result.GET_OK,circles,null);
+    }
+
+    //解散圈子
+    @RequestMapping("/deleteCircle")
+    public Result<Boolean> deleteCircle(@RequestParam Integer circleId,HttpSession session){
+        User user = (User) session.getAttribute("user");
+        boolean flag=circleService.dissolveCircle(user.getUserId(),circleId);
+        return new Result<>(flag?Result.DELETE_OK:Result.DELETE_ERR,flag,null);
+    }
+
+    //搜索
+    @RequestMapping("/search")
+    public Result<List<Circle>> search(@RequestParam String name){
+        List<Circle> circles=circleService.searchCircle(name);
+        return new Result<>(Result.GET_OK,circles,null);
     }
 }

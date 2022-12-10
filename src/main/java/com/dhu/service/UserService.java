@@ -9,7 +9,7 @@ public interface UserService {
     String  getUserNameById(String userId);
     //    a)	注册【在user中】
     boolean userRegister(String userId, String userPwd);
-
+    boolean userRegister(String userId, String userPwd,String userImg);
     //    b)	登录【在user中】
     User userLogin(String userId, String userPwd);
 

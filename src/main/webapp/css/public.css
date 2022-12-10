@@ -11,6 +11,7 @@ body{
     box-shadow: 0 1px 3px hsl(0deg 0% 7% / 10%);
     width: 720px;
     margin: 0 auto;
+    min-height: 1000px;
 }
 
 header {
@@ -40,4 +41,13 @@ main {
 
 .search-area {
     margin-top: 8px;
+}
+
+.circle-result{
+    height: 200px;
+    overflow: hidden;
+}
+
+.post-result{
+    height: 150px;
 }

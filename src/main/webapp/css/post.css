@@ -16,7 +16,7 @@ main{
     border-radius: 2px;
     box-shadow: 0 1px 3px hsl(0deg 0% 7% / 10%);
     width: 580px;
-    min-height: 600px;
+    min-height: 1000px;
 }
 
 .circle-card{
@@ -31,4 +31,8 @@ main{
     box-shadow: 0 1px 3px hsl(0deg 0% 7% / 10%);
     width: 240px;
     min-height: 100px;
+}
+
+#title{
+    overflow: hidden;
 }

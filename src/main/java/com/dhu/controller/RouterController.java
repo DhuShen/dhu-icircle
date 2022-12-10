@@ -4,8 +4,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import javax.servlet.http.HttpServletRequest;
-
 @Controller
 public class RouterController {
     @RequestMapping("/login")
@@ -38,6 +36,11 @@ public class RouterController {
         return "info.html";
     }
 
+    @RequestMapping("/pinfo")
+    public String pinfo(@RequestParam String userId) {
+        return "pinfo.html?userId=" + userId;
+    }
+
     @RequestMapping("/singleCircle")
     public String singleCircle(@RequestParam Integer circleId) {
         return "single-circle.html?circleId=" + circleId;
@@ -46,5 +49,10 @@ public class RouterController {
     @RequestMapping("/post")
     public String post(@RequestParam Integer postId) {
         return "post.html?postId=" + postId;
+    }
+
+    @RequestMapping("/search")
+    public String post(@RequestParam String name, @RequestParam String type) {
+        return "search.html?name=" + name + '&' + "type=" + type;
     }
 }

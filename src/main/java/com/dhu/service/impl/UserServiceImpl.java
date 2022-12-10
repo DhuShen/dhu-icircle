@@ -2,6 +2,7 @@ package com.dhu.service.impl;
 
 import com.dhu.dao.UserDao;
 import com.dhu.domain.User;
+import com.dhu.exception.MyException;
 import com.dhu.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,6 +20,17 @@ public class UserServiceImpl implements UserService {
     }
 
     //    a)	注册【在user中】
+    @Override
+    public boolean userRegister(String userId, String userPwd, String userImg) {
+        if (userDao.userSelectById(userId) == null) {//注册用户不存在（未注册）
+            User user = new User(userId, userPwd);
+            user.setUserImg(userImg);
+            userDao.userInsert(user);
+            return true;//用户不存在返回true
+        } else
+            return false;//用户已存在返回false
+    }
+
     @Override
     public boolean userRegister(String userId, String userPwd) {
         if (userDao.userSelectById(userId) == null) {//注册用户不存在（未注册）
@@ -39,7 +51,12 @@ public class UserServiceImpl implements UserService {
         {
             user.setUserPassword("");//不返回密码
             return user;
-        } else
+        }
+        else if (user != null && user.getUserLife() == 1)//登录用户被封号
+        {
+            throw new MyException("你已被封号！");
+        }
+        else
             return null;
     }
 

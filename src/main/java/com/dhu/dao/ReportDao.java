@@ -10,8 +10,13 @@ import java.util.List;
 public interface ReportDao {
     //增加举报
     int InsertReport(Report report);
-    //以被举报人id排序查询所有举报信息
+    //查询未审核的举报
     List<Report> selectAllOrder();
+
+    //查询已经审核的举报
+    List<Report> selectAllOrderChecked();
     //设置审核举报
     boolean setReportChecked(@Param("reportId") int reportId);
+
+    Report selectReportById(@Param("reportId")int reportId);
 }

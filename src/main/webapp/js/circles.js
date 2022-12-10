@@ -2,16 +2,23 @@ new Vue({
     el: '#app',
     data() {
         return {
-            username:'',
+            username: '',
             searchForm: {
                 type: 'circle',
                 content: '',
             },
             activeName: 'first',
             circles: [],
+            loading: true,
             create: false,
             pushDialog: false,
+            updateDialog: false,
             pushRequest: {
+                circleName: '',
+                circleContent: ''
+            },
+            updateRequest: {
+                circleId: -1,
                 circleName: '',
                 circleContent: ''
             },
@@ -35,7 +42,7 @@ new Vue({
                     location.href = "mail"
                     break
                 case '4-1':
-                    location.href='info'
+                    location.href = 'info'
                     break
                 case '4-2':
                     axios.get('api/user/out').then(resp => {
@@ -48,81 +55,86 @@ new Vue({
         onSearch() {
 
         },
+        quitCircle(id) {
+            axios.get('api/circle/quitCirlce?circleId=' + id).then(resp => {
+                if (resp.data.code === 20021) {
+                    this.isAttention = false
+                    this.$message.success("取消关注成功，欢迎你下次再来")
+                    this.loading = true
+                    axios.get('api/circle/getMyCircle').then(resp => {
+                        if (resp.data.code === 20041) {
+                            this.circles = resp.data.data
+                            for (let i = 0; i < this.circles.length; i++) {
+                                axios.get('api/user/name?userId=' + this.circles[i].circle_UserId).then(resp => {
+                                    this.circles[i].master = resp.data.data
+                                })
+                            }
+                            setTimeout(() => {
+                                this.loading = false
+                            }, 1000)
+                        } else if (resp.data.code === 20040) {
+                            this.$message.error("获取帖子失败");
+                        } else if (resp.data.code === 10000) {
+                            this.$message.error('后端异常，报错：' + resp.data.message);
+                        }
+                    }).catch(error => {
+                        this.$message.error('api/circle/getMyCircle接口请求错误');
+                    })
+                } else if (resp.data.code === 20020) {
+                    this.$message.error("取消关注失败");
+                } else if (resp.data.code === 10000) {
+                    this.$message.error('后端异常，报错：' + resp.data.message)
+                }
+            }).catch(error => {
+                this.$message.error('api/circle/quitCirlce接口请求错误')
+            })
+        },
         handleClick(tab, event) {
+            this.loading = true
             switch (tab.index) {
                 case '0':
                     this.create = false;
-                    this.circles = [
-                        {
-                            img: 'https://wonderfulengineering.com/wp-content/uploads/2014/10/image-wallpaper-15.jpg',
-                            name: '杂谈圈子',
-                            master: 'shen din',
-                            content: '欢迎来到我的杂谈圈子，请大家畅所欲言，各抒己见',
-                            time: '2022-12-10',
-                            hot: 200
-                        },
-                        {
-                            img: 'https://wonderfulengineering.com/wp-content/uploads/2014/10/image-wallpaper-15.jpg',
-                            name: '杂谈圈子',
-                            master: 'shen din',
-                            content: '欢迎来到我的杂谈圈子，请大家畅所欲言，各抒己见',
-                            time: '2022-12-10',
-                            hot: 200
-                        },
-                        {
-                            img: 'https://wonderfulengineering.com/wp-content/uploads/2014/10/image-wallpaper-15.jpg',
-                            name: '杂谈圈子',
-                            master: 'shen din',
-                            content: '欢迎来到我的杂谈圈子，请大家畅所欲言，各抒己见',
-                            time: '2022-12-10',
-                            hot: 200
-                        },
-                        {
-                            img: 'https://wonderfulengineering.com/wp-content/uploads/2014/10/image-wallpaper-15.jpg',
-                            name: '杂谈圈子',
-                            master: 'shen din',
-                            content: '欢迎来到我的杂谈圈子，请大家畅所欲言，各抒己见',
-                            time: '2022-12-10',
-                            hot: 200
+                    axios.get('api/circle/getMyCircle').then(resp => {
+                        if (resp.data.code === 20041) {
+                            this.circles = resp.data.data
+                            for (let i = 0; i < this.circles.length; i++) {
+                                axios.get('api/user/name?userId=' + this.circles[i].circle_UserId).then(resp => {
+                                    this.circles[i].master = resp.data.data
+                                })
+                            }
+                            setTimeout(() => {
+                                this.loading = false
+                            }, 1000)
+                        } else if (resp.data.code === 20040) {
+                            this.$message.error("获取帖子失败");
+                        } else if (resp.data.code === 10000) {
+                            this.$message.error('后端异常，报错：' + resp.data.message);
                         }
-                    ]
+                    }).catch(error => {
+                        this.$message.error('api/circle/getMyCircle接口请求错误');
+                    })
                     break
                 case '1':
                     this.create = true;
-                    this.circles = [
-                        {
-                            img: 'https://wonderfulengineering.com/wp-content/uploads/2014/10/image-wallpaper-15.jpg',
-                            name: '杂谈圈子',
-                            master: 'shen din',
-                            content: '欢迎来到我的杂谈圈子，请大家畅所欲言，各抒己见',
-                            time: '2022-12-10',
-                            hot: 200
-                        },
-                        {
-                            img: 'https://wonderfulengineering.com/wp-content/uploads/2014/10/image-wallpaper-15.jpg',
-                            name: '杂谈圈子',
-                            master: 'shen din',
-                            content: '欢迎来到我的杂谈圈子，请大家畅所欲言，各抒己见',
-                            time: '2022-12-10',
-                            hot: 200
-                        },
-                        {
-                            img: 'https://wonderfulengineering.com/wp-content/uploads/2014/10/image-wallpaper-15.jpg',
-                            name: '杂谈圈子',
-                            master: 'shen din',
-                            content: '欢迎来到我的杂谈圈子，请大家畅所欲言，各抒己见',
-                            time: '2022-12-10',
-                            hot: 200
-                        },
-                        {
-                            img: 'https://wonderfulengineering.com/wp-content/uploads/2014/10/image-wallpaper-15.jpg',
-                            name: '杂谈圈子',
-                            master: 'shen din',
-                            content: '欢迎来到我的杂谈圈子，请大家畅所欲言，各抒己见',
-                            time: '2022-12-10',
-                            hot: 200
+                    axios.get('api/circle/getMyMasterCircle').then(resp => {
+                        if (resp.data.code === 20041) {
+                            this.circles = resp.data.data
+                            for (let i = 0; i < this.circles.length; i++) {
+                                axios.get('api/user/name?userId=' + this.circles[i].circle_UserId).then(resp => {
+                                    this.circles[i].master = resp.data.data
+                                })
+                            }
+                            setTimeout(() => {
+                                this.loading = false
+                            }, 1000)
+                        } else if (resp.data.code === 20040) {
+                            this.$message.error("获取帖子失败");
+                        } else if (resp.data.code === 10000) {
+                            this.$message.error('后端异常，报错：' + resp.data.message);
                         }
-                    ]
+                    }).catch(error => {
+                        this.$message.error('api/circle/getMyMasterCircle接口请求错误');
+                    })
                     break
             }
         },
@@ -135,7 +147,7 @@ new Vue({
                     axios.post('api/request/create', params).then(resp => {
                         if (resp.data.code === 20011) {
                             this.$message.success('建立圈子请求已发出，请等待管理员审核')
-                            this.$refs['createForm'].resetFields();
+                            this.$refs['createForm'].resetFields()
                         } else if (resp.data.code === 20010) {
                             this.$message.error('建立圈子请求失败，请稍后重试');
                         } else if (resp.data.code === 10000) {
@@ -150,10 +162,104 @@ new Vue({
                     return false;
                 }
             })
+        },
+        updateCircle() {
+            this.$refs['updateForm'].validate((valid) => {
+                if (valid) {
+                    let params = new URLSearchParams()
+                    params.append('circleId', this.updateRequest.circleId)
+                    params.append('circleName', this.updateRequest.circleName)
+                    params.append('circleContent', this.updateRequest.circleContent)
+                    axios.post('api/request/update', params).then(resp => {
+                        if (resp.data.code === 20011) {
+                            this.$message.success('修改圈子请求已发出，请等待管理员审核')
+                            this.loading = true
+                            axios.get('api/circle/getMyMasterCircle').then(resp => {
+                                if (resp.data.code === 20041) {
+                                    this.circles = resp.data.data
+                                    for (let i = 0; i < this.circles.length; i++) {
+                                        axios.get('api/user/name?userId=' + this.circles[i].circle_UserId).then(resp => {
+                                            this.circles[i].master = resp.data.data
+                                        })
+                                    }
+                                    setTimeout(() => {
+                                        this.loading = false
+                                    }, 1000)
+                                } else if (resp.data.code === 20040) {
+                                    this.$message.error("获取帖子失败");
+                                } else if (resp.data.code === 10000) {
+                                    this.$message.error('后端异常，报错：' + resp.data.message);
+                                }
+                            }).catch(error => {
+                                this.$message.error('api/circle/getMyMasterCircle接口请求错误');
+                            })
+                        } else if (resp.data.code === 20010) {
+                            this.$message.error('修改圈子请求失败，请稍后重试');
+                        } else if (resp.data.code === 10000) {
+                            this.$message.error('后端异常，报错：' + resp.data.message);
+                        }
+                    }).catch(error => {
+                        this.$message.error('api/request/update接口请求错误');
+                    }).finally(() => {
+                        this.updateDialog = false
+                    })
+                } else {
+                    return false;
+                }
+            })
+        },
+        deleteCircle() {
+            this.$confirm('此操作将永久解散您的圈子, 是否继续?', '提示', {
+                confirmButtonText: '确定',
+                cancelButtonText: '取消',
+                type: 'warning'
+            }).then(() => {
+                axios.get('api/circle/deleteCircle?circleId=' + this.updateRequest.circleId).then(resp => {
+                    if (resp.data.code === 20031) {
+                        this.$message.success('解散圈子成功')
+                        this.loading = true
+                        axios.get('api/circle/getMyMasterCircle').then(resp => {
+                            if (resp.data.code === 20041) {
+                                this.circles = resp.data.data
+                                for (let i = 0; i < this.circles.length; i++) {
+                                    axios.get('api/user/name?userId=' + this.circles[i].circle_UserId).then(resp => {
+                                        this.circles[i].master = resp.data.data
+                                    })
+                                }
+                                setTimeout(() => {
+                                    this.loading = false
+                                }, 1000)
+                            } else if (resp.data.code === 20040) {
+                                this.$message.error("获取帖子失败");
+                            } else if (resp.data.code === 10000) {
+                                this.$message.error('后端异常，报错：' + resp.data.message);
+                            }
+                        }).catch(error => {
+                            this.$message.error('api/circle/getMyMasterCircle接口请求错误');
+                        })
+                    } else if (resp.data.code === 20030) {
+                        this.$message.error('解散圈子请求失败，请稍后重试');
+                    } else if (resp.data.code === 10000) {
+                        this.$message.error('后端异常，报错：' + resp.data.message);
+                    }
+                }).catch(error => {
+                    this.$message.error('api/circle/deleteCircle接口请求错误');
+                }).finally(() => {
+                    this.updateDialog = false
+                })
+            }).catch(() => {
+                this.$message.info('已取消删除')
+            });
+        },
+        updateClick(i) {
+            this.updateRequest.circleId = this.circles[i].circleId
+            this.updateRequest.circleName = this.circles[i].circleName
+            this.updateRequest.circleContent = this.circles[i].circleContent
+            this.updateDialog = true
         }
     },
     mounted() {
-        axios.get('api/user/myName').then(resp=>{
+        axios.get('api/user/myName').then(resp => {
             if (resp.data.code === 20041) {
                 this.username = resp.data.data
             } else if (resp.data.code === 20040) {
@@ -162,39 +268,24 @@ new Vue({
                 this.$message.error('后端异常，报错：' + resp.data.message);
             }
         })
-        this.circles = [
-            {
-                img: 'https://wonderfulengineering.com/wp-content/uploads/2014/10/image-wallpaper-15.jpg',
-                name: '杂谈圈子',
-                master: 'shen din',
-                content: '欢迎来到我的杂谈圈子，请大家畅所欲言，各抒己见',
-                time: '2022-12-10',
-                hot: 200
-            },
-            {
-                img: 'https://wonderfulengineering.com/wp-content/uploads/2014/10/image-wallpaper-15.jpg',
-                name: '杂谈圈子',
-                master: 'shen din',
-                content: '欢迎来到我的杂谈圈子，请大家畅所欲言，各抒己见',
-                time: '2022-12-10',
-                hot: 200
-            },
-            {
-                img: 'https://wonderfulengineering.com/wp-content/uploads/2014/10/image-wallpaper-15.jpg',
-                name: '杂谈圈子',
-                master: 'shen din',
-                content: '欢迎来到我的杂谈圈子，请大家畅所欲言，各抒己见',
-                time: '2022-12-10',
-                hot: 200
-            },
-            {
-                img: 'https://wonderfulengineering.com/wp-content/uploads/2014/10/image-wallpaper-15.jpg',
-                name: '杂谈圈子',
-                master: 'shen din',
-                content: '欢迎来到我的杂谈圈子，请大家畅所欲言，各抒己见',
-                time: '2022-12-10',
-                hot: 200
+        axios.get('api/circle/getMyCircle').then(resp => {
+            if (resp.data.code === 20041) {
+                this.circles = resp.data.data
+                for (let i = 0; i < this.circles.length; i++) {
+                    axios.get('api/user/name?userId=' + this.circles[i].circle_UserId).then(resp => {
+                        this.circles[i].master = resp.data.data
+                    })
+                }
+                setTimeout(() => {
+                    this.loading = false
+                }, 1000)
+            } else if (resp.data.code === 20040) {
+                this.$message.error("获取帖子失败");
+            } else if (resp.data.code === 10000) {
+                this.$message.error('后端异常，报错：' + resp.data.message);
             }
-        ]
+        }).catch(error => {
+            this.$message.error('api/circle/getMyCircle接口请求错误');
+        })
     }
 })

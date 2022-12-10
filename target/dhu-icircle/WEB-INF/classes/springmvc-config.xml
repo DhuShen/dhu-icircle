@@ -7,7 +7,6 @@
     <mvc:annotation-driven/>
 
     <!--资源放行-->
-    <mvc:resources mapping="/res/**" location="/res/"/>
     <mvc:resources mapping="/js/**" location="/js/"/>
     <mvc:resources mapping="/lib/**" location="/lib/"/>
     <mvc:resources mapping="/css/**" location="/css/"/>
@@ -20,6 +19,5 @@
     <!--视图解析器-->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/pages/"/>
-        <property name="suffix" value=".html"/>
     </bean>
 </beans>
