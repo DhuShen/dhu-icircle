@@ -51,9 +51,27 @@ public interface CircleService {
     //    o)	解散圈子【在circle中】
     boolean dissolveCircle(String userId, int circleId);
 
+    //批准建立圈子--管理员用
+    boolean allowSetUpCircle(int RequestId);
+
+    //退回建立圈子--管理员用
+    boolean refuseSetUpCircle(int RequestId);
+
     //    p)	任命新圈主（需要向管理员申请）【在request、circle中】
     boolean setNewCircleUser(int circleId, String userId);
 
+    //批准任命新圈主--管理员用
+    boolean allowSetNewCircleUser(int RequestId);
+
+    //退回任命新圈主--管理员用
+    boolean refuseSetNewCircleUser(int RequestId);
+
     //    q)	修改圈子相关信息（需要向管理员申请）【在request、circle中】
     boolean updateCircleContent(int circleId, String circleName, String circleContent);
+
+    //批准修改圈子相关信息--管理员用
+    boolean allowUpdateCircleContent(int RequestId);
+
+    //退回修改圈子相关信息--管理员用
+    boolean refuseUpdateCircleContent(int RequestId);
 }

@@ -84,29 +84,34 @@ public class ReportServiceImpl implements ReportService {
 
     //批准举报（）
     @Override
-    public boolean allowReport(int reportId) {
+    public int allowReport(int reportId) {
         Report report = reportDao.selectReportById(reportId);
         //封号
         if (report.getReportId() == 0) {
             userDao.closeUser(report.getReportUserIdGet());
         }
-        //发信息给举报人
-        Message message = new Message();
-        message.setMessageUserIdSet(null);
-        message.setMessageContent("您的举报 用户" + report.getReportUserIdGet() + " 已举报成功！");
-        message.setMessageUserIdGet(report.getReportUserIdSet());
-        message.setMessageSetTime(MyTime.getNowTime());
-        if (messageDao.insertMessage(message) < 1) return false;
-
         //发信息给被举报人
         Message message1 = new Message();
         message1.setMessageUserIdSet(null);
         message1.setMessageContent("您被举报成功，将进行封号处理！");
         message1.setMessageUserIdGet(report.getReportUserIdGet());
         message1.setMessageSetTime(MyTime.getNowTime());
-        if (messageDao.insertMessage(message1) < 1) return false;
+        messageDao.insertMessage(message1);
+        //设置其他举报该用户的举报已审批
+        List<Report> reportList = reportDao.selectReportByUser(report.getReportUserIdGet());
+        for (Report r : reportList) {
+            //发信息给举报人
+            Message m = new Message();
+            m.setMessageUserIdSet(null);
+            m.setMessageContent("您的举报 用户" + report.getReportUserIdGet() + " 已举报成功！");
+            m.setMessageUserIdGet(r.getReportUserIdSet());
+            m.setMessageSetTime(MyTime.getNowTime());
+            messageDao.insertMessage(m);
+            checkReport(r.getReportId());
+        }
         //设置已审核
-        return checkReport(reportId);
+        checkReport(reportId);
+        return reportList.size();
     }
 
     //退回举报

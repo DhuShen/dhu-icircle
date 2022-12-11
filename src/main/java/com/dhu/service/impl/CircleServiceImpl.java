@@ -122,6 +122,7 @@ public class CircleServiceImpl implements CircleService {
     }
 
     //批准建立圈子--管理员用
+    @Override
     public boolean allowSetUpCircle(int RequestId) {
         Request request = requestDao.getRequestInfo(RequestId);
         //建立圈子
@@ -139,6 +140,7 @@ public class CircleServiceImpl implements CircleService {
     }
 
     //退回建立圈子--管理员用
+    @Override
     public boolean refuseSetUpCircle(int RequestId) {
         Request request = requestDao.getRequestInfo(RequestId);
         //发信息
@@ -162,6 +164,7 @@ public class CircleServiceImpl implements CircleService {
     }
 
     //批准任命新圈主--管理员用
+    @Override
     public boolean allowSetNewCircleUser(int RequestId) {
         Request request = requestDao.getRequestInfo(RequestId);
         //建立圈子
@@ -186,6 +189,7 @@ public class CircleServiceImpl implements CircleService {
     }
 
     //退回任命新圈主--管理员用
+    @Override
     public boolean refuseSetNewCircleUser(int RequestId) {
         Request request = requestDao.getRequestInfo(RequestId);
         //发信息
@@ -214,6 +218,7 @@ public class CircleServiceImpl implements CircleService {
     }
 
     //批准修改圈子相关信息--管理员用
+    @Override
     public boolean allowUpdateCircleContent(int RequestId) {
         Request request = requestDao.getRequestInfo(RequestId);
         //建立圈子
@@ -231,6 +236,7 @@ public class CircleServiceImpl implements CircleService {
     }
 
     //退回修改圈子相关信息--管理员用
+    @Override
     public boolean refuseUpdateCircleContent(int RequestId) {
         Request request = requestDao.getRequestInfo(RequestId);
         //发信息

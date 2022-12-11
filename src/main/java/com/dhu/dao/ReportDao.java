@@ -19,4 +19,6 @@ public interface ReportDao {
     boolean setReportChecked(@Param("reportId") int reportId);
 
     Report selectReportById(@Param("reportId")int reportId);
+
+    List<Report> selectReportByUser(@Param("userId")String reportUserIdGet);
 }

@@ -25,7 +25,7 @@ public interface ReportService {
     boolean checkReport(int reportId);
 
     //批准举报（）
-    boolean allowReport(int reportId);
+    int allowReport(int reportId);
 
     //退回举报
     boolean refuseReport(int reportId);

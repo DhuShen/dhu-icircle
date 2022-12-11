@@ -31,7 +31,7 @@ public class Report {
         this.reportLife = reportLife;
     }
 
-    public long getReportId() {
+    public int getReportId() {
         return reportId;
     }
 

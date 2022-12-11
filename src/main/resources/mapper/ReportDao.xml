@@ -22,16 +22,23 @@
         where reportLife = 0
         ORDER BY reportTime
     </select>
+
     <select id="selectAllOrderChecked" resultType="com.dhu.domain.Report">
         select *
         from report
         where reportLife = 1
         ORDER BY reportTime
     </select>
+
     <select id="selectReportById" resultType="com.dhu.domain.Report">
         select *
         from report
         where reportId = #{reportId}
     </select>
 
+    <select id="selectReportByUser" resultType="com.dhu.domain.Report">
+        select *
+        from report
+        where reportUserIdGet = #{userId}
+    </select>
 </mapper>

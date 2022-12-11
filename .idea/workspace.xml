@@ -10,19 +10,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="12b7af2a-461d-49d5-8f10-0525aac691a2" name="变更" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/dhu/interceptor/AdminInterceptor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/dhu/interceptor/UserInterceptor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dhu/aop/AdminLoginVerify.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dhu/aop/AdminLoginVerify.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dhu/dao/RequestDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dhu/dao/RequestDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/dhu/dao/ReportDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dhu/dao/ReportDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/dhu/domain/Report.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dhu/domain/Report.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/dhu/service/CircleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dhu/service/CircleService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/dhu/service/ReportService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dhu/service/ReportService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dhu/service/RequestService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dhu/service/RequestService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/dhu/service/impl/CircleServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dhu/service/impl/CircleServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/dhu/service/impl/ReportServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dhu/service/impl/ReportServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dhu/service/impl/RequestServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dhu/service/impl/RequestServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/RequestDao.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/RequestDao.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/spring-config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/spring-config.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/springmvc-config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/springmvc-config.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/ReportDao.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/ReportDao.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/dhu-icircle.war" beforeDir="false" afterPath="$PROJECT_DIR$/target/dhu-icircle.war" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -271,7 +267,7 @@
       <workItem from="1670575550105" duration="150000" />
       <workItem from="1670588887449" duration="10607000" />
       <workItem from="1670677977882" duration="11269000" />
-      <workItem from="1670727018027" duration="697000" />
+      <workItem from="1670727018027" duration="2639000" />
     </task>
     <task id="LOCAL-00001" summary="pojo,数据库">
       <created>1669116709980</created>
@@ -399,7 +395,14 @@
       <option name="project" value="LOCAL" />
       <updated>1670688449446</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="差aop和管理员">
+      <created>1670727992943</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1670727992943</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
