@@ -2,7 +2,6 @@ package com.dhu.domain;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
-import java.security.Timestamp;
 import java.util.Date;
 
 public class Circle {

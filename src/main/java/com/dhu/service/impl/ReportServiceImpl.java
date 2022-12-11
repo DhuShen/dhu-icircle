@@ -80,11 +80,17 @@ public class ReportServiceImpl implements ReportService {
 
     //设置已审核举报
     @Override
-    public boolean checkReport(int reportId) {
+    public boolean setReportChecked(int reportId) {
         return reportDao.setReportChecked(reportId);
     }
 
-    //批准举报（）
+    //设置退回举报
+    @Override
+    public boolean setReportBack(int reportId) {
+        return reportDao.setReportBacked(reportId);
+    }
+
+    //批准举报
     @Override
     public int allowReport(int reportId) {
         Report report = reportDao.selectReportById(reportId);
@@ -109,10 +115,10 @@ public class ReportServiceImpl implements ReportService {
             m.setMessageUserIdGet(r.getReportUserIdSet());
             m.setMessageSetTime(MyTime.getNowTime());
             messageDao.insertMessage(m);
-            checkReport(r.getReportId());
+            setReportChecked(r.getReportId());
         }
         //设置已审核
-        checkReport(reportId);
+        setReportChecked(reportId);
         return reportList.size();
     }
 
@@ -127,7 +133,7 @@ public class ReportServiceImpl implements ReportService {
         message.setMessageUserIdGet(report.getReportUserIdSet());
         message.setMessageSetTime(MyTime.getNowTime());
         if (messageDao.insertMessage(message) < 1) return false;
-        //设置已审核
-        return checkReport(reportId);
+        //设置已退回
+        return setReportBack(reportId);
     }
 }

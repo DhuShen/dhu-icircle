@@ -22,9 +22,12 @@ public interface ReportService {
     //获取未审核举报
     List<Report> getReportChecked();
     //设置已审核举报
-    boolean checkReport(int reportId);
+    boolean setReportChecked(int reportId);
 
-    //批准举报（）
+    //设置退回举报
+    boolean setReportBack(int reportId);
+
+    //批准举报
     int allowReport(int reportId);
 
     //退回举报

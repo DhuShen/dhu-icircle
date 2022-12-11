@@ -52,7 +52,13 @@ public class RouterController {
     }
 
     @RequestMapping("/search")
-    public String post(@RequestParam String name, @RequestParam String type) {
+    public String search(@RequestParam String name, @RequestParam String type) {
         return "search.html?name=" + name + '&' + "type=" + type;
     }
+
+    @RequestMapping("/adminHome")
+    public String adminHome() {
+        return "admin-home.html";
+    }
+
 }

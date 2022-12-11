@@ -19,13 +19,14 @@ public class MessageController {
     @Autowired
     private MessageService messageService;
 
+    //获取消息
     @RequestMapping("/get")
     public Result<List<Message>> get(HttpServletRequest request) {
         User user = (User) request.getSession().getAttribute("user");
         if (user == null) {
             return new Result<>(Result.GET_ERR, null, "用户不存在");
         } else {
-            List<Message> messages=messageService.getMessage(user.getUserId());
+            List<Message> messages = messageService.getMessage(user.getUserId());
             return new Result<>(Result.GET_OK, messages, null);
         }
     }

@@ -86,39 +86,39 @@ public class CircleController {
 
     //获取圈子里的所有人
     @RequestMapping("/getPerson")
-    public Result<List<User>> getPerson(@RequestParam Integer circleId){
-        List<User> users=circleService.selectUserInCircle(circleId);
+    public Result<List<User>> getPerson(@RequestParam Integer circleId) {
+        List<User> users = circleService.selectUserInCircle(circleId);
         return new Result<>(Result.GET_OK, users, null);
     }
 
     //查询我关注的圈子
     @RequestMapping("/getMyCircle")
-    public Result<List<Circle>> getMyCircle(HttpSession session){
+    public Result<List<Circle>> getMyCircle(HttpSession session) {
         User user = (User) session.getAttribute("user");
-        List<Circle> circles=circleService.getInCircle(user.getUserId());
-        return new Result<>(Result.GET_OK,circles,null);
+        List<Circle> circles = circleService.getInCircle(user.getUserId());
+        return new Result<>(Result.GET_OK, circles, null);
     }
 
     //查询我管理的圈子
     @RequestMapping("/getMyMasterCircle")
-    public Result<List<Circle>> getMyMasterCircle(HttpSession session){
+    public Result<List<Circle>> getMyMasterCircle(HttpSession session) {
         User user = (User) session.getAttribute("user");
-        List<Circle> circles=circleService.getMyCircle(user.getUserId());
-        return new Result<>(Result.GET_OK,circles,null);
+        List<Circle> circles = circleService.getMyCircle(user.getUserId());
+        return new Result<>(Result.GET_OK, circles, null);
     }
 
     //解散圈子
     @RequestMapping("/deleteCircle")
-    public Result<Boolean> deleteCircle(@RequestParam Integer circleId,HttpSession session){
+    public Result<Boolean> deleteCircle(@RequestParam Integer circleId, HttpSession session) {
         User user = (User) session.getAttribute("user");
-        boolean flag=circleService.dissolveCircle(user.getUserId(),circleId);
-        return new Result<>(flag?Result.DELETE_OK:Result.DELETE_ERR,flag,null);
+        boolean flag = circleService.dissolveCircle(user.getUserId(), circleId);
+        return new Result<>(flag ? Result.DELETE_OK : Result.DELETE_ERR, flag, null);
     }
 
-    //搜索
+    //搜索圈子
     @RequestMapping("/search")
-    public Result<List<Circle>> search(@RequestParam String name){
-        List<Circle> circles=circleService.searchCircle(name);
-        return new Result<>(Result.GET_OK,circles,null);
+    public Result<List<Circle>> search(@RequestParam String name) {
+        List<Circle> circles = circleService.searchCircle(name);
+        return new Result<>(Result.GET_OK, circles, null);
     }
 }

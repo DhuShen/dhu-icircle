@@ -13,9 +13,11 @@ public interface RequestDao {
     //查询未审核请求
     List<Request> selectAllOrder();
     //查询已审核请求
-    List<Report> selectAllOrderChecked();
-
+    List<Request> selectAllOrderChecked();
+    //设置已经审批
     boolean setRequestChecked(@Param("requestId") int requestId);
+
+    boolean setRequestBacked(@Param("requestId") int requestId);
 
     Request getRequestInfo(@Param("requestId")int requestId);
 }

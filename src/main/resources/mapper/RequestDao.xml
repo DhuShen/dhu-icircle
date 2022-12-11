@@ -5,14 +5,20 @@
 <mapper namespace="com.dhu.dao.RequestDao">
     <insert id="insertRequest">
         insert into request(requestCircleId, requestCircleName, requestCircleContent, requestType, requestUserId,
-                            requestTime, request_UserId,requestLife)
+                            requestTime, request_UserId, requestLife)
         values (#{requestCircleId}, #{requestCircleName}, #{requestCircleContent}, #{requestType}, #{requestUserId},
-                #{requestTime}, #{request_UserId},#{requestLife})
+                #{requestTime}, #{request_UserId}, #{requestLife})
     </insert>
 
     <update id="setRequestChecked">
         update request
         set requestLife=1
+        where requestId = #{requestId}
+    </update>
+
+    <update id="setRequestBacked">
+        update request
+        set requestLife=2
         where requestId = #{requestId}
     </update>
 
@@ -23,10 +29,10 @@
         order by requestTime;
     </select>
 
-    <select id="selectAllOrderChecked" resultType="com.dhu.domain.Report">
+    <select id="selectAllOrderChecked" resultType="Request">
         select *
         from request
-        where requestLife = 1
+        where requestLife !=0
         order by requestTime;
     </select>
 
@@ -34,5 +40,6 @@
         select *
         from request
         where requestId = #{requestId}
+        order by requestTime
     </select>
 </mapper>

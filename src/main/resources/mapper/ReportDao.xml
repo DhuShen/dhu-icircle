@@ -5,14 +5,19 @@
 <mapper namespace="com.dhu.dao.ReportDao">
     <insert id="InsertReport">
         insert into report(reportContent, reportType, reportUserIdGet, reportPostId, reportDiscussId, reportTime,
-                           reportUserIdSet,reportLife)
+                           reportUserIdSet, reportLife)
         values (#{reportContent}, #{reportType}, #{reportUserIdGet}, #{reportPostId}, #{reportDiscussId}, #{reportTime},
-                #{reportUserIdSet},#{reportLife})
+                #{reportUserIdSet}, #{reportLife})
     </insert>
 
     <update id="setReportChecked">
         update report
         set reportLife=1
+        where reportId = #{reportId}
+    </update>
+    <update id="setReportBacked">
+        update report
+        set reportLife=2
         where reportId = #{reportId}
     </update>
 
@@ -26,7 +31,7 @@
     <select id="selectAllOrderChecked" resultType="com.dhu.domain.Report">
         select *
         from report
-        where reportLife = 1
+        where reportLife != 0
         ORDER BY reportTime
     </select>
 

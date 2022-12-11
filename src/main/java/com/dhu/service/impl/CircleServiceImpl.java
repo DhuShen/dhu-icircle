@@ -152,8 +152,8 @@ public class CircleServiceImpl implements CircleService {
         message.setMessageUserIdGet(request.getRequest_UserId());
         message.setMessageSetTime(MyTime.getNowTime());
         if (messageDao.insertMessage(message) < 1) return false;
-        //设置请求已审核
-        return requestDao.setRequestChecked(RequestId);
+        //设置请求已退回
+        return requestDao.setRequestBacked(RequestId);
     }
 
     //    p)	任命新圈主（需要向管理员申请）【在request、circle中】--管理员用
@@ -202,7 +202,7 @@ public class CircleServiceImpl implements CircleService {
         message.setMessageSetTime(MyTime.getNowTime());
         if (messageDao.insertMessage(message) < 1) return false;
         //设置请求已审核
-        return requestDao.setRequestChecked(RequestId);
+        return requestDao.setRequestBacked(RequestId);
     }
 
 
@@ -249,7 +249,7 @@ public class CircleServiceImpl implements CircleService {
         message.setMessageSetTime(MyTime.getNowTime());
         if (messageDao.insertMessage(message) < 1) return false;
         //设置请求已审核
-        return requestDao.setRequestChecked(RequestId);
+        return requestDao.setRequestBacked(RequestId);
     }
 
 }

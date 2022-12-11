@@ -1,6 +1,5 @@
 package com.dhu.service;
 
-import com.dhu.domain.Report;
 import com.dhu.domain.Request;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.transaction.annotation.Transactional;
@@ -23,8 +22,11 @@ public interface RequestService {
     List<Request> getRequest();
 
     //查询已审核请求
-    List<Report> getRequestChecked();
+    List<Request> getRequestChecked();
 
     //设置已审核请求
     boolean checkRequest(@Param("requestId") int requestId);
+
+    //设置被退回
+    boolean backRequest(int requestId);
 }

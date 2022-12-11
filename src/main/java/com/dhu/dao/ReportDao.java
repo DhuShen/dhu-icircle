@@ -17,8 +17,10 @@ public interface ReportDao {
     List<Report> selectAllOrderChecked();
     //设置审核举报
     boolean setReportChecked(@Param("reportId") int reportId);
-
+    //设置退回举报
+    boolean setReportBacked(@Param("reportId")int reportId);
     Report selectReportById(@Param("reportId")int reportId);
 
     List<Report> selectReportByUser(@Param("userId")String reportUserIdGet);
+
 }

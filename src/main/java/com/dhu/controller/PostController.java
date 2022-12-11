@@ -38,7 +38,7 @@ public class PostController {
     @RequestMapping("/getKeyPost")
     public Result<List<Post>> getKeyPost(@RequestParam Integer circleId) {
         List<Post> posts = postService.getCircleKeyPosts(circleId);
-        return new Result<>(Result.GET_OK,posts, null);
+        return new Result<>(Result.GET_OK, posts, null);
     }
 
     //获取帖子信息
@@ -66,7 +66,7 @@ public class PostController {
         return new Result<>(flag ? Result.SAVE_OK : Result.SAVE_ERR, flag, null);
     }
 
-    //获取精华帖
+    //设置精华帖
     @RequestMapping("/setKeyPost")
     public Result<Boolean> setPostKey(@RequestParam Integer postId) {
         boolean flag = postService.setPostKey(postId);
@@ -80,9 +80,10 @@ public class PostController {
         return new Result<>(flag ? Result.UPDATE_OK : Result.UPDATE_ERR, flag, null);
     }
 
+    //查询帖子
     @RequestMapping("/search")
     public Result<List<Post>> search(@RequestParam String name) {
         List<Post> posts = postService.searchPosts(name);
-        return new Result<>(Result.GET_OK,posts, null);
+        return new Result<>(Result.GET_OK, posts, null);
     }
 }

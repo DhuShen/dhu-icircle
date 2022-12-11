@@ -2,7 +2,6 @@ package com.dhu.service.impl;
 
 import com.dhu.dao.CircleDao;
 import com.dhu.dao.RequestDao;
-import com.dhu.domain.Report;
 import com.dhu.domain.Request;
 import com.dhu.exception.MyException;
 import com.dhu.service.RequestService;
@@ -43,7 +42,7 @@ public class RequestServiceImpl implements RequestService {
         {
             Request request = new Request();
             request.setRequestCircleId(circleId);
-            request.setRequestType(1);//1标记任命新圈主申请
+            request.setRequestType(2);//2标记任命新圈主申请
             request.setRequestTime(MyTime.getNowTime());
             request.setRequest_UserId(setId);
             return requestDao.insertRequest(request) > 0;
@@ -61,7 +60,7 @@ public class RequestServiceImpl implements RequestService {
         request.setRequestCircleId(circleId);
         request.setRequestCircleName(circleName);
         request.setRequestCircleContent(circleContent);
-        request.setRequestType(2);//2标记修改圈子相关信息申请
+        request.setRequestType(1);//1标记修改圈子相关信息申请
         request.setRequestTime(MyTime.getNowTime());
         request.setRequest_UserId(setId);
         return requestDao.insertRequest(request) > 0;
@@ -75,12 +74,17 @@ public class RequestServiceImpl implements RequestService {
     }
     //查询已审核请求
     @Override
-    public List<Report> getRequestChecked() {
+    public List<Request> getRequestChecked() {
         return requestDao.selectAllOrderChecked();
     }
-
+    //设置已审批
     @Override
     public boolean checkRequest(int requestId) {
         return requestDao.setRequestChecked(requestId);
+    }
+    //设置被退回
+    @Override
+    public boolean backRequest(int requestId) {
+        return requestDao.setRequestBacked(requestId);
     }
 }

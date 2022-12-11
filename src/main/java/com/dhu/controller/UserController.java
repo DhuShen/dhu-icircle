@@ -25,6 +25,7 @@ public class UserController {
         User user = userService.userLogin(id, password);
         if (user != null) {
             session.setAttribute("user", user);
+            session.removeAttribute("admin");
             return new Result<>(Result.GET_OK, true, null);
         }
         return new Result<>(Result.GET_ERR, false, null);
@@ -54,7 +55,6 @@ public class UserController {
         } else {
             return new Result<>(Result.UPDATE_ERR, true, "更新失败");
         }
-
     }
 
     //获取用户信息
@@ -94,6 +94,4 @@ public class UserController {
         User user = (User) session.getAttribute("user");
         return new Result<>(Result.GET_OK, user.getUserId(), "获取个人id失败");
     }
-
-    //
 }
