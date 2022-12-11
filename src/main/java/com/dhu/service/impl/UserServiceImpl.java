@@ -93,4 +93,10 @@ public class UserServiceImpl implements UserService {
     public boolean closeUser(String userId) {
         return userDao.closeUser(userId) > 0;
     }
+
+    //根据用户Id获取Img
+    @Override
+    public String getImgUserById(String userId) {
+        return userDao.selectImgById(userId);
+    }
 }

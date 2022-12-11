@@ -24,4 +24,7 @@ public interface UserService {
 
     //    d)	对用户进行封号操作【在user中】
     boolean closeUser(String userId);
+
+    //根据用户Id获取Img
+    String getImgUserById(String userId);
 }

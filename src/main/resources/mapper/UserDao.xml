@@ -15,6 +15,12 @@
         where userId = #{userId}
     </select>
 
+    <select id="selectImgById" resultType="java.lang.String">
+        select userImg
+        from user
+        where userId = #{userId}
+    </select>
+
     <insert id="userInsert">
         insert into user
         values (#{userId}, #{userPassword}, #{userImg}, #{userName}, #{userSex}, #{userLife}, #{userTime}, #{userMajor},

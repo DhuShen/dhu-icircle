@@ -22,4 +22,7 @@ public interface UserDao {
 
     //修改用户密码
     int updateUserPwd(User user);
+
+    //根据用户Id获取Img
+    String selectImgById(@Param("userId")String userId);
 }
