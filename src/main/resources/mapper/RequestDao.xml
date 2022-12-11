@@ -5,9 +5,9 @@
 <mapper namespace="com.dhu.dao.RequestDao">
     <insert id="insertRequest">
         insert into request(requestCircleId, requestCircleName, requestCircleContent, requestType, requestUserId,
-                            requestTime, request_UserId)
+                            requestTime, request_UserId,requestLife)
         values (#{requestCircleId}, #{requestCircleName}, #{requestCircleContent}, #{requestType}, #{requestUserId},
-                #{requestTime}, #{request_UserId})
+                #{requestTime}, #{request_UserId},#{requestLife})
     </insert>
 
     <update id="setRequestChecked">

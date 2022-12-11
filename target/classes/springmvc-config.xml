@@ -20,4 +20,21 @@
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/pages/"/>
     </bean>
+
+    <!--拦截器-->
+<!--    <mvc:interceptors>    &lt;!&ndash;user&ndash;&gt;-->
+<!--        <mvc:interceptor>-->
+<!--            <mvc:mapping path="/**"/>-->
+<!--            <mvc:exclude-mapping path="/login"/>-->
+<!--            <mvc:exclude-mapping path="/register"/>-->
+<!--            <bean class="com.dhu.interceptor.AdminInterceptor"/>-->
+<!--        </mvc:interceptor>-->
+<!--    </mvc:interceptors>-->
+<!--    <mvc:interceptors>    &lt;!&ndash;admin&ndash;&gt;-->
+<!--        <mvc:interceptor>-->
+<!--            <mvc:mapping path="/**"/>-->
+<!--            <mvc:exclude-mapping path="/login"/>-->
+<!--            <bean class="com.dhu.interceptor.AdminInterceptor"/>-->
+<!--        </mvc:interceptor>-->
+<!--    </mvc:interceptors>-->
 </beans>

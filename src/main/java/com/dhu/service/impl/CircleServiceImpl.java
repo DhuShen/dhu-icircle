@@ -20,7 +20,9 @@ import java.util.Objects;
 public class CircleServiceImpl implements CircleService {
     @Autowired
     CircleDao circleDao;
+    @Autowired
     MessageDao messageDao;
+    @Autowired
     RequestDao requestDao;
 
     @Override

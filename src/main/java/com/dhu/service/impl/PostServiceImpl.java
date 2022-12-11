@@ -16,6 +16,8 @@ import java.util.List;
 public class PostServiceImpl implements PostService {
     @Autowired
     PostDao postDao;
+
+    @Autowired
     CircleDao circleDao;
 
     @Override

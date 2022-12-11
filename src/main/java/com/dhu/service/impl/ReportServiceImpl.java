@@ -17,7 +17,9 @@ import java.util.List;
 public class ReportServiceImpl implements ReportService {
     @Autowired
     ReportDao reportDao;
+    @Autowired
     UserDao userDao;
+    @Autowired
     MessageDao messageDao;
 
     //根据reportId获取举报信息

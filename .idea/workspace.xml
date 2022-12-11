@@ -11,14 +11,19 @@
   <component name="ChangeListManager">
     <list default="true" id="12b7af2a-461d-49d5-8f10-0525aac691a2" name="变更" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dhu/dao/ReportDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dhu/dao/ReportDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dhu/domain/Report.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dhu/domain/Report.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dhu/service/CircleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dhu/service/CircleService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dhu/service/ReportService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dhu/service/ReportService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/dhu/service/impl/CircleServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dhu/service/impl/CircleServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/dhu/service/impl/PostServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dhu/service/impl/PostServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/dhu/service/impl/ReportServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dhu/service/impl/ReportServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/dhu/service/impl/RequestServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dhu/service/impl/RequestServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/ReportDao.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/ReportDao.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/RequestDao.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/RequestDao.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dhu/service/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dhu/service/UserService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/spring-config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/spring-config.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/springmvc-config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/springmvc-config.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/dhu-icircle.war" beforeDir="false" afterPath="$PROJECT_DIR$/target/dhu-icircle.war" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/dhu-icircle/WEB-INF/classes/com/dhu/service/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/dhu-icircle/WEB-INF/classes/com/dhu/service/UserService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/dhu-icircle/WEB-INF/classes/spring-config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/dhu-icircle/WEB-INF/classes/spring-config.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/dhu-icircle/WEB-INF/classes/springmvc-config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/dhu-icircle/WEB-INF/classes/springmvc-config.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -87,39 +92,40 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;E:/workplace/dhu-icircle/src/main/resources/mapper&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;项目&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.projectsettings.compiler.javacompiler&quot;,
-    &quot;spring.configuration.checksum&quot;: &quot;2dd8c93f5c1e175404c123bdf329135e&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "E:/workplace/dhu-icircle/src/main/webapp/js",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "项目",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "settings.editor.selected.configurable": "reference.projectsettings.compiler.javacompiler",
+    "spring.configuration.checksum": "2dd8c93f5c1e175404c123bdf329135e"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;ChangesTree.GroupingKeys&quot;: [
-      &quot;directory&quot;,
-      &quot;module&quot;
+  "keyToStringList": {
+    "ChangesTree.GroupingKeys": [
+      "directory",
+      "module"
     ],
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;mysql&quot;
+    "DatabaseDriversLRU": [
+      "mysql"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\workplace\dhu-icircle\src\main\webapp\js" />
       <recent name="E:\workplace\dhu-icircle\src\main\resources\mapper" />
       <recent name="E:\workplace\dhu-icircle\src\main\java\com\dhu\service" />
     </key>
@@ -267,7 +273,7 @@
       <workItem from="1670575550105" duration="150000" />
       <workItem from="1670588887449" duration="10607000" />
       <workItem from="1670677977882" duration="11269000" />
-      <workItem from="1670727018027" duration="2639000" />
+      <workItem from="1670727018027" duration="6826000" />
     </task>
     <task id="LOCAL-00001" summary="pojo,数据库">
       <created>1669116709980</created>
@@ -402,7 +408,14 @@
       <option name="project" value="LOCAL" />
       <updated>1670727992943</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="差aop和管理员">
+      <created>1670729675151</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1670729675151</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

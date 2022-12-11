@@ -16,6 +16,7 @@ import java.util.List;
 public class RequestServiceImpl implements RequestService {
     @Autowired
     RequestDao requestDao;
+    @Autowired
     CircleDao circleDao;
 
     //    k)	建立圈子（需要向管理员申请）【在request、circle中】

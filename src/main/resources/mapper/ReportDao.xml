@@ -5,9 +5,9 @@
 <mapper namespace="com.dhu.dao.ReportDao">
     <insert id="InsertReport">
         insert into report(reportContent, reportType, reportUserIdGet, reportPostId, reportDiscussId, reportTime,
-                           reportUserIdSet)
+                           reportUserIdSet,reportLife)
         values (#{reportContent}, #{reportType}, #{reportUserIdGet}, #{reportPostId}, #{reportDiscussId}, #{reportTime},
-                #{reportUserIdSet})
+                #{reportUserIdSet},#{reportLife})
     </insert>
 
     <update id="setReportChecked">
