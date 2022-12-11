@@ -16,7 +16,7 @@
     </header>
     <main>
         <div class="circle-card">
-            <el-button size="small" v-if="isAttention" @click="pushDialog = true" type="primary" round>发帖</el-button>
+            <el-button size="small" v-if="isAttention||isMaster" @click="pushDialog = true" type="primary" round>发帖</el-button>
             <el-button size="small" v-if="!isAttention&&!isMaster" @click="enterCircle" type="primary" round>关注</el-button>
             <el-button size="small" v-if="isAttention&&!isMaster" @click="quitCircle" type="danger" round>取消关注
             </el-button>

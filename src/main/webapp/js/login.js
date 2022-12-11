@@ -22,15 +22,16 @@ new Vue({
         onSubmit() {
             this.$refs['form'].validate((valid) => {
                 if (valid) {
-                    this.btnStatus=true
+                    this.btnStatus = true
                     let params = new URLSearchParams()
                     let url = this.isAdmin ? 'api/admin/login' : 'api/user/login'
+                    let result = this.isAdmin ? 'adminHome' : 'recommend'
                     params.append('id', this.loginForm.id)
                     params.append('password', this.loginForm.password)
                     axios.post(url, params).then(resp => {
                         if (resp.data.code === 20041) {
                             this.$message.success('登陆成功')
-                            setTimeout("location.href = 'recommend'", 1000)
+                            setTimeout(()=>location.href = result, 1000)
                         } else if (resp.data.code === 20040) {
                             this.$message.error('用户名或密码错误，请重试');
                         } else if (resp.data.code === 10000) {
@@ -38,8 +39,8 @@ new Vue({
                         }
                     }).catch(error => {
                         this.$message.error(url + '接口请求错误');
-                    }).finally(()=>{
-                        this.btnStatus=false
+                    }).finally(() => {
+                        this.btnStatus = false
                     })
                 } else {
                     return false;

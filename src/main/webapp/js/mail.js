@@ -5,7 +5,12 @@ new Vue({
             username:'',
             searchForm: {
                 type: 'circle',
-                content: '',
+                content: ''
+            },
+            searchRules: {
+                content: [
+                    {required: true, message: '请输入搜索内容', trigger: 'change'},
+                ]
             },
             activeName: 'first',
             mails: []
@@ -33,7 +38,13 @@ new Vue({
             }
         },
         onSearch() {
-
+            this.$refs['search'].validate((valid) => {
+                if (valid) {
+                    location.href = `search?name=${this.searchForm.content}&type=${this.searchForm.type}`
+                } else {
+                    return false;
+                }
+            });
         }
     },
     mounted(){

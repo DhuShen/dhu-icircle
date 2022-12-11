@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ICircle管理系统</title>
+    <script src="lib/axios.js"></script>
+    <script src="lib/vue.js"></script>
+    <script src="lib/element-ui/lib/index.js"></script>
+    <link rel="stylesheet" href="lib/element-ui/lib/theme-chalk/index.css">
+    <link rel="stylesheet" href="css/admin-home.css">
+</head>
+<body>
+<div id="app">
+    <el-container>
+        <el-aside width="200px">
+            <el-menu id="aside" default-active="1-1" @select="select" :collapse="isCollapse">
+                <el-menu-item index="0">
+                    <i class="el-icon-user-solid"></i>
+                    <span slot="title">欢迎您，{{adminName}}</span>
+                </el-menu-item>
+                <el-submenu index="1">
+                    <template slot="title">
+                        <i class="el-icon-s-promotion"></i>
+                        <span>查看请求</span>
+                    </template>
+                    <el-menu-item index="1-1">已完成</el-menu-item>
+                    <el-menu-item index="1-2">未完成</el-menu-item>
+                </el-submenu>
+                <el-submenu index="2">
+                    <template slot="title">
+                        <i class="el-icon-s-check"></i>
+                        <span>查看举报</span>
+                    </template>
+                    <el-menu-item index="2-1">已完成</el-menu-item>
+                    <el-menu-item index="2-2">未完成</el-menu-item>
+                </el-submenu>
+                <el-menu-item index="3">
+                    <i class="el-icon-key"></i>
+                    <span slot="title">注销</span>
+                </el-menu-item>
+            </el-menu>
+        </el-aside>
+        <el-main>
+            <div v-if="tab==='1-1'">
+                <el-table class="table" :data="tableData" v-loading="loading" :row-class-name="tableRowClassName" max-height="800">
+                    <template slot="empty">
+                        <el-empty description="还没有请求"></el-empty>
+                    </template>
+                    <el-table-column type="expand" fixed>
+                        <template slot-scope="props">
+                            <el-form label-position="top">
+                                <h4>圈子介绍</h4>
+                                <p>{{ props.row.requestCircleContent }}</p>
+                            </el-form>
+                        </template>
+                    </el-table-column>
+                    <el-table-column
+                            prop="requestTime"
+                            label="时间">
+                    </el-table-column>
+                    <el-table-column
+                            prop="requestCircleName"
+                            label="申请圈名">
+                    </el-table-column>
+                    <el-table-column label="申请人">
+                        <template slot-scope="scope">
+                            <el-link :underline="false" :href="'pinfo?userId='+scope.row.request_UserId">{{scope.row.user}}</el-link>
+                        </template>
+                    </el-table-column>
+                    <el-table-column label="申请类型" prop="tag" :filter-method="filterTag"
+                                     filter-placement="bottom-end"
+                                     :filters="[{ text: '创建圈子', value: 0 }, { text: '修改圈子', value: 1 },{ text: '更换圈主', value: 2 }]">
+                        <template slot-scope="scope">
+                            <el-tag v-if="scope.row.requestType===0" size="medium">创建圈子</el-tag>
+                            <el-tag v-if="scope.row.requestType===1" type="success" size="medium">修改圈子</el-tag>
+                            <el-tag v-if="scope.row.requestType===2" type="warning" size="medium">更换圈主</el-tag>
+                        </template>
+                    </el-table-column>
+                    <el-table-column label="操作">
+                        <template slot-scope="scope">
+                            <el-button size="mini" type="primary"  @click="agree(scope.row.requestId)">通过</el-button>
+                            <el-button size="mini" type="danger">退回</el-button>
+                        </template>
+                    </el-table-column>
+                </el-table>
+            </div>
+            <div v-else-if="tab==='1-2'">
+                2
+            </div>
+            <div v-else-if="tab==='2-1'">
+                <el-table class="table" :data="tableData" v-loading="loading" :row-class-name="tableRowClassName" max-height="800">
+                    <template slot="empty">
+                        <el-empty description="还没有举报信息"></el-empty>
+                    </template>
+                    <el-table-column type="expand" fixed>
+                        <template slot-scope="props">
+                            <el-form label-position="top">
+                                <h4>举报内容</h4>
+                                <p>{{ props.row.reportContent }}</p>
+                            </el-form>
+                        </template>
+                    </el-table-column>
+                    <el-table-column
+                            prop="requestTime"
+                            label="时间">
+                    </el-table-column>
+                    <el-table-column label="举报类型" prop="tag" :filter-method="filterTag"
+                                     filter-placement="bottom-end"
+                                     :filters="[{ text: '用户', value: 0 }, { text: '帖子', value: 1 },{ text: '评论', value: 2 }]">
+                        <template slot-scope="scope">
+                            <el-tag v-if="scope.row.requestType===0" type="danger" size="medium">用户</el-tag>
+                            <el-tag v-if="scope.row.requestType===1" type="danger" size="medium">帖子</el-tag>
+                            <el-tag v-if="scope.row.requestType===2" type="danger" size="medium">评论</el-tag>
+                        </template>
+                    </el-table-column>
+                    <el-table-column
+                            prop="requestCircleName"
+                            label="被举报信息">
+                        <template slot-scope="scope">
+                            <el-link v-if="scope.row.reportType===0" :underline="false" :href="'pinfo?userId='+scope.row.reportUserIdGet">{{scope.row.userSet}}</el-link>
+                        </template>
+                    </el-table-column>
+                    <el-table-column label="举报人">
+                        <template slot-scope="scope">
+                            <el-link :underline="false" :href="'pinfo?userId='+scope.row.reportUserIdSet">{{scope.row.userGet}}</el-link>
+                        </template>
+                    </el-table-column>
+                    <el-table-column label="操作">
+                        <template slot-scope="scope">
+                            <el-button size="mini" type="primary">通过</el-button>
+                            <el-button size="mini" type="danger">退回</el-button>
+                        </template>
+                    </el-table-column>
+                </el-table>
+            </div>
+            <div v-else-if="tab==='2-2'">
+                2
+            </div>
+        </el-main>
+    </el-container>
+</div>
+</body>
+<script src="js/admin-home.js"></script>
+</html>

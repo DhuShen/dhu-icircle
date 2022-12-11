@@ -1,0 +1,17 @@
+.el-table .warning-row {
+    background: #f4fdf3;
+}
+
+.el-table .success-row {
+    background: #eef7fd;
+}
+
+#aside{
+    background-color: white;
+    height: 500px;
+}
+
+.table{
+    width: 80%;
+    margin: 0 auto;
+}
