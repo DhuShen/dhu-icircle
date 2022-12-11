@@ -15,6 +15,17 @@
     </properties>
 
     <dependencies>
+        <!--AspectJ框架:AOP切面工程-->
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjweaver</artifactId>
+            <version>1.9.9.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.geronimo.bundles</groupId>
+            <artifactId>aspectjrt</artifactId>
+            <version>1.6.8_2</version>
+        </dependency>
         <!--Junit-->
         <dependency>
             <groupId>org.springframework</groupId>

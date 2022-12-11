@@ -19,6 +19,14 @@
     <select id="selectAllOrder" resultType="Request">
         select *
         from request
+        where requestTime = 0
+        order by requestTime;
+    </select>
+
+    <select id="selectAllOrderChecked" resultType="com.dhu.domain.Report">
+        select *
+        from request
+        where requestTime = 1
         order by requestTime;
     </select>
 

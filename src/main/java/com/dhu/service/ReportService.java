@@ -23,4 +23,10 @@ public interface ReportService {
     List<Report> getReportChecked();
     //设置已审核举报
     boolean checkReport(int reportId);
+
+    //批准举报（）
+    boolean allowReport(int reportId);
+
+    //退回举报
+    boolean refuseReport(int reportId);
 }

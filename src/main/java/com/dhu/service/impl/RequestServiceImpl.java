@@ -1,8 +1,8 @@
 package com.dhu.service.impl;
 
 import com.dhu.dao.CircleDao;
-import com.dhu.dao.MessageDao;
 import com.dhu.dao.RequestDao;
+import com.dhu.domain.Report;
 import com.dhu.domain.Request;
 import com.dhu.exception.MyException;
 import com.dhu.service.RequestService;
@@ -67,9 +67,15 @@ public class RequestServiceImpl implements RequestService {
     }
 
     //    c)	查看消息（举报，请求（建立圈子，修改圈子信息，任命新圈主））【在report，request中】
+    //查询未审核请求
     @Override
     public List<Request> getRequest() {
         return requestDao.selectAllOrder();
+    }
+    //查询已审核请求
+    @Override
+    public List<Report> getRequestChecked() {
+        return requestDao.selectAllOrderChecked();
     }
 
     @Override

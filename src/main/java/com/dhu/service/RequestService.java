@@ -1,5 +1,6 @@
 package com.dhu.service;
 
+import com.dhu.domain.Report;
 import com.dhu.domain.Request;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.transaction.annotation.Transactional;
@@ -18,7 +19,11 @@ public interface RequestService {
     boolean setRequest2(int circleId, String circleName, String circleContent, String setId);
 
     //    c)	查看消息（举报，请求（建立圈子，修改圈子信息，任命新圈主））【在report，request中】
+    //查询未审核请求
     List<Request> getRequest();
+
+    //查询已审核请求
+    List<Report> getRequestChecked();
 
     //设置已审核请求
     boolean checkRequest(@Param("requestId") int requestId);

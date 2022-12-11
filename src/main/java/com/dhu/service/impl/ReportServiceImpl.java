@@ -5,7 +5,6 @@ import com.dhu.dao.ReportDao;
 import com.dhu.dao.UserDao;
 import com.dhu.domain.Message;
 import com.dhu.domain.Report;
-import com.dhu.domain.Request;
 import com.dhu.service.ReportService;
 import com.dhu.tools.MyTime;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -69,7 +68,6 @@ public class ReportServiceImpl implements ReportService {
     @Override
     public List<Report> getReport() {
         return reportDao.selectAllOrder();
-
     }
 
     //查询已审核举报
@@ -85,6 +83,7 @@ public class ReportServiceImpl implements ReportService {
     }
 
     //批准举报（）
+    @Override
     public boolean allowReport(int reportId) {
         Report report = reportDao.selectReportById(reportId);
         //封号
@@ -111,6 +110,7 @@ public class ReportServiceImpl implements ReportService {
     }
 
     //退回举报
+    @Override
     public boolean refuseReport(int reportId) {
         Report report = reportDao.selectReportById(reportId);
         //发信息给举报人

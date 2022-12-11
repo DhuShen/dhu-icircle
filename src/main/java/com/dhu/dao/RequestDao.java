@@ -1,5 +1,6 @@
 package com.dhu.dao;
 
+import com.dhu.domain.Report;
 import com.dhu.domain.Request;
 import org.apache.ibatis.annotations.Param;
 
@@ -9,8 +10,10 @@ public interface RequestDao {
     //增加请求
     int insertRequest(Request request);
 
-    //以发起人id排序查询所有请求
+    //查询未审核请求
     List<Request> selectAllOrder();
+    //查询已审核请求
+    List<Report> selectAllOrderChecked();
 
     boolean setRequestChecked(@Param("requestId") int requestId);
 
