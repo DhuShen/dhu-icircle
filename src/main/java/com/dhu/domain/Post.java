@@ -12,7 +12,7 @@ public class Post {
   private String postContent;
   private int postKey;
   private int postGood;
-  @JsonFormat(pattern="yyyy-MM-dd",timezone = "GMT+8")
+  @JsonFormat(pattern="yyyy-MM-dd hh:mm",timezone = "GMT+8")
   private Date postTime;
   private String post_UserId;
   private int post_CircleId;

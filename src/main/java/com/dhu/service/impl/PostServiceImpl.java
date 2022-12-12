@@ -65,8 +65,8 @@ public class PostServiceImpl implements PostService {
     @Override
     public boolean insertPost(String postName, String postContent, String userId, int circleId) {
         //先处理内容中的换行和空格
-        postContent = postContent.replace("&nbsp", " ");
-        postContent = postContent.replace("<br>", "\n");
+        postContent = postContent.replace(" ", "&nbsp;");
+        postContent = postContent.replace("\n", "<br>");
         Post post = new Post();
         post.setPostName(postName);
         post.setPostContent(postContent);

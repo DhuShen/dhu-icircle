@@ -3,6 +3,7 @@ new Vue({
     data() {
         return {
             username: '',
+            userImg:'',
             searchForm: {
                 type: 'circle',
                 content: ''
@@ -278,6 +279,17 @@ new Vue({
             } else if (resp.data.code === 10000) {
                 this.$message.error('后端异常，报错：' + resp.data.message);
             }
+        })
+        axios.get('api/user/myImg').then(resp => {
+            if (resp.data.code === 20041) {
+                this.userImg = resp.data.data
+            } else if (resp.data.code === 20040) {
+                this.$message.error('session不存在，请重新登录');
+            } else if (resp.data.code === 10000) {
+                this.$message.error('后端异常，报错：' + resp.data.message);
+            }
+        }).catch(error => {
+            this.$message.error('api/user/myImg接口请求错误')
         })
         axios.get('api/circle/getMyCircle').then(resp => {
             if (resp.data.code === 20041) {

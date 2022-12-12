@@ -63,7 +63,7 @@ public class CircleController {
 
     //关注圈子
     @RequestMapping("/enterCirlce")
-    public Result<Boolean> enterCirlce(@RequestParam Integer circleId, HttpSession session) {
+    public Result<Boolean> enterCircle(@RequestParam Integer circleId, HttpSession session) {
         User user = (User) session.getAttribute("user");
         boolean flag = circleService.enterCircle(user.getUserId(), circleId);
         return new Result<>(flag ? Result.SAVE_OK : Result.SAVE_ERR, flag, null);
@@ -71,7 +71,7 @@ public class CircleController {
 
     //取消关注
     @RequestMapping("/quitCirlce")
-    public Result<Boolean> outCirlce(@RequestParam Integer circleId, HttpSession session) {
+    public Result<Boolean> outCircle(@RequestParam Integer circleId, HttpSession session) {
         User user = (User) session.getAttribute("user");
         boolean flag = circleService.quitCircle(user.getUserId(), circleId);
         return new Result<>(flag ? Result.UPDATE_OK : Result.UPDATE_ERR, flag, null);
@@ -79,7 +79,7 @@ public class CircleController {
 
     //踢人
     @RequestMapping("/deletePerson")
-    public Result<Boolean> deletePerson(@RequestParam Integer circleId, @RequestParam String userId) {
+    public Result<Boolean> deletePersonMaster(@RequestParam Integer circleId, @RequestParam String userId, HttpSession session) {
         boolean flag = circleService.quitCircle(userId, circleId);
         return new Result<>(flag ? Result.UPDATE_OK : Result.UPDATE_ERR, flag, null);
     }
@@ -109,13 +109,13 @@ public class CircleController {
 
     //解散圈子
     @RequestMapping("/deleteCircle")
-    public Result<Boolean> deleteCircle(@RequestParam Integer circleId, HttpSession session) {
+    public Result<Boolean> deleteCircleMaster(@RequestParam Integer circleId, HttpSession session) {
         User user = (User) session.getAttribute("user");
         boolean flag = circleService.dissolveCircle(user.getUserId(), circleId);
         return new Result<>(flag ? Result.DELETE_OK : Result.DELETE_ERR, flag, null);
     }
 
-    //搜索圈子
+    //搜索
     @RequestMapping("/search")
     public Result<List<Circle>> search(@RequestParam String name) {
         List<Circle> circles = circleService.searchCircle(name);

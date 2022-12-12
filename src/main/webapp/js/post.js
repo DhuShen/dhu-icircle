@@ -89,6 +89,9 @@ new Vue({
                                         axios.get('api/user/name?userId=' + this.discusses[i].discuss_UserId).then(resp => {
                                             this.discusses[i].user = resp.data.data
                                         })
+                                        axios.get('api/user/img?userId=' + this.discusses[i].discuss_UserId).then(resp => {
+                                            this.discusses[i].userImg = resp.data.data
+                                        })
                                         if (this.discusses[i].discussReplayed != null) {
                                             axios.get('api/user/name?userId=' + this.discusses[i].discussReplayed).then(resp => {
                                                 this.discusses[i].replay = resp.data.data
@@ -138,36 +141,42 @@ new Vue({
                 this.post = resp.data.data
                 axios.get('api/user/name?userId=' + this.post.post_UserId).then(resp => {
                     this.post.user = resp.data.data
-                    axios.get("api/discuss/getDiscuss?postId=" + this.post.postId).then(resp => {
-                        if (resp.data.code === 20041) {
-                            this.discusses = resp.data.data
-                            for (let i = 0; i < this.discusses.length; i++) {
-                                axios.get('api/user/name?userId=' + this.discusses[i].discuss_UserId).then(resp => {
-                                    this.discusses[i].user = resp.data.data
-                                })
-                                if (this.discusses[i].discussReplayed != null) {
-                                    axios.get('api/user/name?userId=' + this.discusses[i].discussReplayed).then(resp => {
-                                        this.discusses[i].replay = resp.data.data
-                                    })
-                                }
-                            }
-                            setTimeout(() => {
-                                this.loading = false
-                            }, 1000)
-                        } else if (resp.data.code === 20040) {
-                            this.$message.error('评论请求错误，请重试');
-                        } else if (resp.data.code === 10000) {
-                            this.$message.error('后端异常，报错：' + resp.data.message);
-                        }
-                    }).catch(error => {
-                        this.$message.error('api/discuss/getDiscuss接口请求错误');
-                    })
+                })
+                axios.get('api/user/img?userId=' + this.post.post_UserId).then(resp => {
+                    this.post.userImg = resp.data.data
                 })
             } else if (resp.data.code === 20040) {
                 this.$message.error('帖子请求错误，请重试');
             } else if (resp.data.code === 10000) {
                 this.$message.error('后端异常，报错：' + resp.data.message);
             }
+            axios.get("api/discuss/getDiscuss?postId=" + this.post.postId).then(resp => {
+                if (resp.data.code === 20041) {
+                    this.discusses = resp.data.data
+                    for (let i = 0; i < this.discusses.length; i++) {
+                        axios.get('api/user/name?userId=' + this.discusses[i].discuss_UserId).then(resp => {
+                            this.discusses[i].user = resp.data.data
+                        })
+                        axios.get('api/user/img?userId=' + this.discusses[i].discuss_UserId).then(resp => {
+                            this.discusses[i].userImg = resp.data.data
+                        })
+                        if (this.discusses[i].discussReplayed != null) {
+                            axios.get('api/user/name?userId=' + this.discusses[i].discussReplayed).then(resp => {
+                                this.discusses[i].replay = resp.data.data
+                            })
+                        }
+                    }
+                    setTimeout(() => {
+                        this.loading = false
+                    }, 1000)
+                } else if (resp.data.code === 20040) {
+                    this.$message.error('评论请求错误，请重试');
+                } else if (resp.data.code === 10000) {
+                    this.$message.error('后端异常，报错：' + resp.data.message);
+                }
+            }).catch(error => {
+                this.$message.error('api/discuss/getDiscuss接口请求错误');
+            })
         }).catch(error => {
             this.$message.error('api/post/getInfo接口请求错误');
         })

@@ -68,14 +68,14 @@ public class PostController {
 
     //设置精华帖
     @RequestMapping("/setKeyPost")
-    public Result<Boolean> setPostKey(@RequestParam Integer postId) {
+    public Result<Boolean> setPostKeyMaster(@RequestParam Integer postId, HttpSession session) {
         boolean flag = postService.setPostKey(postId);
         return new Result<>(flag ? Result.UPDATE_OK : Result.UPDATE_ERR, flag, null);
     }
 
     //取消精华帖
     @RequestMapping("/cancelKeyPost")
-    public Result<Boolean> cancelPostKey(@RequestParam Integer postId) {
+    public Result<Boolean> cancelPostKeyMaster(@RequestParam Integer postId, HttpSession session) {
         boolean flag = postService.cancelPostKey(postId);
         return new Result<>(flag ? Result.UPDATE_OK : Result.UPDATE_ERR, flag, null);
     }

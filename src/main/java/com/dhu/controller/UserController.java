@@ -33,8 +33,8 @@ public class UserController {
 
     //注册
     @RequestMapping("/register")
-    public Result<Boolean> register(@RequestParam String id, @RequestParam String password) {
-        boolean flag = userService.userRegister(id, password);
+    public Result<Boolean> register(@RequestParam String id, @RequestParam String password, @RequestParam String img) {
+        boolean flag = userService.userRegister(id, password, img);
         return new Result<>(flag ? Result.SAVE_OK : Result.SAVE_ERR, false, null);
     }
 
@@ -55,6 +55,7 @@ public class UserController {
         } else {
             return new Result<>(Result.UPDATE_ERR, true, "更新失败");
         }
+
     }
 
     //获取用户信息
@@ -94,4 +95,19 @@ public class UserController {
         User user = (User) session.getAttribute("user");
         return new Result<>(Result.GET_OK, user.getUserId(), "获取个人id失败");
     }
+
+    //获取我的头像
+    @RequestMapping("/myImg")
+    public Result<String> getMyImg(HttpSession session) {
+        User user = (User) session.getAttribute("user");
+        return new Result<>(Result.GET_OK, user.getUserImg(), "获取个人img失败");
+    }
+
+    //获取用户头像
+    @RequestMapping("/img")
+    public Result<String> getImg(@RequestParam String userId) {
+        String name = userService.getImgUserById(userId);
+        return new Result<>(Result.GET_OK, name, null);
+    }
+
 }

@@ -11,7 +11,7 @@ public class Message {
     private String messageContent;
     private String messageUserIdSet;
     private String messageUserIdGet;
-    @JsonFormat(pattern="yyyy-MM-dd",timezone = "GMT+8")
+    @JsonFormat(pattern="yyyy-MM-dd hh:mm",timezone = "GMT+8")
     private Date messageSetTime;
 
     public Date getMessageSetTime() {

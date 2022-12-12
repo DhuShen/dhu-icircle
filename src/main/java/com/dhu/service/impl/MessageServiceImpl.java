@@ -15,7 +15,6 @@ public class MessageServiceImpl implements MessageService {
     MessageDao messageDao;
 
     //    h)	用户查看消息（消息）【在message中】
-    @Override
     public List<Message> getMessage(String getId) {
         return messageDao.selectByGetId(getId);
     }

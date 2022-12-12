@@ -4,6 +4,7 @@ import com.dhu.domain.Report;
 import com.dhu.domain.User;
 import com.dhu.service.ReportService;
 import com.dhu.tools.Result;
+import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,27 +31,27 @@ public class ReportController {
 
     //查询未完成
     @RequestMapping("/getReport")
-    public Result<List<Report>> getReport() {
+    public Result<List<Report>> getReportAdmin(HttpSession session) {
         List<Report> reports = reportService.getReport();
         return new Result<>(Result.GET_OK, reports, null);
     }
     //查询已完成
     @RequestMapping("/getCheckedReport")
-    public Result<List<Report>> getCheckedReport() {
+    public Result<List<Report>> getCheckedReportAdmin(HttpSession session) {
         List<Report> reports = reportService.getReportChecked();
         return new Result<>(Result.GET_OK, reports, null);
     }
 
     //拒绝
     @RequestMapping("/refuse")
-    public Result<Boolean> refuse(@RequestParam Integer reportId) {
+    public Result<Boolean> refuseAdmin(@RequestParam Integer reportId, HttpSession session) {
         boolean flag=reportService.refuseReport(reportId);
         return new Result<>(flag ? Result.UPDATE_OK : Result.UPDATE_ERR, flag, null);
     }
 
     //同意
     @RequestMapping("/agree")
-    public Result<Integer> agree(@RequestParam Integer reportId) {
+    public Result<Integer> agreeAdmin(@RequestParam Integer reportId, HttpSession session) {
         int count=reportService.allowReport(reportId);
         if(count<=0)
             return new Result<>(Result.UPDATE_ERR,null,"举报处理失败");

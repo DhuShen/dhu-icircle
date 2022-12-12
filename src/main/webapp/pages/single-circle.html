@@ -114,7 +114,7 @@
                             <div v-else>
                                 <div v-for="user in users">
                                     <el-avatar style="float: left"
-                                               src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"></el-avatar>
+                                               :src="user.userImg"></el-avatar>
                                     &nbsp&nbsp<el-link :underline="false" :href="userId===user.userId?'info':('pinfo?userId='+user.userId)">{{user.userName}}</el-link>
                                     <el-button style="float: right" v-if="isMaster&&circle.circle_UserId!==user.userId" size="mini" @click="kick(user.userId)" type="danger" round>踢人</el-button>
                                     <el-divider></el-divider>
@@ -132,7 +132,7 @@
                 <el-input v-model="pushRequest.postName"></el-input>
             </el-form-item>
             <el-form-item label="帖子内容" prop="postContent">
-                <el-input type="textarea" maxlength="500" show-word-limit :autosize="{minRows: 8}"
+                <el-input type="textarea" maxlength="3000" show-word-limit :autosize="{minRows: 8}"
                           v-model="pushRequest.postContent"></el-input>
             </el-form-item>
         </el-form>

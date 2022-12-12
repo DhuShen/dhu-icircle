@@ -10,7 +10,7 @@ public class Discuss {
   private String discussContent;
   private String discussReplayed;
   private long discussGood;
-  @JsonFormat(pattern="yyyy-MM-dd",timezone = "GMT+8")
+  @JsonFormat(pattern="yyyy-MM-dd hh:mm",timezone = "GMT+8")
   private Date discussTime;
   private String discuss_UserId;
   private long discuss_PostId;

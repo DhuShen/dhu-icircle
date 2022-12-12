@@ -42,7 +42,7 @@
                 </h1>
                 <br>
                 <el-avatar style="float: left"
-                           src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"></el-avatar>
+                           :src="post.userImg"></el-avatar>
                 &nbsp;&nbsp;
                 <el-link :underline="false" style="margin-top: 12px"
                          :href="userId===post.post_UserId?'info':('pinfo?userId='+post.post_UserId)">{{post.user}}
@@ -60,7 +60,7 @@
                 <div v-else class="discuss-area">
                     <div v-for="(discuss,i) in discusses">
                         <el-avatar style="float: left"
-                                   src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"></el-avatar>&nbsp;&nbsp;
+                                   :src="discuss.userImg"></el-avatar>&nbsp;&nbsp;
                         <el-link :underline="false"
                                  :href="userId===discuss.discuss_UserId?'info':('pinfo?userId='+discuss.discuss_UserId)">
                             {{discuss.user}}

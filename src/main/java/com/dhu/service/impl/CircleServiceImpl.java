@@ -210,8 +210,8 @@ public class CircleServiceImpl implements CircleService {
     @Override
     public boolean updateCircleContent(int circleId, String circleName, String circleContent) {
         //先处理内容中的换行和空格
-        circleContent = circleContent.replace("&nbsp", " ");
-        circleContent = circleContent.replace("<br>", "\n");
+        circleContent = circleContent.replace(" ", "&nbsp;");
+        circleContent = circleContent.replace("\n", "<br>");
         Circle circle = new Circle();
         circle.setCircleId(circleId);
         circle.setCircleName(circleName);

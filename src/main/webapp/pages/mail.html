@@ -18,7 +18,8 @@
             <el-menu-item index="2"><i class="el-icon-s-help"></i>圈子</el-menu-item>
             <el-menu-item index="3"><i class="el-icon-message-solid"></i>消息</el-menu-item>
             <el-menu-item>
-                <el-form ref="search" :inline="true" :model="searchForm" :rules="searchRules" class="demo-form-inline search-area">
+                <el-form ref="search" :inline="true" :model="searchForm" :rules="searchRules"
+                         class="demo-form-inline search-area">
                     <el-form-item>
                         <el-select class="type-input" v-model="searchForm.type" value="post" size="small">
                             <el-option label="帖子" value="post"></el-option>
@@ -36,7 +37,7 @@
             </el-menu-item>
             <el-submenu index="4">
                 <template slot="title">
-                    <el-avatar src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"></el-avatar>
+                    <el-avatar :src="userImg"></el-avatar>
                     {{username}}
                 </template>
                 <el-menu-item index="4-1"><i class="el-icon-user"></i> 个人信息</el-menu-item>
@@ -47,15 +48,19 @@
     <main>
         <div class="stream">
             <h2>我的消息</h2>
-            <div v-if="mails.length===0" class="mail-area">
-                <el-empty description="还没有消息"></el-empty>
-            </div>
-            <div v-else class="mail-area">
-                <div v-for="mail in mails">
-                    <p>
-                        {{mail.messageContent}}
-                    </p>
-                    <span>发送人：{{mail.messageUserIdGet}}</span>&nbsp;&nbsp;<span>发送时间：{{mail.messageSetTime}}</span>
+            <div v-loading="loading" class="mail-area">
+                <div v-if="mails.length===0">
+                    <el-empty description="还没有消息"></el-empty>
+                </div>
+                <div v-else>
+                    <el-timeline v-if="loading==false">
+                        <el-timeline-item  v-for="mail in mails" color="#4ea6fd" :timestamp="mail.messageSetTime" placement="top">
+                            <el-card>
+                                <h4>{{mail.messageContent}}</h4>
+                                <p>发送人：<span v-if="mail.messageUserIdSet==null">系统管理员</span><span v-else>{{mail.user}}</span></p>
+                            </el-card>
+                        </el-timeline-item>
+                    </el-timeline>
                 </div>
             </div>
         </div>

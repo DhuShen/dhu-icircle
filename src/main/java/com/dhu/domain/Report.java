@@ -13,7 +13,7 @@ public class Report {
     private String reportUserIdGet;
     private int reportPostId;
     private int reportDiscussId;
-    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
+    @JsonFormat(pattern = "yyyy-MM-dd hh:mm", timezone = "GMT+8")
     private Date reportTime;
     private String reportUserIdSet;
 

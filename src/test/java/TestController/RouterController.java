@@ -1,0 +1,64 @@
+package TestController;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+@Controller
+public class RouterController {
+    @RequestMapping("/login")
+    public String login() {
+        return "login.html";
+    }
+
+    @RequestMapping("/register")
+    public String register() {
+        return "register.html";
+    }
+
+    @RequestMapping("/recommend")
+    public String recommend() {
+        return "recommend.html";
+    }
+
+    @RequestMapping("/circles")
+    public String circles() {
+        return "circles.html";
+    }
+
+    @RequestMapping("/mail")
+    public String mail() {
+        return "mail.html";
+    }
+
+    @RequestMapping("/info")
+    public String info() {
+        return "info.html";
+    }
+
+    @RequestMapping("/pinfo")
+    public String pinfo(@RequestParam String userId) {
+        return "pinfo.html?userId=" + userId;
+    }
+
+    @RequestMapping("/singleCircle")
+    public String singleCircle(@RequestParam Integer circleId) {
+        return "single-circle.html?circleId=" + circleId;
+    }
+
+    @RequestMapping("/post")
+    public String post(@RequestParam Integer postId) {
+        return "post.html?postId=" + postId;
+    }
+
+    @RequestMapping("/search")
+    public String search(@RequestParam String name, @RequestParam String type) {
+        return "search.html?name=" + name + '&' + "type=" + type;
+    }
+
+    @RequestMapping("/adminHome")
+    public String adminHome() {
+        return "admin-home.html";
+    }
+
+}

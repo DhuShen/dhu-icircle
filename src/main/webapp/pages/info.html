@@ -17,7 +17,7 @@
     <main>
         <el-card class="stream" v-loading="loading">
             <div slot="header" class="clearfix">
-                <el-avatar style="float: left" v-if="user.userImg==null" src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"></el-avatar>
+                <el-avatar style="float: left" :src="user.userImg"></el-avatar>
                 <span id="card-title">个人信息</span>
                 <el-button id="up-btn" type="primary" size="small" @click="dialogFormVisible = true" round>修改</el-button>
             </div>

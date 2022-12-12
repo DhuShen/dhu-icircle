@@ -37,23 +37,27 @@ new Vue({
         onSubmit() {
             this.$refs['form'].validate((valid) => {
                 if (valid) {
-                    this.btnStatus=true
+                    this.btnStatus = true
                     let params = new URLSearchParams()
                     params.append('id', this.registerForm.id)
                     params.append('password', this.registerForm.password)
-                    axios.post('api/user/register', params).then(resp => {
-                        if (resp.data.code === 20011) {
-                            this.$message.success('注册成功，3秒后将自动返回')
-                            setTimeout("location.href = 'login'", 3000)
-                        } else if (resp.data.code === 20010) {
-                            this.$message.error('用户ID已经存在，请重试');
-                        } else if (resp.data.code === 10000) {
-                            this.$message.error('后端异常，报错：' + resp.data.message);
-                        }
-                    }).catch(error => {
-                        this.$message.error('api/user/register接口请求错误');
-                    }).finally(()=>{
-                        this.btnStatus=false
+                    axios.get('http://api.btstu.cn/sjtx/api.php?format=json').then(resp => {
+                        let img = resp.data.imgurl
+                        params.append('img', img)
+                        axios.post('api/user/register', params).then(resp => {
+                            if (resp.data.code === 20011) {
+                                this.$message.success('注册成功，3秒后将自动返回')
+                                setTimeout("location.href = 'login'", 3000)
+                            } else if (resp.data.code === 20010) {
+                                this.$message.error('用户ID已经存在，请重试');
+                            } else if (resp.data.code === 10000) {
+                                this.$message.error('后端异常，报错：' + resp.data.message);
+                            }
+                        }).catch(error => {
+                            this.$message.error('api/user/register接口请求错误')
+                        }).finally(() => {
+                            this.btnStatus = false
+                        })
                     })
                 } else {
                     return false;

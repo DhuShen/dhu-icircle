@@ -12,7 +12,7 @@ public class Request {
   private String requestCircleContent;
   private int requestType;
   private String requestUserId;
-  @JsonFormat(pattern="yyyy-MM-dd",timezone = "GMT+8")
+  @JsonFormat(pattern="yyyy-MM-dd hh:mm",timezone = "GMT+8")
   private Date requestTime;
   private String Request_UserId;
 
