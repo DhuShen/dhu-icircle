@@ -1,9 +1,13 @@
 package com.dhu.aop;
 
 import com.dhu.domain.Admin;
+import com.dhu.exception.MyException;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.*;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 @Aspect
@@ -16,21 +20,14 @@ public class AdminLoginVerify {
     //环绕通知
     @Around("pointCut()")
     public Object around(ProceedingJoinPoint point) throws Throwable {
-        HttpSession session = null;
-        Object[] args=point.getArgs();
-        for (int i = 0; i < args.length; i++) {
-            if(args[i].getClass().equals(HttpSession.class))
-            {
-                session= (HttpSession) args[i];
-                break;
-            }
-        }
+        String clazz = point.getTarget().getClass().getName();
+        // 获取目标对象上正在执行的方法名
+        String methodName = point.getSignature().getName();
+        System.out.println("前置通知:" + clazz + "类的" + methodName + "方法开始了...");
+        HttpServletRequest request =((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
+        HttpSession session =request.getSession();
         Admin admin= (Admin) session.getAttribute("admin");
-        System.out.println(admin.getAdminName());
-        System.out.println("这是环绕通知之前的部分");
-        Object object = point.proceed();
-        System.out.println("这是环绕通知之后的部分");
-        return object;
+        if(admin==null) throw new MyException("没有管理员权限");
+        return point.proceed();
     }
-
 }

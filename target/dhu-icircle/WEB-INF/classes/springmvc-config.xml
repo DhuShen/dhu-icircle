@@ -2,8 +2,16 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:aop="http://www.springframework.org/schema/aop"
        xmlns:context="http://www.springframework.org/schema/context"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/mvc
+       http://www.springframework.org/schema/mvc/spring-mvc.xsd
+       http://www.springframework.org/schema/aop
+       https://www.springframework.org/schema/aop/spring-aop.xsd">
     <mvc:annotation-driven/>
 
     <!--资源放行-->
@@ -41,4 +49,12 @@
             <bean class="com.dhu.interceptor.AdminInterceptor"/>
         </mvc:interceptor>
     </mvc:interceptors>
+
+    <!--基于注解配置AOP-->
+    <!-- 注册Bean -->
+    <bean name="AdminLoginVerify" class="com.dhu.aop.AdminLoginVerify"/>
+    <bean name="CircleMasterVerify" class="com.dhu.aop.CircleMasterVerify"/>
+    <!-- 开启@aspectj的自动代理支持 -->
+    <aop:aspectj-autoproxy/>
+
 </beans>

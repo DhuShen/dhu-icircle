@@ -26,7 +26,7 @@ public class RequestController {
 
     //建立圈子
     @RequestMapping("/create")
-    public Result<Boolean> requestCreateCircleMaster(@RequestParam String circleName, @RequestParam String circleContent, HttpSession session) {
+    public Result<Boolean> requestCreateCircle(@RequestParam String circleName, @RequestParam String circleContent, HttpSession session) {
         User user = (User) session.getAttribute("user");
         boolean flag = requestService.setRequest0(circleName, circleContent, user.getUserId());
         return new Result<>(flag ? Result.SAVE_OK : Result.SAVE_ERR, flag, null);

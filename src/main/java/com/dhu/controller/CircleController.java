@@ -55,7 +55,7 @@ public class CircleController {
 
     //是否是圈主
     @RequestMapping("/isMaster")
-    public Result<Boolean> isMaster(@RequestParam Integer circleId, HttpSession session) {
+    public Result<Boolean> ismaster(@RequestParam Integer circleId, HttpSession session) {
         User user = (User) session.getAttribute("user");
         boolean flag = circleService.isCircleMaster(user.getUserId(), circleId);
         return new Result<>(flag ? Result.GET_OK : Result.GET_ERR, flag, null);
